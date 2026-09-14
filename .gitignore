@@ -26,6 +26,16 @@ coverage
 out/
 build
 dist
+target/
+apps/api/bundle/
+apps/api/release/
+
+# Prebuilt Angular bundle copied into the Spring Boot jar for prod packaging;
+# regenerate with `turbo run build` + copying apps/web's build output here.
+apps/api/src/main/resources/static/
+
+# Compodoc-generated docs site; regenerate with `npx compodoc -p tsconfig.json`
+apps/web/documentation/
 
 
 # Debug

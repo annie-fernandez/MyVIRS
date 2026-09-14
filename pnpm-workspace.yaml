@@ -1,3 +1,33 @@
 packages:
   - "apps/*"
   - "packages/*"
+# apps/web is a legacy Angular 4 / webpack 3 project that relies on a flat,
+# npm-style node_modules (webpack resolves loaders like raw-loader from the
+# app dir, and several packages require undeclared deps).
+shamefullyHoist: true
+strictPeerDependencies: false
+autoInstallPeers: true
+allowBuilds:
+  core-js: true
+  ejs: true
+  es5-ext: true
+  fsevents: false
+  ngx-infinite-scroll: true
+  uglifyjs-webpack-plugin: true
+  unrs-resolver: true
+# node-sass 4/5 native bindings can't build on modern Node/arm64. Dart Sass is
+# API-compatible with sass-loader 6; 1.32.x is the newest line supporting the
+# Node 8 runtime apps/web's dev server needs.
+overrides:
+  node-sass: "npm:sass@1.32.13"
+# Legacy Angular CLI packages require('typescript') without declaring it, which
+# otherwise resolves to the root's TypeScript 7 instead of apps/web's 2.3.
+packageExtensions:
+  "@ngtools/webpack@1":
+    peerDependencies:
+      typescript: "^2.0.2"
+  "@angular/cli@1":
+    peerDependencies:
+      typescript: "^2.0.2"
+minimumReleaseAgeExclude:
+  - zod@4.6.5

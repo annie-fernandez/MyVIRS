@@ -1,0 +1,137 @@
+::ng-deep .tooltip-inner {
+    width: max-content;
+
+}
+.col.col-md-8.col-xl-4{
+
+    margin-top: 10px;
+    margin-left: 30px;
+}
+.dark-mode{
+    background-color: #3d3d3d;
+    color: #ebebeb;
+}
+.light-mode{
+    background-color: #ebebeb;
+    color: #3d3d3d;
+}
+//.table-hover.table-striped
+.table-responsive{
+    margin-top: 10px;
+    width: 100%;
+}
+/*
+@media screen and (max-width: 992px) {
+    .table-responsive{
+        margin-top: 10px;
+        margin-left: 30px;
+        width: 83%;
+    }
+}
+*/
+.btn-group {
+    width: 100%;
+    
+}
+
+.filter{
+
+    border-right-color: black;
+
+}
+
+.category{
+
+    border-left-color: black;
+    border-right-color: black;
+
+}
+
+.grade{
+
+    border-left-color: black;
+
+}
+
+.btn-group .btn {
+    width: 100%;
+    
+}
+
+
+.page {
+    width: 40% !important;
+}
+
+.bottomMarging{
+    margin-bottom: 25px;
+}
+
+.topMarging{
+    margin-top: 25px;
+}
+
+.center {
+    margin: 30px;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+}
+
+a {
+    color: inherit;
+  }
+
+  a.disabled {
+    pointer-events: none;
+
+  }
+
+  .modal-body {
+    max-height: calc(100vh - 210px);
+    overflow-y: auto;
+  }
+
+
+  table{
+    table-layout: fixed;
+    //width: 100%;
+}
+
+.column {
+    float: left;
+    width: 50%;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+.pageCount{
+    display:flex;
+    flex-wrap:nowrap;
+    
+}
+
+.pageCount p{
+        
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 20px;
+    
+}
+
+#pgSize {
+    width: 20%;
+    text-align: right;
+    
+}
+
+#ASC{
+    width: 20%;
+    text-align: right;
+}
+

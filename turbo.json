@@ -1,10 +1,14 @@
 {
   "$schema": "https://turborepo.dev/schema.json",
   "ui": "tui",
+  "globalPassThroughEnv": ["JAVA8_HOME", "NVM_DIR"],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**"]
+      "outputs": ["dist/**", "target/*.jar"]
+    },
+    "test": {
+      "dependsOn": ["^build"]
     },
     "lint": {
       "dependsOn": ["^lint"]

@@ -1,0 +1,12 @@
+{
+  "name": "api",
+  "private": true,
+  "scripts": {
+    "dev": "dotenv -e .env -- ./scripts/with-jdk8.sh ./mvnw spring-boot:run",
+    "build": "dotenv -e .env -- ./scripts/with-jdk8.sh ./mvnw -B clean package",
+    "test": "dotenv -e .env -- ./scripts/with-jdk8.sh ./mvnw -B test"
+  },
+  "devDependencies": {
+    "dotenv-cli": "^7.4.2"
+  }
+}
