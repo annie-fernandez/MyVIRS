@@ -1,4 +1,12 @@
+import { existsSync } from "node:fs";
+import path from "node:path";
 import type { NextConfig } from "next";
+
+// `neon link`/`neon deploy` write the Neon connection strings to the repo-root .env.local.
+// Load it after Next has read apps/virs/.env*, without overriding anything already set.
+// Next is always started from apps/virs (pnpm --filter / turbo), so cwd is the app folder.
+const rootEnvFile = path.resolve(process.cwd(), "../../.env.local");
+if (existsSync(rootEnvFile)) process.loadEnvFile(rootEnvFile);
 
 // Old Angular routes, so bookmarks and links keep working.
 const LEGACY_REDIRECTS: [string, string][] = [
