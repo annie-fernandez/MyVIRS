@@ -1,0 +1,31 @@
+.text {
+  font-size: var(--mantine-font-size-lg);
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+}
+
+.paragraph {
+  margin: 0 0 var(--mantine-spacing-md);
+}
+
+.word {
+  all: unset;
+  cursor: pointer;
+  border-radius: var(--mantine-radius-xs);
+  padding-inline: 1px;
+  color: var(--word-color);
+  font-weight: 500;
+
+  &:hover {
+    background-color: light-dark(var(--mantine-color-gray-1), var(--mantine-color-dark-5));
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--mantine-primary-color-filled);
+  }
+
+  &[data-dimmed] {
+    color: var(--mantine-color-dimmed);
+    font-weight: 400;
+  }
+}

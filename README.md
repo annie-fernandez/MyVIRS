@@ -8,9 +8,20 @@ A [Turborepo](https://turborepo.dev/) monorepo managed with pnpm.
 | ------- | ----------- | --------------------------------------- | --------------------- |
 | `api`   | `apps/api`  | Spring Boot 1.5 (Java 8, Maven wrapper) | http://localhost:8080 |
 | `web`   | `apps/web`  | Angular 4 (Angular CLI 1.7, webpack 3)  | http://localhost:4200 |
-| `virs`  | `apps/virs` | Next.js                                 | http://localhost:3000 |
+| `virs`  | `apps/virs` | Next.js 16 full stack (replaces `api` + `web`) | http://localhost:3000 |
 
 `web` proxies API calls to `localhost:8080` (`apps/web/proxy.conf.json`).
+
+## Packages
+
+| Package                   | Path                        | Purpose                                                              |
+| ------------------------- | --------------------------- | -------------------------------------------------------------------- |
+| `@repo/core`              | `packages/core`             | Framework-free domain logic: text analyzer, categories, zod schemas  |
+| `@repo/db`                | `packages/db`               | Drizzle ORM schema, Neon client, queries, migrations, seed/import    |
+| `@repo/eslint-config`     | `packages/eslint-config`    | Shared ESLint configs                                                |
+| `@repo/typescript-config` | `packages/typescript-config` | Shared tsconfigs                                                    |
+
+See [`apps/virs/README.md`](apps/virs/README.md) for setting up the new app.
 
 ## Prerequisites
 

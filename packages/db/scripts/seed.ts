@@ -1,5 +1,5 @@
 import { readFile } from "node:fs/promises";
-import { parseGrade, parseWordCategory } from "@repo/core";
+import { normalizeWord, parseGrade, parseWordCategory } from "@repo/core";
 import Papa from "papaparse";
 import { createDb } from "../src/client";
 import { importWords } from "../src/queries/words";
@@ -16,9 +16,8 @@ const { data } = Papa.parse<{ value: string; category: string; grade: string }>(
 
 const rows: NewWordRow[] = data.flatMap((record) => {
   const category = parseWordCategory(record.category);
-  return category
-    ? [{ value: record.value, category, grade: parseGrade(record.grade) ?? null }]
-    : [];
+  const value = normalizeWord(record.value);
+  return category && value ? [{ value, category, grade: parseGrade(record.grade) ?? null }] : [];
 });
 
 const count = await importWords(createDb(url), rows, { replace: false });

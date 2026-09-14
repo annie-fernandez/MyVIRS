@@ -1,7 +1,9 @@
 import { z } from "zod";
 import { GRADES, WORD_CATEGORIES, parseGrade, parseWordCategory } from "./categories";
+import { normalizeWord } from "./word";
 
 export const MAX_TEXT_LENGTH = 30_000;
+export const MAX_EXTRACTED_TEXT_LENGTH = 500_000;
 export const MAX_TRANSLATE_LENGTH = 5_000;
 export const MIN_PASSWORD_LENGTH = 8;
 
@@ -9,7 +11,7 @@ export const USER_LEVELS = ["Student", "Professor", "Parent", "Researcher", "Fac
 export type UserLevel = (typeof USER_LEVELS)[number];
 
 export const wordCategorySchema = z
-  .string()
+  .string({ error: "Choose a word list" })
   .transform((value, ctx) => {
     const category = parseWordCategory(value);
     if (!category) {
@@ -19,7 +21,7 @@ export const wordCategorySchema = z
     return category;
   });
 
-export const gradeSchema = z.string().transform((value, ctx) => {
+export const gradeSchema = z.string({ error: "Choose a grade" }).transform((value, ctx) => {
   const grade = parseGrade(value);
   if (!grade) {
     ctx.addIssue({ code: "custom", message: `Grade must be one of: ${GRADES.join(", ")}` });
@@ -83,7 +85,8 @@ export const wordExportQuery = z.object({
 });
 
 export const adminWordInput = z.object({
-  value: z.string().trim().toLowerCase().min(1).max(256),
+  // Stored exactly as the analyzer normalizes tokens, otherwise the entry could never match.
+  value: z.string().max(256).transform(normalizeWord).pipe(z.string().min(1, "Word is required")),
   category: wordCategorySchema,
   grade: gradeSchema.nullish(),
 });
@@ -109,8 +112,8 @@ export const contactInput = z.object({
   email: z.email(),
   phone: z.string().trim().max(40).optional(),
   message: z.string().trim().min(1).max(5_000),
-  /** Honeypot: real users never fill this in. */
-  website: z.string().max(0).optional(),
+  /** Honeypot: real users never fill this in; the API silently drops submissions that do. */
+  website: z.string().max(500).optional(),
 });
 export type ContactInput = z.infer<typeof contactInput>;
 

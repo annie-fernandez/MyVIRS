@@ -2,7 +2,7 @@ import { CATEGORY_INFO, WORD_CATEGORIES, type WordCategory } from "./categories"
 import { countSyllables, lookupCandidates } from "./word";
 
 export interface WordMatch {
-  /** The token exactly as it appeared in the text. An empty string marks a line break. */
+  /** The token exactly as it appeared in the text. An empty string marks a paragraph break. */
   initialValue: string;
   /** The word-list entry the token matched, or null for names and off-list words. */
   value: string | null;
@@ -31,15 +31,23 @@ export interface WordListEntry {
 
 export type WordLookup = (values: string[]) => Promise<WordListEntry[]>;
 
-const TOKEN_SEPARATOR = /[\n\r\s]/;
+const PARAGRAPH_SEPARATOR = /\r?\n\s*\r?\n/;
+const TOKEN_SEPARATOR = /\s+/;
 const SENTENCE_BOUNDARY = /[a-zA-Z\s][.?!]{1,3}\s/;
 const LETTER_OR_DIGIT = /[\p{L}\p{N}]/u;
 const LOOKUP_BATCH_SIZE = 1000;
 const MIN_WORDS_FOR_READABILITY = 100;
 
+/** Splits text into words, with an empty-string token between paragraphs (blank lines). */
 export function tokenize(text: string): string[] {
-  const trimmed = text.trim();
-  return trimmed ? trimmed.split(TOKEN_SEPARATOR) : [];
+  const tokens: string[] = [];
+  for (const paragraph of text.trim().split(PARAGRAPH_SEPARATOR)) {
+    const words = paragraph.trim().split(TOKEN_SEPARATOR).filter(Boolean);
+    if (words.length === 0) continue;
+    if (tokens.length > 0) tokens.push("");
+    tokens.push(...words);
+  }
+  return tokens;
 }
 
 export function countSentences(text: string): number {

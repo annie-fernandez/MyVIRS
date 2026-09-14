@@ -11,6 +11,7 @@ allowBuilds:
   core-js: true
   ejs: true
   es5-ext: true
+  esbuild: true
   fsevents: false
   ngx-infinite-scroll: true
   uglifyjs-webpack-plugin: true

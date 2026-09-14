@@ -14,8 +14,12 @@ function lookupFrom(entries: WordListEntry[]) {
 }
 
 describe("tokenize", () => {
-  it("keeps empty tokens for consecutive whitespace so line breaks survive", () => {
-    expect(tokenize("one\n\ntwo")).toEqual(["one", "", "two"]);
+  it("marks paragraph breaks (blank lines) with a single empty token", () => {
+    expect(tokenize("one two\n\n\n  three\r\n\r\nfour")).toEqual(["one", "two", "", "three", "", "four"]);
+  });
+
+  it("does not break on single newlines or repeated spaces", () => {
+    expect(tokenize("one  two\nthree")).toEqual(["one", "two", "three"]);
   });
 
   it("returns no tokens for blank text", () => {
