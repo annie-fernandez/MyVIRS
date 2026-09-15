@@ -1,9 +1,11 @@
 import { adminWordInput, normalizeWord, wordCategorySchema } from "@repo/core";
 import { getDb } from "@repo/db";
-import { deleteWordsByCategory, findWordsByValue, upsertWord } from "@repo/db/queries/words";
+import { deleteWordsByCategory, findWordsByValue, updateWord, upsertWord } from "@repo/db/queries/words";
 import { z } from "zod";
 import { requireAdmin } from "@/lib/api/guards";
-import { parseJson, parseSearchParams, route } from "@/lib/api/http";
+import { HttpError, notFound, parseJson, parseSearchParams, route } from "@/lib/api/http";
+import { isUniqueViolation } from "@/lib/db-errors";
+import { toLegacyWord } from "@/lib/legacy/format";
 
 /** GET /api/admin/words?value=word — all entries for a word, including ids. */
 export const GET = route(async (request) => {
@@ -12,11 +14,33 @@ export const GET = route(async (request) => {
   return Response.json(await findWordsByValue(getDb(), normalizeWord(value)));
 });
 
-/** POST /api/admin/words — add a word to a category (updates the grade if it already exists). */
+const wordWithOptionalId = z
+  .object({ value: z.unknown() })
+  .loose()
+  // The legacy CSV upload posts whole CSV lines ("word,category") as the value.
+  .transform((body) => ({ ...body, value: typeof body.value === "string" ? body.value.split(",")[0] : body.value }))
+  .pipe(adminWordInput.extend({ id: z.coerce.number().int().positive().optional() }));
+
+/**
+ * POST /api/admin/words { value, category, grade?, id? }
+ * Adds a word to a list (an omitted grade keeps the existing one). With `id` — as the legacy
+ * admin page sends when editing — the existing entry is updated instead.
+ */
 export const POST = route(async (request) => {
   await requireAdmin(request);
-  const input = await parseJson(request, adminWordInput);
-  return Response.json(await upsertWord(getDb(), input), { status: 201 });
+  const { id, ...input } = await parseJson(request, wordWithOptionalId);
+  const db = getDb();
+
+  if (id === undefined) return Response.json(toLegacyWord(await upsertWord(db, input)), { status: 201 });
+
+  const word = await updateWord(db, id, input).catch((error: unknown) => {
+    if (isUniqueViolation(error)) {
+      throw new HttpError(409, "conflict", `"${input.value}" already exists in ${input.category}.`);
+    }
+    throw error;
+  });
+  if (!word) throw notFound("Word not found.");
+  return Response.json(toLegacyWord(word));
 });
 
 /** DELETE /api/admin/words?category=awl — remove every word in a category. */

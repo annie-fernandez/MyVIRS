@@ -98,7 +98,7 @@ export class RegisterComponent implements OnInit {
         this.userNameBlank = !this.uName || /^\s+$/.test(this.uName);
         this.invalidEmail = !this.emailBlank && !/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(this.email);
 
-        this.pwordLengthError = !this.pword || this.pword.length < 6;
+        this.pwordLengthError = !this.pword || this.pword.length < 8;
         if(!this.pwordLengthError) this.match = this.closed = this.cPass === this.pword;
         this.fullNameBlank = !this.fName || /^\s+$/.test(this.fName);
     }

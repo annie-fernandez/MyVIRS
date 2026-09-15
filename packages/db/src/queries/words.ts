@@ -96,7 +96,8 @@ export async function upsertWord(db: Database, input: AdminWordInput): Promise<W
     .values({ value: input.value, category: input.category, grade: input.grade ?? null })
     .onConflictDoUpdate({
       target: [words.value, words.category],
-      set: { grade: input.grade ?? null, updatedAt: new Date() },
+      // An omitted grade keeps the existing one; an explicit null clears it.
+      set: input.grade === undefined ? { updatedAt: new Date() } : { grade: input.grade, updatedAt: new Date() },
     })
     .returning(wordColumns);
   return row!;
@@ -109,7 +110,11 @@ export async function updateWord(
 ): Promise<Word | undefined> {
   const [row] = await db
     .update(words)
-    .set({ value: input.value, category: input.category, grade: input.grade ?? null })
+    .set({
+      value: input.value,
+      category: input.category,
+      ...(input.grade === undefined ? {} : { grade: input.grade }),
+    })
     .where(eq(words.id, id))
     .returning(wordColumns);
   return row;
@@ -118,6 +123,11 @@ export async function updateWord(
 export async function deleteWord(db: Database, id: number): Promise<boolean> {
   const deleted = await db.delete(words).where(eq(words.id, id)).returning({ id: words.id });
   return deleted.length > 0;
+}
+
+export async function deleteWordsByValue(db: Database, value: string): Promise<number> {
+  const deleted = await db.delete(words).where(eq(words.value, value)).returning({ id: words.id });
+  return deleted.length;
 }
 
 export async function deleteWordsByCategory(db: Database, category: WordCategory): Promise<number> {

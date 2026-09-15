@@ -29,8 +29,13 @@ export class RegisterService{
             //.do((res => this.login(uName, pass)));
     }
 
-    login(uName: string, pass: string){
-        return this.login(uName, pass);
+    // Password is checked on the server (the old flow downloaded it and compared in the browser).
+    login(uName: string, encryptedPass: string): Observable<IUser> {
+        return this.http.post<IUser>(`/api/user/login`, { userName: uName, password: encryptedPass });
+    }
+
+    logout() {
+        return this.http.post(`/api/auth/sign-out`, {});
     }
 
 

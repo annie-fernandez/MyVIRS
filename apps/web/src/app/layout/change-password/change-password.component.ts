@@ -71,7 +71,7 @@ export class ChangePasswordComponent implements OnInit {
     newpasswLenght(){
       this.passshow = false;
 
-      if (!this.newpassW || this.newpassW.length < 6)
+      if (!this.newpassW || this.newpassW.length < 8)
       {
           this.passwordLenghtError = true;
       }

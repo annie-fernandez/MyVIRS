@@ -130,11 +130,16 @@ export class SidebarComponent implements OnInit {
             this.open(content);
             return;
         }//if
-        this._register.getUser(this.loginUser)
+        this._register.login(this.loginUser, this._encryptor.encrypt(this.loginPassword))
 
             .subscribe(res => {
                 this.user = res;
-                if (this.verifyUser(this.user.password)) {
+                if (res) {
+                    this.login = true;
+                    this.show = true;
+                    this.loginPassword = '';
+                    this.loginUser = '';
+                    localStorage.removeItem("attempt");
                     localStorage.setItem('currentUser', res.fullName);
                     localStorage.setItem('userName', res.userName);
                     localStorage.setItem('level', res.userLevel);
@@ -174,6 +179,7 @@ export class SidebarComponent implements OnInit {
     }
 
     logout() {
+        this._register.logout().subscribe(() => {}, () => {});
         this.show = false;
         this.login = false;
         localStorage.removeItem('currentUser');

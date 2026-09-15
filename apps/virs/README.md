@@ -1,25 +1,15 @@
 # virs
 
-Next.js rewrite of the Vocabulary in Reading Study app. It replaces the Spring Boot API (`apps/api`) and the Angular frontend (`apps/web`) with one app: REST route handlers under `src/app/api`, Neon Postgres through Drizzle (`@repo/db`), and the text analyzer ported to `@repo/core`.
+Next.js rewrite of the Vocabulary in Reading Study backend. It replaces the Spring Boot API (`apps/api`) with REST route handlers under `src/app/api`, Neon Postgres through Drizzle (`@repo/db`), and the text analyzer ported to `@repo/core`. It serves the original Angular screens, so the hosted site looks exactly like the old app.
 
 ## Frontend
 
-The UI is built only from [Mantine](https://mantine.dev) 9 components (`@mantine/core`, `form`, `charts`, `dropzone`, `modals`, `notifications`) with Tabler icons. There is no Tailwind and no custom design system; styling goes through Mantine props and theme tokens (`src/theme.ts`). The one CSS module styles the thousands of clickable words in the enhanced text. Pages call the app's own `/api` routes through TanStack Query (`src/lib/api-client.ts`); auth uses the Better Auth React client.
-
-| Page | Path |
-| --- | --- |
-| Home | `/` |
-| Analyze text / Word document / PDF / image | `/analyze/text`, `/analyze/document`, `/analyze/pdf`, `/analyze/image` |
-| Results: enhanced text and statistics (kept in session storage) | `/results` |
-| Search and download word lists | `/words`, `/words/download` |
-| Translate, contact, references | `/translate`, `/contact`, `/references` |
-| Sign in, sign up, forgot and reset password | `/sign-in`, `/sign-up`, `/forgot-password`, `/reset-password` |
-| My account (signed in) | `/account` |
-| Manage words (admin) | `/admin/words` |
-
-`src/proxy.ts` sends signed-out visitors from `/account` and `/admin` to sign-in. The pages re-check the session and role on the server; non-admins get a 404. Old Angular URLs (`/search-words`, `/text-statistics`, `/itranslate`, …) permanently redirect to their new pages (`next.config.ts`).
-
-Server Components can't pass `component={Link}` or compound components (`List.Item`) to Mantine. Use `ButtonLink`/`CardLink` from `src/components/link-components.tsx` and the flat exports (`ListItem`), or put the markup in a client component.
+- **Original Angular UI (live).** `public/` holds the production build of `apps/web`. `next.config.ts` rewrites every non-API URL to `public/index.html`, so Angular's routes (`/dashboard`, `/search-words`, `/restore?token=…`) and deep-link reloads work. Vercel can't build Angular CLI 1.7 (it needs Node 8), so rebuild locally after changing `apps/web` and commit the output:
+  ```sh
+  pnpm --filter virs build:legacy-ui   # needs Node 8 via nvm
+  ```
+- **Compatibility layer.** The Angular screens still call the old endpoints (`/api/analyzeText`, `/api/words?…&sortDirection=`, `/api/user/*`, `/api/download/*`, …). Those routes, plus `src/lib/legacy/*`, return the old response shapes on top of the new services. The only Angular changes: login now checks the password on the server (`POST /api/user/login`), logout ends the server session, and the minimum password length is 8.
+- **Mantine redesign (not released).** The new Mantine 9 UI lives on the `mantine-ui` branch and will replace these screens progressively.
 
 ## Setup
 
@@ -51,7 +41,7 @@ After changing `packages/db/src/schema`, run `pnpm --filter @repo/db db:generate
 
 ## API
 
-Errors always come back as `{ "error": { "code", "message", "details"? } }`.
+Errors always come back as `{ "error": { "code", "message", "details"? } }`. While the Angular UI is live, the legacy endpoints in the right-hand column also still work, returning the old response shapes (see Frontend).
 
 | Method | Path | Auth | Replaces (legacy) |
 | --- | --- | --- | --- |

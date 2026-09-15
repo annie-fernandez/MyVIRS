@@ -9,28 +9,19 @@
     "start": "next start",
     "lint": "eslint .",
     "check-types": "next typegen && tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "build:legacy-ui": "./scripts/build-legacy-ui.sh"
   },
   "dependencies": {
     "@aws-sdk/client-textract": "^3.1131.0",
-    "@mantine/charts": "9.6.1",
-    "@mantine/core": "9.6.1",
-    "@mantine/dropzone": "9.6.1",
-    "@mantine/form": "9.6.1",
-    "@mantine/hooks": "9.6.1",
-    "@mantine/modals": "9.6.1",
-    "@mantine/notifications": "9.6.1",
     "@repo/core": "workspace:*",
     "@repo/db": "workspace:*",
-    "@tabler/icons-react": "^3.46.0",
-    "@tanstack/react-query": "^5.102.8",
     "better-auth": "^1.7.4",
     "next": "16.3.5",
     "node-html-parser": "^9.0.4",
     "papaparse": "^5.7.0",
     "react": "19.3.0",
     "react-dom": "19.3.0",
-    "recharts": "^3.10.1",
     "resend": "^6.28.0",
     "sanitize-html": "^2.17.7",
     "server-only": "^0.0.1",
@@ -48,9 +39,6 @@
     "@types/sanitize-html": "^2.16.1",
     "@types/word-extractor": "^1.0.6",
     "eslint": "10.9.1",
-    "postcss": "^8.5.28",
-    "postcss-preset-mantine": "^1.18.0",
-    "postcss-simple-vars": "^7.0.1",
     "vitest": "^5.0.0"
   }
 }

@@ -3,7 +3,7 @@
     <ngb-alert type="warning" *ngIf="!closed" (close)="close()">Your password did not match, please try again.</ngb-alert>
     <ngb-alert type="success" *ngIf="registered" (close)="close()">You have succesfully registered! Thank you!</ngb-alert>
     <!-- <ngb-alert type="success" *ngIf="login" (close)="close()">You have succesfully logged in! Thank you!</ngb-alert> -->
-    <ngb-alert *ngIf="pwordLengthError" type="warning" (close)="close()">Password must be atleast 6 characters long, try again.</ngb-alert>
+    <ngb-alert *ngIf="pwordLengthError" type="warning" (close)="close()">Password must be at least 8 characters long, try again.</ngb-alert>
     <ngb-alert *ngIf="show" type="danger" (close)="close()">Please choose another user name, the one you chose is taken...</ngb-alert>
     <ngb-alert *ngIf="emailBlank" type="danger" (close)="close()">Please enter an email</ngb-alert>
     <ngb-alert *ngIf="userNameBlank" type="danger" (close)="close()">Please enter a user name</ngb-alert>
