@@ -2,6 +2,7 @@ import "server-only";
 import type { ApiErrorBody } from "@repo/core";
 import type { NextRequest } from "next/server";
 import { z, ZodError, type ZodType } from "zod";
+import { EnvConfigError } from "../env";
 
 export class HttpError extends Error {
   constructor(
@@ -35,6 +36,14 @@ export function route<Context>(
       if (error instanceof HttpError) {
         return errorResponse(error.status, {
           error: { code: error.code, message: error.message, details: error.details },
+        });
+      }
+      // A bad environment variable is our fault, not the caller's: never a 400,
+      // and never echo the variable names back to the client.
+      if (error instanceof EnvConfigError) {
+        console.error(`[api] ${request.method} ${request.nextUrl.pathname} — ${error.message}`);
+        return errorResponse(500, {
+          error: { code: "server_misconfigured", message: "The server is not configured correctly." },
         });
       }
       if (error instanceof ZodError) {

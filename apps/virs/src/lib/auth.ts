@@ -35,14 +35,20 @@ function createAuth() {
       revokeSessionsOnPasswordReset: true,
       sendResetPassword: async ({ user, url }) => {
         // Sent after the response so response timing does not reveal whether the account exists.
-        after(() =>
-          sendEmail({
-            to: user.email,
-            subject: "Reset your VIRS password",
-            text: `Hi ${user.name},\n\nReset your password here: ${url}\n\nIf you did not request this, ignore this email.`,
-            html: `<p>Hi ${escapeHtml(user.name)},</p><p><a href="${url}">Reset your password</a>.</p><p>If you did not request this, ignore this email.</p>`,
-          }),
-        );
+        // Nothing can surface a failure to the caller from here, so log it loudly instead of
+        // letting the rejection disappear — otherwise a missing RESEND_API_KEY looks like success.
+        after(async () => {
+          try {
+            await sendEmail({
+              to: user.email,
+              subject: "Reset your VIRS password",
+              text: `Hi ${user.name},\n\nReset your password here: ${url}\n\nIf you did not request this, ignore this email.`,
+              html: `<p>Hi ${escapeHtml(user.name)},</p><p><a href="${url}">Reset your password</a>.</p><p>If you did not request this, ignore this email.</p>`,
+            });
+          } catch (error) {
+            console.error("[auth] password reset email failed to send", error);
+          }
+        });
       },
     },
     user: {
