@@ -65,6 +65,17 @@ export const analyzableFileKindSchema = z.enum(
   Object.keys(ANALYZABLE_FILE_KINDS) as [AnalyzableFileKind, ...AnalyzableFileKind[]],
 );
 
+/**
+ * Every entry point that can produce a saved analysis: pasted text, plus each uploadable file
+ * kind. Derived from ANALYZABLE_FILE_KINDS so adding an upload type cannot leave history behind.
+ */
+export const ANALYSIS_SOURCE_KINDS = ["text", ...(Object.keys(ANALYZABLE_FILE_KINDS) as AnalyzableFileKind[])] as [
+  "text",
+  ...AnalyzableFileKind[],
+];
+export type AnalysisSourceKind = (typeof ANALYSIS_SOURCE_KINDS)[number];
+export const analysisSourceKindSchema = z.enum(ANALYSIS_SOURCE_KINDS);
+
 export const sortDirectionSchema = z.enum(["asc", "desc"]);
 
 export const wordSearchQuery = z.object({

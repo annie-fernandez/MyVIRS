@@ -6,6 +6,7 @@
   "exports": {
     ".": "./src/index.ts",
     "./schema": "./src/schema/index.ts",
+    "./queries/history": "./src/queries/history.ts",
     "./queries/words": "./src/queries/words.ts"
   },
   "scripts": {
