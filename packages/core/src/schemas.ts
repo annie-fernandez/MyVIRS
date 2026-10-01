@@ -113,7 +113,7 @@ export const adminWordImportInput = z.object({
 
 export const translateInput = z.object({
   text: z.string().trim().min(1).max(MAX_TRANSLATE_LENGTH),
-  target: z.string().regex(/^[a-z]{2,3}(-[A-Z]{2})?$/, "Invalid language code"),
+  target: z.string().regex(/^[a-z]{2,3}(?:-[A-Za-z]{2,8})?$/, "Invalid language code"),
 });
 export type TranslateInput = z.infer<typeof translateInput>;
 

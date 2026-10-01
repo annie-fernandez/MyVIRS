@@ -41,6 +41,37 @@ After changing `packages/db/src/schema`, run `pnpm --filter @repo/db db:generate
 
 ## API
 
+### Microsoft Translator setup
+
+Create an Azure Translator resource using the **F0 (Free)** pricing tier. In its
+**Keys and Endpoint** panel, copy a key and the resource's location into the server
+environment (locally, `apps/virs/.env.local`; on the hosted site, its deployment settings):
+
+```dotenv
+MICROSOFT_TRANSLATOR_KEY=your-resource-key
+MICROSOFT_TRANSLATOR_REGION=your-resource-location
+```
+
+The region is required for regional and multi-service resources; leave it empty
+for a global Translator resource. These variables must stay on the server and
+must not use the `NEXT_PUBLIC_` prefix. Restart the server after configuring them.
+Translation has no Google fallback and reports a configuration error if the key is missing.
+
+The Angular translation and image-analysis screens call `/api/translate`. The
+server uses Microsoft's v3 text API with source-language detection. Each request
+accepts up to 5,000 characters. The translation screen prevents duplicate clicks
+and displays provider-limit and quota errors. F0 provides 2 million characters per
+month across the resource and stops translating when the allowance is exhausted;
+choose F0 explicitly rather than a paid tier. See Microsoft's
+[setup guide](https://learn.microsoft.com/en-us/azure/ai-services/translator/how-to/create-translator-resource)
+and [free-plan FAQ](https://www.microsoft.com/en-us/translator/business/faq/).
+
+Run translation integration tests with
+`pnpm --filter virs exec vitest run src/app/api/translate/route.test.ts`.
+These tests simulate provider responses; verify a live translation after adding
+the Azure key. After changing Angular source, rebuild the served `public/` assets
+as described above.
+
 Errors always come back as `{ "error": { "code", "message", "details"? } }`. While the Angular UI is live, the legacy endpoints in the right-hand column also still work, returning the old response shapes (see Frontend).
 
 | Method | Path | Auth | Replaces (legacy) |
