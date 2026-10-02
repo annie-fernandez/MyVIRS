@@ -1,0 +1,1278 @@
+{
+  "words": [
+    {
+      "initialValue": "The",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "first",
+      "value": "first",
+      "category": "k1"
+    },
+    {
+      "initialValue": "question",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "that",
+      "value": "that",
+      "category": "k1"
+    },
+    {
+      "initialValue": "confronts",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "beginner",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "in",
+      "value": "in",
+      "category": "k1"
+    },
+    {
+      "initialValue": "this",
+      "value": "this",
+      "category": "k1"
+    },
+    {
+      "initialValue": "science,",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "and",
+      "value": "and",
+      "category": "k1"
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "one",
+      "value": "one",
+      "category": "k1"
+    },
+    {
+      "initialValue": "also",
+      "value": "also",
+      "category": "k1"
+    },
+    {
+      "initialValue": "that",
+      "value": "that",
+      "category": "k1"
+    },
+    {
+      "initialValue": "controls",
+      "value": "control",
+      "category": "k1"
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "whole",
+      "value": "whole",
+      "category": "k1"
+    },
+    {
+      "initialValue": "scope",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "of",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": "his",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "inquiries",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "to",
+      "value": "to",
+      "category": "k1"
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "very",
+      "value": "very",
+      "category": "k1"
+    },
+    {
+      "initialValue": "end,",
+      "value": "end",
+      "category": "k1"
+    },
+    {
+      "initialValue": "is:",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "What",
+      "value": "what",
+      "category": "k1"
+    },
+    {
+      "initialValue": "is",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "precise",
+      "value": "precise",
+      "category": "k2"
+    },
+    {
+      "initialValue": "subject",
+      "value": "subject",
+      "category": "k1"
+    },
+    {
+      "initialValue": "of",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": "Political",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "Economy?",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "Within",
+      "value": "within",
+      "category": "k1"
+    },
+    {
+      "initialValue": "what",
+      "value": "what",
+      "category": "k1"
+    },
+    {
+      "initialValue": "exact",
+      "value": "exact",
+      "category": "k1"
+    },
+    {
+      "initialValue": "field",
+      "value": "field",
+      "category": "k1"
+    },
+    {
+      "initialValue": "do",
+      "value": "do",
+      "category": "k1"
+    },
+    {
+      "initialValue": "its",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "investigations",
+      "value": "investigation",
+      "category": "k2"
+    },
+    {
+      "initialValue": "lie?",
+      "value": "lie",
+      "category": "k1"
+    },
+    {
+      "initialValue": "There",
+      "value": "there",
+      "category": "k1"
+    },
+    {
+      "initialValue": "is",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "indeed",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "a",
+      "value": "a",
+      "category": "k1"
+    },
+    {
+      "initialValue": "short",
+      "value": "short",
+      "category": "k2"
+    },
+    {
+      "initialValue": "and",
+      "value": "and",
+      "category": "k1"
+    },
+    {
+      "initialValue": "broad",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "and",
+      "value": "and",
+      "category": "k1"
+    },
+    {
+      "initialValue": "full",
+      "value": "full",
+      "category": "k1"
+    },
+    {
+      "initialValue": "answer",
+      "value": "answer",
+      "category": "k1"
+    },
+    {
+      "initialValue": "at",
+      "value": "at",
+      "category": "k1"
+    },
+    {
+      "initialValue": "hand",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "to",
+      "value": "to",
+      "category": "k1"
+    },
+    {
+      "initialValue": "this",
+      "value": "this",
+      "category": "k1"
+    },
+    {
+      "initialValue": "fundamental",
+      "value": "fundamental",
+      "category": "k2"
+    },
+    {
+      "initialValue": "and",
+      "value": "and",
+      "category": "k1"
+    },
+    {
+      "initialValue": "comprehensive",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "question;",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "and",
+      "value": "and",
+      "category": "k1"
+    },
+    {
+      "initialValue": "yet",
+      "value": "yet",
+      "category": "k2"
+    },
+    {
+      "initialValue": "it",
+      "value": "it",
+      "category": "k1"
+    },
+    {
+      "initialValue": "is",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "every",
+      "value": "every",
+      "category": "k1"
+    },
+    {
+      "initialValue": "way",
+      "value": "way",
+      "category": "k1"
+    },
+    {
+      "initialValue": "better",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "for",
+      "value": "for",
+      "category": "k1"
+    },
+    {
+      "initialValue": "all",
+      "value": "all",
+      "category": "k1"
+    },
+    {
+      "initialValue": "concerned",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "to",
+      "value": "to",
+      "category": "k1"
+    },
+    {
+      "initialValue": "reach",
+      "value": "reach",
+      "category": "k1"
+    },
+    {
+      "initialValue": "this",
+      "value": "this",
+      "category": "k1"
+    },
+    {
+      "initialValue": "answer",
+      "value": "answer",
+      "category": "k1"
+    },
+    {
+      "initialValue": "by",
+      "value": "by",
+      "category": "k1"
+    },
+    {
+      "initialValue": "a",
+      "value": "a",
+      "category": "k1"
+    },
+    {
+      "initialValue": "route",
+      "value": "route",
+      "category": "k2"
+    },
+    {
+      "initialValue": "somewhat",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "delayed",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "and",
+      "value": "and",
+      "category": "k1"
+    },
+    {
+      "initialValue": "circuitous,",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "just",
+      "value": "just",
+      "category": "k1"
+    },
+    {
+      "initialValue": "as",
+      "value": "as",
+      "category": "k1"
+    },
+    {
+      "initialValue": "it",
+      "value": "it",
+      "category": "k1"
+    },
+    {
+      "initialValue": "is",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "better",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "in",
+      "value": "in",
+      "category": "k1"
+    },
+    {
+      "initialValue": "ascending",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "a",
+      "value": "a",
+      "category": "k1"
+    },
+    {
+      "initialValue": "mountain",
+      "value": "mountain",
+      "category": "k2"
+    },
+    {
+      "initialValue": "summit",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "for",
+      "value": "for",
+      "category": "k1"
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "sake",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "of",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": "a",
+      "value": "a",
+      "category": "k1"
+    },
+    {
+      "initialValue": "strong",
+      "value": "strong",
+      "category": "k1"
+    },
+    {
+      "initialValue": "and",
+      "value": "and",
+      "category": "k1"
+    },
+    {
+      "initialValue": "complete",
+      "value": "complete",
+      "category": "k1"
+    },
+    {
+      "initialValue": "view",
+      "value": "view",
+      "category": "k1"
+    },
+    {
+      "initialValue": "to",
+      "value": "to",
+      "category": "k1"
+    },
+    {
+      "initialValue": "circle",
+      "value": "circle",
+      "category": "k1"
+    },
+    {
+      "initialValue": "up",
+      "value": "up",
+      "category": "k1"
+    },
+    {
+      "initialValue": "leisurely",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "on",
+      "value": "on",
+      "category": "k1"
+    },
+    {
+      "initialValue": "foot",
+      "value": "foot",
+      "category": "k1"
+    },
+    {
+      "initialValue": "or",
+      "value": "or",
+      "category": "k1"
+    },
+    {
+      "initialValue": "on",
+      "value": "on",
+      "category": "k1"
+    },
+    {
+      "initialValue": "horseback,",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "rather",
+      "value": "rather",
+      "category": "k1"
+    },
+    {
+      "initialValue": "than",
+      "value": "than",
+      "category": "k1"
+    },
+    {
+      "initialValue": "to",
+      "value": "to",
+      "category": "k1"
+    },
+    {
+      "initialValue": "dash",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "straight",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "up",
+      "value": "up",
+      "category": "k1"
+    },
+    {
+      "initialValue": "to",
+      "value": "to",
+      "category": "k1"
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "top",
+      "value": "top",
+      "category": "k1"
+    },
+    {
+      "initialValue": "by",
+      "value": "by",
+      "category": "k1"
+    },
+    {
+      "initialValue": "a",
+      "value": "a",
+      "category": "k1"
+    },
+    {
+      "initialValue": "cog-wheel",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "railway",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "and",
+      "value": "and",
+      "category": "k1"
+    },
+    {
+      "initialValue": "take",
+      "value": "take",
+      "category": "k1"
+    },
+    {
+      "initialValue": "all",
+      "value": "all",
+      "category": "k1"
+    },
+    {
+      "initialValue": "of",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": "a",
+      "value": "a",
+      "category": "k1"
+    },
+    {
+      "initialValue": "sudden",
+      "value": "sudden",
+      "category": "k2"
+    },
+    {
+      "initialValue": "what",
+      "value": "what",
+      "category": "k1"
+    },
+    {
+      "initialValue": "might",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "prove",
+      "value": "prove",
+      "category": "k1"
+    },
+    {
+      "initialValue": "to",
+      "value": "to",
+      "category": "k1"
+    },
+    {
+      "initialValue": "be",
+      "value": "be",
+      "category": "k1"
+    },
+    {
+      "initialValue": "a",
+      "value": "a",
+      "category": "k1"
+    },
+    {
+      "initialValue": "less",
+      "value": "less",
+      "category": "k1"
+    },
+    {
+      "initialValue": "impressive",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "or",
+      "value": "or",
+      "category": "k1"
+    },
+    {
+      "initialValue": "a",
+      "value": "a",
+      "category": "k1"
+    },
+    {
+      "initialValue": "more",
+      "value": "more",
+      "category": "k1"
+    },
+    {
+      "initialValue": "confusing",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "view.",
+      "value": "view",
+      "category": "k1"
+    },
+    {
+      "initialValue": "",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "The",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "preliminary",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "questions",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "are:",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "What",
+      "value": "what",
+      "category": "k1"
+    },
+    {
+      "initialValue": "sort",
+      "value": "sort",
+      "category": "k2"
+    },
+    {
+      "initialValue": "of",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": "facts",
+      "value": "fact",
+      "category": "k1"
+    },
+    {
+      "initialValue": "has",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "Political",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "Economy",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "to",
+      "value": "to",
+      "category": "k1"
+    },
+    {
+      "initialValue": "deal",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "with,",
+      "value": "with",
+      "category": "k1"
+    },
+    {
+      "initialValue": "to",
+      "value": "to",
+      "category": "k1"
+    },
+    {
+      "initialValue": "inquire",
+      "value": "inquire",
+      "category": "k2"
+    },
+    {
+      "initialValue": "into,",
+      "value": "into",
+      "category": "k1"
+    },
+    {
+      "initialValue": "to",
+      "value": "to",
+      "category": "k1"
+    },
+    {
+      "initialValue": "classify,",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "to",
+      "value": "to",
+      "category": "k1"
+    },
+    {
+      "initialValue": "make",
+      "value": "make",
+      "category": "k1"
+    },
+    {
+      "initialValue": "a",
+      "value": "a",
+      "category": "k1"
+    },
+    {
+      "initialValue": "science",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "of?",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": "Are",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "these",
+      "value": "these",
+      "category": "k1"
+    },
+    {
+      "initialValue": "facts",
+      "value": "fact",
+      "category": "k1"
+    },
+    {
+      "initialValue": "easily",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "separable",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "in",
+      "value": "in",
+      "category": "k1"
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "mind",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "and",
+      "value": "and",
+      "category": "k1"
+    },
+    {
+      "initialValue": "in",
+      "value": "in",
+      "category": "k1"
+    },
+    {
+      "initialValue": "reality",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "from",
+      "value": "from",
+      "category": "k1"
+    },
+    {
+      "initialValue": "other",
+      "value": "other",
+      "category": "k1"
+    },
+    {
+      "initialValue": "kinds",
+      "value": "kind",
+      "category": "k1"
+    },
+    {
+      "initialValue": "of",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": "facts",
+      "value": "fact",
+      "category": "k1"
+    },
+    {
+      "initialValue": "perhaps",
+      "value": "perhaps",
+      "category": "k2"
+    },
+    {
+      "initialValue": "liable",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "to",
+      "value": "to",
+      "category": "k1"
+    },
+    {
+      "initialValue": "be",
+      "value": "be",
+      "category": "k1"
+    },
+    {
+      "initialValue": "confounded",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "with",
+      "value": "with",
+      "category": "k1"
+    },
+    {
+      "initialValue": "them?",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "Are",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "they",
+      "value": "they",
+      "category": "k1"
+    },
+    {
+      "initialValue": "facts",
+      "value": "fact",
+      "category": "k1"
+    },
+    {
+      "initialValue": "of",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": "vast",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "importance",
+      "value": "importance",
+      "category": "k1"
+    },
+    {
+      "initialValue": "to",
+      "value": "to",
+      "category": "k1"
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "welfare",
+      "value": "welfare",
+      "category": "awl"
+    },
+    {
+      "initialValue": "of",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": "mankind?",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "And",
+      "value": "and",
+      "category": "k1"
+    },
+    {
+      "initialValue": "are",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "activities",
+      "value": "activity",
+      "category": "k1"
+    },
+    {
+      "initialValue": "of",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": "men",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "everywhere",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "greatly",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "and",
+      "value": "and",
+      "category": "k1"
+    },
+    {
+      "initialValue": "increasingly",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "occupied",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "with",
+      "value": "with",
+      "category": "k1"
+    },
+    {
+      "initialValue": "just",
+      "value": "just",
+      "category": "k1"
+    },
+    {
+      "initialValue": "those",
+      "value": "those",
+      "category": "k1"
+    },
+    {
+      "initialValue": "things,",
+      "value": "thing",
+      "category": "k1"
+    },
+    {
+      "initialValue": "with",
+      "value": "with",
+      "category": "k1"
+    },
+    {
+      "initialValue": "which",
+      "value": "which",
+      "category": "k1"
+    },
+    {
+      "initialValue": "this",
+      "value": "this",
+      "category": "k1"
+    },
+    {
+      "initialValue": "science",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "has",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "exclusively",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "to",
+      "value": "to",
+      "category": "k1"
+    },
+    {
+      "initialValue": "do?",
+      "value": "do",
+      "category": "k1"
+    },
+    {
+      "initialValue": "Let",
+      "value": "let",
+      "category": "k1"
+    },
+    {
+      "initialValue": "us",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "see",
+      "value": "see",
+      "category": "k1"
+    },
+    {
+      "initialValue": "if",
+      "value": "if",
+      "category": "k1"
+    },
+    {
+      "initialValue": "we",
+      "value": "we",
+      "category": "k1"
+    },
+    {
+      "initialValue": "cannot",
+      "value": "cannot",
+      "category": "k1"
+    },
+    {
+      "initialValue": "come",
+      "value": "come",
+      "category": "k1"
+    },
+    {
+      "initialValue": "little",
+      "value": "little",
+      "category": "k1"
+    },
+    {
+      "initialValue": "by",
+      "value": "by",
+      "category": "k1"
+    },
+    {
+      "initialValue": "little",
+      "value": "little",
+      "category": "k1"
+    },
+    {
+      "initialValue": "by",
+      "value": "by",
+      "category": "k1"
+    },
+    {
+      "initialValue": "a",
+      "value": "a",
+      "category": "k1"
+    },
+    {
+      "initialValue": "route",
+      "value": "route",
+      "category": "k2"
+    },
+    {
+      "initialValue": "of",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": "our",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "own",
+      "value": "own",
+      "category": "k2"
+    },
+    {
+      "initialValue": "to",
+      "value": "to",
+      "category": "k1"
+    },
+    {
+      "initialValue": "clear",
+      "value": "clear",
+      "category": "k1"
+    },
+    {
+      "initialValue": "and",
+      "value": "and",
+      "category": "k1"
+    },
+    {
+      "initialValue": "true",
+      "value": "true",
+      "category": "k1"
+    },
+    {
+      "initialValue": "answers",
+      "value": "answer",
+      "category": "k1"
+    },
+    {
+      "initialValue": "for",
+      "value": "for",
+      "category": "k1"
+    },
+    {
+      "initialValue": "all",
+      "value": "all",
+      "category": "k1"
+    },
+    {
+      "initialValue": "these",
+      "value": "these",
+      "category": "k1"
+    },
+    {
+      "initialValue": "questions.",
+      "value": null,
+      "category": null
+    }
+  ],
+  "sentenceCount": 8,
+  "fleschReadingScore": 53.58693548387099,
+  "statistics": {
+    "wordCount": {
+      "offList": 70,
+      "k1": 164,
+      "k2": 13,
+      "k3": 0,
+      "awl": 1,
+      "baw": 0,
+      "stem": 0,
+      "hi": 0,
+      "med": 0,
+      "low": 0,
+      "total": 248
+    },
+    "wordPercentage": {
+      "offList": 0.28225806451612906,
+      "k1": 0.6612903225806451,
+      "k2": 0.05241935483870968,
+      "k3": 0,
+      "awl": 0.004032258064516129,
+      "baw": 0,
+      "stem": 0,
+      "hi": 0,
+      "med": 0,
+      "low": 0
+    }
+  }
+}

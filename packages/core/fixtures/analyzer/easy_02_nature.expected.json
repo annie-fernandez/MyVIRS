@@ -1,0 +1,1278 @@
+{
+  "words": [
+    {
+      "initialValue": "One",
+      "value": "one",
+      "category": "k1"
+    },
+    {
+      "initialValue": "use",
+      "value": "use",
+      "category": "k1"
+    },
+    {
+      "initialValue": "of",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": "leaves,",
+      "value": "leaf",
+      "category": "k1"
+    },
+    {
+      "initialValue": "as",
+      "value": "as",
+      "category": "k1"
+    },
+    {
+      "initialValue": "I",
+      "value": "i",
+      "category": "k2"
+    },
+    {
+      "initialValue": "told",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "you",
+      "value": "you",
+      "category": "k1"
+    },
+    {
+      "initialValue": "in",
+      "value": "in",
+      "category": "k1"
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "last",
+      "value": "last",
+      "category": "k1"
+    },
+    {
+      "initialValue": "chapter,",
+      "value": "chapter",
+      "category": "k1"
+    },
+    {
+      "initialValue": "is",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "to",
+      "value": "to",
+      "category": "k1"
+    },
+    {
+      "initialValue": "supply",
+      "value": "supply",
+      "category": "k1"
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "air",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "with",
+      "value": "with",
+      "category": "k1"
+    },
+    {
+      "initialValue": "water.",
+      "value": "water",
+      "category": "k1"
+    },
+    {
+      "initialValue": "In",
+      "value": "in",
+      "category": "k1"
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "hot",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "weather",
+      "value": "weather",
+      "category": "k1"
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "air",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "would",
+      "value": "would",
+      "category": "k1"
+    },
+    {
+      "initialValue": "be",
+      "value": "be",
+      "category": "k1"
+    },
+    {
+      "initialValue": "very",
+      "value": "very",
+      "category": "k1"
+    },
+    {
+      "initialValue": "dry",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "and",
+      "value": "and",
+      "category": "k1"
+    },
+    {
+      "initialValue": "uncomfortable",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "to",
+      "value": "to",
+      "category": "k1"
+    },
+    {
+      "initialValue": "us",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "if",
+      "value": "if",
+      "category": "k1"
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "leaves",
+      "value": "leaf",
+      "category": "k1"
+    },
+    {
+      "initialValue": "did",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "not",
+      "value": "not",
+      "category": "k1"
+    },
+    {
+      "initialValue": "breathe",
+      "value": "breathe",
+      "category": "k2"
+    },
+    {
+      "initialValue": "out",
+      "value": "out",
+      "category": "k1"
+    },
+    {
+      "initialValue": "moisture",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "from",
+      "value": "from",
+      "category": "k1"
+    },
+    {
+      "initialValue": "their",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "pores.",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "You",
+      "value": "you",
+      "category": "k1"
+    },
+    {
+      "initialValue": "can",
+      "value": "can",
+      "category": "k1"
+    },
+    {
+      "initialValue": "see",
+      "value": "see",
+      "category": "k1"
+    },
+    {
+      "initialValue": "how",
+      "value": "how",
+      "category": "k1"
+    },
+    {
+      "initialValue": "this",
+      "value": "this",
+      "category": "k1"
+    },
+    {
+      "initialValue": "is",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "if",
+      "value": "if",
+      "category": "k1"
+    },
+    {
+      "initialValue": "in",
+      "value": "in",
+      "category": "k1"
+    },
+    {
+      "initialValue": "a",
+      "value": "a",
+      "category": "k1"
+    },
+    {
+      "initialValue": "hot",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "day",
+      "value": "day",
+      "category": "k1"
+    },
+    {
+      "initialValue": "you",
+      "value": "you",
+      "category": "k1"
+    },
+    {
+      "initialValue": "walk",
+      "value": "walk",
+      "category": "k1"
+    },
+    {
+      "initialValue": "across",
+      "value": "across",
+      "category": "k1"
+    },
+    {
+      "initialValue": "a",
+      "value": "a",
+      "category": "k1"
+    },
+    {
+      "initialValue": "sandy",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "plain",
+      "value": "plain",
+      "category": "k2"
+    },
+    {
+      "initialValue": "where",
+      "value": "where",
+      "category": "k1"
+    },
+    {
+      "initialValue": "there",
+      "value": "there",
+      "category": "k1"
+    },
+    {
+      "initialValue": "are",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "no",
+      "value": "no",
+      "category": "k1"
+    },
+    {
+      "initialValue": "leaves",
+      "value": "leaf",
+      "category": "k1"
+    },
+    {
+      "initialValue": "except",
+      "value": "except",
+      "category": "k2"
+    },
+    {
+      "initialValue": "those",
+      "value": "those",
+      "category": "k1"
+    },
+    {
+      "initialValue": "of",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "scanty",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "grass",
+      "value": "grass",
+      "category": "k2"
+    },
+    {
+      "initialValue": "and",
+      "value": "and",
+      "category": "k1"
+    },
+    {
+      "initialValue": "weeds.",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "Here",
+      "value": "here",
+      "category": "k1"
+    },
+    {
+      "initialValue": "no",
+      "value": "no",
+      "category": "k1"
+    },
+    {
+      "initialValue": "moisture",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "is",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "breathed",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "out",
+      "value": "out",
+      "category": "k1"
+    },
+    {
+      "initialValue": "upon",
+      "value": "upon",
+      "category": "k2"
+    },
+    {
+      "initialValue": "you,",
+      "value": "you",
+      "category": "k1"
+    },
+    {
+      "initialValue": "to",
+      "value": "to",
+      "category": "k1"
+    },
+    {
+      "initialValue": "lessen",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "heat",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "that",
+      "value": "that",
+      "category": "k1"
+    },
+    {
+      "initialValue": "you",
+      "value": "you",
+      "category": "k1"
+    },
+    {
+      "initialValue": "suffer",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "from",
+      "value": "from",
+      "category": "k1"
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "burning",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "sun.",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "Another",
+      "value": "another",
+      "category": "k1"
+    },
+    {
+      "initialValue": "use",
+      "value": "use",
+      "category": "k1"
+    },
+    {
+      "initialValue": "of",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "leaves",
+      "value": "leaf",
+      "category": "k1"
+    },
+    {
+      "initialValue": "is",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "this.",
+      "value": "this",
+      "category": "k1"
+    },
+    {
+      "initialValue": "They",
+      "value": "they",
+      "category": "k1"
+    },
+    {
+      "initialValue": "are",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "pleasant",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "and",
+      "value": "and",
+      "category": "k1"
+    },
+    {
+      "initialValue": "beautiful",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "to",
+      "value": "to",
+      "category": "k1"
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "sight.",
+      "value": "sight",
+      "category": "k2"
+    },
+    {
+      "initialValue": "I",
+      "value": "i",
+      "category": "k2"
+    },
+    {
+      "initialValue": "have",
+      "value": "have",
+      "category": "k1"
+    },
+    {
+      "initialValue": "told",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "you",
+      "value": "you",
+      "category": "k1"
+    },
+    {
+      "initialValue": "about",
+      "value": "about",
+      "category": "k1"
+    },
+    {
+      "initialValue": "this",
+      "value": "this",
+      "category": "k1"
+    },
+    {
+      "initialValue": "use",
+      "value": "use",
+      "category": "k1"
+    },
+    {
+      "initialValue": "of",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": "them",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "in",
+      "value": "in",
+      "category": "k1"
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "beginning",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "of",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "seventeenth",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "chapter.",
+      "value": "chapter",
+      "category": "k1"
+    },
+    {
+      "initialValue": "",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "Another",
+      "value": "another",
+      "category": "k1"
+    },
+    {
+      "initialValue": "use",
+      "value": "use",
+      "category": "k1"
+    },
+    {
+      "initialValue": "of",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": "leaves",
+      "value": "leaf",
+      "category": "k1"
+    },
+    {
+      "initialValue": "is",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "to",
+      "value": "to",
+      "category": "k1"
+    },
+    {
+      "initialValue": "give",
+      "value": "give",
+      "category": "k1"
+    },
+    {
+      "initialValue": "shade.",
+      "value": "shade",
+      "category": "k1"
+    },
+    {
+      "initialValue": "We",
+      "value": "we",
+      "category": "k1"
+    },
+    {
+      "initialValue": "know",
+      "value": "know",
+      "category": "k1"
+    },
+    {
+      "initialValue": "how",
+      "value": "how",
+      "category": "k1"
+    },
+    {
+      "initialValue": "refreshing",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "this",
+      "value": "this",
+      "category": "k1"
+    },
+    {
+      "initialValue": "is",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "to",
+      "value": "to",
+      "category": "k1"
+    },
+    {
+      "initialValue": "us",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "in",
+      "value": "in",
+      "category": "k1"
+    },
+    {
+      "initialValue": "a",
+      "value": "a",
+      "category": "k1"
+    },
+    {
+      "initialValue": "hot",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "day.",
+      "value": "day",
+      "category": "k1"
+    },
+    {
+      "initialValue": "When",
+      "value": "when",
+      "category": "k1"
+    },
+    {
+      "initialValue": "in",
+      "value": "in",
+      "category": "k1"
+    },
+    {
+      "initialValue": "a",
+      "value": "a",
+      "category": "k1"
+    },
+    {
+      "initialValue": "city",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "we",
+      "value": "we",
+      "category": "k1"
+    },
+    {
+      "initialValue": "walk",
+      "value": "walk",
+      "category": "k1"
+    },
+    {
+      "initialValue": "through",
+      "value": "through",
+      "category": "k1"
+    },
+    {
+      "initialValue": "streets",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "where",
+      "value": "where",
+      "category": "k1"
+    },
+    {
+      "initialValue": "there",
+      "value": "there",
+      "category": "k1"
+    },
+    {
+      "initialValue": "are",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "no",
+      "value": "no",
+      "category": "k1"
+    },
+    {
+      "initialValue": "trees,",
+      "value": "tree",
+      "category": "k1"
+    },
+    {
+      "initialValue": "how",
+      "value": "how",
+      "category": "k1"
+    },
+    {
+      "initialValue": "delightful",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "it",
+      "value": "it",
+      "category": "k1"
+    },
+    {
+      "initialValue": "is",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "to",
+      "value": "to",
+      "category": "k1"
+    },
+    {
+      "initialValue": "come",
+      "value": "come",
+      "category": "k1"
+    },
+    {
+      "initialValue": "out",
+      "value": "out",
+      "category": "k1"
+    },
+    {
+      "initialValue": "of",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "blazing",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "sun",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "into",
+      "value": "into",
+      "category": "k1"
+    },
+    {
+      "initialValue": "a",
+      "value": "a",
+      "category": "k1"
+    },
+    {
+      "initialValue": "square",
+      "value": "square",
+      "category": "k1"
+    },
+    {
+      "initialValue": "that",
+      "value": "that",
+      "category": "k1"
+    },
+    {
+      "initialValue": "is",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "full",
+      "value": "full",
+      "category": "k1"
+    },
+    {
+      "initialValue": "of",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": "trees!",
+      "value": "tree",
+      "category": "k1"
+    },
+    {
+      "initialValue": "How",
+      "value": "how",
+      "category": "k1"
+    },
+    {
+      "initialValue": "comfortable",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "are",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "cows",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "in",
+      "value": "in",
+      "category": "k1"
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "pasture",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "lying",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "under",
+      "value": "under",
+      "category": "k1"
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "trees",
+      "value": "tree",
+      "category": "k1"
+    },
+    {
+      "initialValue": "at",
+      "value": "at",
+      "category": "k1"
+    },
+    {
+      "initialValue": "mid-day,",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "chewing",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "cud!",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "But",
+      "value": "but",
+      "category": "k1"
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "shade",
+      "value": "shade",
+      "category": "k1"
+    },
+    {
+      "initialValue": "given",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "by",
+      "value": "by",
+      "category": "k1"
+    },
+    {
+      "initialValue": "leaves",
+      "value": "leaf",
+      "category": "k1"
+    },
+    {
+      "initialValue": "does",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "good",
+      "value": "good",
+      "category": "k1"
+    },
+    {
+      "initialValue": "not",
+      "value": "not",
+      "category": "k1"
+    },
+    {
+      "initialValue": "merely",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "to",
+      "value": "to",
+      "category": "k1"
+    },
+    {
+      "initialValue": "man",
+      "value": "man",
+      "category": "k1"
+    },
+    {
+      "initialValue": "and",
+      "value": "and",
+      "category": "k1"
+    },
+    {
+      "initialValue": "animals.",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "It",
+      "value": "it",
+      "category": "k1"
+    },
+    {
+      "initialValue": "does",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "good",
+      "value": "good",
+      "category": "k1"
+    },
+    {
+      "initialValue": "to",
+      "value": "to",
+      "category": "k1"
+    },
+    {
+      "initialValue": "fruits,",
+      "value": "fruit",
+      "category": "k2"
+    },
+    {
+      "initialValue": "if",
+      "value": "if",
+      "category": "k1"
+    },
+    {
+      "initialValue": "there",
+      "value": "there",
+      "category": "k1"
+    },
+    {
+      "initialValue": "is",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "not",
+      "value": "not",
+      "category": "k1"
+    },
+    {
+      "initialValue": "too",
+      "value": "too",
+      "category": "k1"
+    },
+    {
+      "initialValue": "much",
+      "value": "much",
+      "category": "k1"
+    },
+    {
+      "initialValue": "of",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": "it.",
+      "value": "it",
+      "category": "k1"
+    },
+    {
+      "initialValue": "The",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "sun",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "would",
+      "value": "would",
+      "category": "k1"
+    },
+    {
+      "initialValue": "very",
+      "value": "very",
+      "category": "k1"
+    },
+    {
+      "initialValue": "often",
+      "value": "often",
+      "category": "k1"
+    },
+    {
+      "initialValue": "be",
+      "value": "be",
+      "category": "k1"
+    },
+    {
+      "initialValue": "too",
+      "value": "too",
+      "category": "k1"
+    },
+    {
+      "initialValue": "hot",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "for",
+      "value": "for",
+      "category": "k1"
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "fruits,",
+      "value": "fruit",
+      "category": "k2"
+    },
+    {
+      "initialValue": "if",
+      "value": "if",
+      "category": "k1"
+    },
+    {
+      "initialValue": "it",
+      "value": "it",
+      "category": "k1"
+    },
+    {
+      "initialValue": "shone",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "full",
+      "value": "full",
+      "category": "k1"
+    },
+    {
+      "initialValue": "on",
+      "value": "on",
+      "category": "k1"
+    },
+    {
+      "initialValue": "them",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "all",
+      "value": "all",
+      "category": "k1"
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "time.",
+      "value": "time",
+      "category": "k1"
+    },
+    {
+      "initialValue": "So",
+      "value": "so",
+      "category": "k1"
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "leaves",
+      "value": "leaf",
+      "category": "k1"
+    },
+    {
+      "initialValue": "partly",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "shade",
+      "value": "shade",
+      "category": "k1"
+    },
+    {
+      "initialValue": "them.",
+      "value": null,
+      "category": null
+    }
+  ],
+  "sentenceCount": 15,
+  "fleschReadingScore": 84.95485365853662,
+  "statistics": {
+    "wordCount": {
+      "offList": 67,
+      "k1": 169,
+      "k2": 10,
+      "k3": 0,
+      "awl": 0,
+      "baw": 0,
+      "stem": 0,
+      "hi": 0,
+      "med": 0,
+      "low": 0,
+      "total": 246
+    },
+    "wordPercentage": {
+      "offList": 0.27235772357723576,
+      "k1": 0.6869918699186992,
+      "k2": 0.04065040650406504,
+      "k3": 0,
+      "awl": 0,
+      "baw": 0,
+      "stem": 0,
+      "hi": 0,
+      "med": 0,
+      "low": 0
+    }
+  }
+}
