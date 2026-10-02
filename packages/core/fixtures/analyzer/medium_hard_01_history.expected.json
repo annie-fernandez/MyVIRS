@@ -1,0 +1,573 @@
+{
+  "words": [
+    {
+      "initialValue": "We",
+      "value": "we",
+      "category": "k1"
+    },
+    {
+      "initialValue": "do",
+      "value": "do",
+      "category": "k1"
+    },
+    {
+      "initialValue": "not",
+      "value": "not",
+      "category": "k1"
+    },
+    {
+      "initialValue": "know",
+      "value": "know",
+      "category": "k1"
+    },
+    {
+      "initialValue": "when",
+      "value": "when",
+      "category": "k1"
+    },
+    {
+      "initialValue": "man",
+      "value": "man",
+      "category": "k1"
+    },
+    {
+      "initialValue": "first",
+      "value": "first",
+      "category": "k1"
+    },
+    {
+      "initialValue": "came",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "into",
+      "value": "into",
+      "category": "k1"
+    },
+    {
+      "initialValue": "possession",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "of",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "earth.",
+      "value": "earth",
+      "category": "k1"
+    },
+    {
+      "initialValue": "",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "We",
+      "value": "we",
+      "category": "k1"
+    },
+    {
+      "initialValue": "only",
+      "value": "only",
+      "category": "k1"
+    },
+    {
+      "initialValue": "know",
+      "value": "know",
+      "category": "k1"
+    },
+    {
+      "initialValue": "that,",
+      "value": "that",
+      "category": "k1"
+    },
+    {
+      "initialValue": "in",
+      "value": "in",
+      "category": "k1"
+    },
+    {
+      "initialValue": "ages",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "vastly",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "remote,",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "when",
+      "value": "when",
+      "category": "k1"
+    },
+    {
+      "initialValue": "both",
+      "value": "both",
+      "category": "k1"
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "climate",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "and",
+      "value": "and",
+      "category": "k1"
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "outline",
+      "value": "outline",
+      "category": "k1"
+    },
+    {
+      "initialValue": "of",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": "Europe",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "were",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "very",
+      "value": "very",
+      "category": "k1"
+    },
+    {
+      "initialValue": "different",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "from",
+      "value": "from",
+      "category": "k1"
+    },
+    {
+      "initialValue": "what",
+      "value": "what",
+      "category": "k1"
+    },
+    {
+      "initialValue": "they",
+      "value": "they",
+      "category": "k1"
+    },
+    {
+      "initialValue": "are",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "at",
+      "value": "at",
+      "category": "k1"
+    },
+    {
+      "initialValue": "present,",
+      "value": "present",
+      "category": "k1"
+    },
+    {
+      "initialValue": "man",
+      "value": "man",
+      "category": "k1"
+    },
+    {
+      "initialValue": "lived",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "on",
+      "value": "on",
+      "category": "k1"
+    },
+    {
+      "initialValue": "that",
+      "value": "that",
+      "category": "k1"
+    },
+    {
+      "initialValue": "continent",
+      "value": "continent",
+      "category": "k1"
+    },
+    {
+      "initialValue": "with",
+      "value": "with",
+      "category": "k1"
+    },
+    {
+      "initialValue": "animals",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "now",
+      "value": "now",
+      "category": "k1"
+    },
+    {
+      "initialValue": "extinct;",
+      "value": "extinct",
+      "category": "k2"
+    },
+    {
+      "initialValue": "and",
+      "value": "and",
+      "category": "k1"
+    },
+    {
+      "initialValue": "that",
+      "value": "that",
+      "category": "k1"
+    },
+    {
+      "initialValue": "as",
+      "value": "as",
+      "category": "k1"
+    },
+    {
+      "initialValue": "early",
+      "value": "early",
+      "category": "k1"
+    },
+    {
+      "initialValue": "as",
+      "value": "as",
+      "category": "k1"
+    },
+    {
+      "initialValue": "4000",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "or",
+      "value": "or",
+      "category": "k1"
+    },
+    {
+      "initialValue": "3000",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "B.C.,—when",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "curtain",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "first",
+      "value": "first",
+      "category": "k1"
+    },
+    {
+      "initialValue": "rises",
+      "value": "rise",
+      "category": "k1"
+    },
+    {
+      "initialValue": "on",
+      "value": "on",
+      "category": "k1"
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "stage",
+      "value": "stage",
+      "category": "k1"
+    },
+    {
+      "initialValue": "of",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": "history,—in",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "some",
+      "value": "some",
+      "category": "k1"
+    },
+    {
+      "initialValue": "favored",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "regions,",
+      "value": "region",
+      "category": "awl"
+    },
+    {
+      "initialValue": "as",
+      "value": "as",
+      "category": "k1"
+    },
+    {
+      "initialValue": "in",
+      "value": "in",
+      "category": "k1"
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "Valley",
+      "value": "valley",
+      "category": "k2"
+    },
+    {
+      "initialValue": "of",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "Nile,",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "there",
+      "value": "there",
+      "category": "k1"
+    },
+    {
+      "initialValue": "were",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "nations",
+      "value": "nation",
+      "category": "k2"
+    },
+    {
+      "initialValue": "and",
+      "value": "and",
+      "category": "k1"
+    },
+    {
+      "initialValue": "civilizations",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "already",
+      "value": "already",
+      "category": "k1"
+    },
+    {
+      "initialValue": "venerable",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "with",
+      "value": "with",
+      "category": "k1"
+    },
+    {
+      "initialValue": "age,",
+      "value": "age",
+      "category": "k1"
+    },
+    {
+      "initialValue": "and",
+      "value": "and",
+      "category": "k1"
+    },
+    {
+      "initialValue": "possessing",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "languages,",
+      "value": "language",
+      "category": "k1"
+    },
+    {
+      "initialValue": "arts,",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "and",
+      "value": "and",
+      "category": "k1"
+    },
+    {
+      "initialValue": "institutions",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "that",
+      "value": "that",
+      "category": "k1"
+    },
+    {
+      "initialValue": "bear",
+      "value": "bear",
+      "category": "k1"
+    },
+    {
+      "initialValue": "evidence",
+      "value": "evidence",
+      "category": "k1"
+    },
+    {
+      "initialValue": "of",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": "slow",
+      "value": "slow",
+      "category": "k2"
+    },
+    {
+      "initialValue": "growth",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "through",
+      "value": "through",
+      "category": "k1"
+    },
+    {
+      "initialValue": "very",
+      "value": "very",
+      "category": "k1"
+    },
+    {
+      "initialValue": "long",
+      "value": "long",
+      "category": "k1"
+    },
+    {
+      "initialValue": "periods",
+      "value": "period",
+      "category": "awl"
+    },
+    {
+      "initialValue": "of",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": "time",
+      "value": "time",
+      "category": "k1"
+    },
+    {
+      "initialValue": "before",
+      "value": "before",
+      "category": "k1"
+    },
+    {
+      "initialValue": "written",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "history",
+      "value": "history",
+      "category": "k1"
+    },
+    {
+      "initialValue": "begins.",
+      "value": "begin",
+      "category": "k1"
+    }
+  ],
+  "sentenceCount": 2,
+  "fleschReadingScore": 26.81848130841125,
+  "statistics": {
+    "wordCount": {
+      "offList": 27,
+      "k1": 74,
+      "k2": 4,
+      "k3": 0,
+      "awl": 2,
+      "baw": 0,
+      "stem": 0,
+      "hi": 0,
+      "med": 0,
+      "low": 0,
+      "total": 107
+    },
+    "wordPercentage": {
+      "offList": 0.2523364485981308,
+      "k1": 0.6915887850467289,
+      "k2": 0.037383177570093455,
+      "k3": 0,
+      "awl": 0.018691588785046728,
+      "baw": 0,
+      "stem": 0,
+      "hi": 0,
+      "med": 0,
+      "low": 0
+    }
+  }
+}

@@ -1,0 +1,998 @@
+{
+  "words": [
+    {
+      "initialValue": "We",
+      "value": "we",
+      "category": "k1"
+    },
+    {
+      "initialValue": "might",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "have",
+      "value": "have",
+      "category": "k1"
+    },
+    {
+      "initialValue": "diluted",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "sugar",
+      "value": "sugar",
+      "category": "k1"
+    },
+    {
+      "initialValue": "solution",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "many",
+      "value": "many",
+      "category": "k1"
+    },
+    {
+      "initialValue": "times",
+      "value": "time",
+      "category": "k1"
+    },
+    {
+      "initialValue": "more,",
+      "value": "more",
+      "category": "k1"
+    },
+    {
+      "initialValue": "and",
+      "value": "and",
+      "category": "k1"
+    },
+    {
+      "initialValue": "still",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "sweet",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "taste",
+      "value": "taste",
+      "category": "k2"
+    },
+    {
+      "initialValue": "would",
+      "value": "would",
+      "category": "k1"
+    },
+    {
+      "initialValue": "have",
+      "value": "have",
+      "category": "k1"
+    },
+    {
+      "initialValue": "remained.",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "Thus",
+      "value": "thus",
+      "category": "k1"
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "small",
+      "value": "small",
+      "category": "k1"
+    },
+    {
+      "initialValue": "quantity",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "of",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": "sugar",
+      "value": "sugar",
+      "category": "k1"
+    },
+    {
+      "initialValue": "would",
+      "value": "would",
+      "category": "k1"
+    },
+    {
+      "initialValue": "be",
+      "value": "be",
+      "category": "k1"
+    },
+    {
+      "initialValue": "distributed",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "through",
+      "value": "through",
+      "category": "k1"
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "whole",
+      "value": "whole",
+      "category": "k1"
+    },
+    {
+      "initialValue": "mass,",
+      "value": "mass",
+      "category": "k2"
+    },
+    {
+      "initialValue": "and",
+      "value": "and",
+      "category": "k1"
+    },
+    {
+      "initialValue": "be",
+      "value": "be",
+      "category": "k1"
+    },
+    {
+      "initialValue": "very",
+      "value": "very",
+      "category": "k1"
+    },
+    {
+      "initialValue": "finely",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "divided.",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "By",
+      "value": "by",
+      "category": "k1"
+    },
+    {
+      "initialValue": "other",
+      "value": "other",
+      "category": "k1"
+    },
+    {
+      "initialValue": "experiments",
+      "value": "experiment",
+      "category": "k2"
+    },
+    {
+      "initialValue": "a",
+      "value": "a",
+      "category": "k1"
+    },
+    {
+      "initialValue": "much",
+      "value": "much",
+      "category": "k1"
+    },
+    {
+      "initialValue": "finer",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "subdivision",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "can",
+      "value": "can",
+      "category": "k1"
+    },
+    {
+      "initialValue": "be",
+      "value": "be",
+      "category": "k1"
+    },
+    {
+      "initialValue": "made.",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "A",
+      "value": "a",
+      "category": "k1"
+    },
+    {
+      "initialValue": "solution",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "of",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": ".00000002",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "g.",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "of",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "red",
+      "value": "red",
+      "category": "k1"
+    },
+    {
+      "initialValue": "coloring",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "matter,",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "fuchsine,",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "in",
+      "value": "in",
+      "category": "k1"
+    },
+    {
+      "initialValue": "1",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "cc.",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "of",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": "alcohol",
+      "value": "alcohol",
+      "category": "k2"
+    },
+    {
+      "initialValue": "gives",
+      "value": "give",
+      "category": "k1"
+    },
+    {
+      "initialValue": "a",
+      "value": "a",
+      "category": "k1"
+    },
+    {
+      "initialValue": "distinct",
+      "value": "distinct",
+      "category": "k2"
+    },
+    {
+      "initialValue": "color.",
+      "value": "color",
+      "category": "k1"
+    },
+    {
+      "initialValue": "",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "Such",
+      "value": "such",
+      "category": "k1"
+    },
+    {
+      "initialValue": "experiments",
+      "value": "experiment",
+      "category": "k2"
+    },
+    {
+      "initialValue": "would",
+      "value": "would",
+      "category": "k1"
+    },
+    {
+      "initialValue": "seem",
+      "value": "seem",
+      "category": "k1"
+    },
+    {
+      "initialValue": "to",
+      "value": "to",
+      "category": "k1"
+    },
+    {
+      "initialValue": "indicate",
+      "value": "indicate",
+      "category": "k1"
+    },
+    {
+      "initialValue": "that",
+      "value": "that",
+      "category": "k1"
+    },
+    {
+      "initialValue": "there",
+      "value": "there",
+      "category": "k1"
+    },
+    {
+      "initialValue": "is",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "no",
+      "value": "no",
+      "category": "k1"
+    },
+    {
+      "initialValue": "limit",
+      "value": "limit",
+      "category": "k1"
+    },
+    {
+      "initialValue": "to",
+      "value": "to",
+      "category": "k1"
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "divisibility",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "of",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": "matter.",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "But",
+      "value": "but",
+      "category": "k1"
+    },
+    {
+      "initialValue": "considerations",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "which",
+      "value": "which",
+      "category": "k1"
+    },
+    {
+      "initialValue": "we",
+      "value": "we",
+      "category": "k1"
+    },
+    {
+      "initialValue": "cannot",
+      "value": "cannot",
+      "category": "k1"
+    },
+    {
+      "initialValue": "discuss",
+      "value": "discuss",
+      "category": "k1"
+    },
+    {
+      "initialValue": "here",
+      "value": "here",
+      "category": "k1"
+    },
+    {
+      "initialValue": "lead",
+      "value": "lead",
+      "category": "k1"
+    },
+    {
+      "initialValue": "to",
+      "value": "to",
+      "category": "k1"
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "belief",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "that",
+      "value": "that",
+      "category": "k1"
+    },
+    {
+      "initialValue": "such",
+      "value": "such",
+      "category": "k1"
+    },
+    {
+      "initialValue": "a",
+      "value": "a",
+      "category": "k1"
+    },
+    {
+      "initialValue": "limit",
+      "value": "limit",
+      "category": "k1"
+    },
+    {
+      "initialValue": "does",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "exist;",
+      "value": "exist",
+      "category": "k1"
+    },
+    {
+      "initialValue": "that",
+      "value": "that",
+      "category": "k1"
+    },
+    {
+      "initialValue": "there",
+      "value": "there",
+      "category": "k1"
+    },
+    {
+      "initialValue": "are",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "particles",
+      "value": "particle",
+      "category": "k1"
+    },
+    {
+      "initialValue": "of",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": "sugar,",
+      "value": "sugar",
+      "category": "k1"
+    },
+    {
+      "initialValue": "and",
+      "value": "and",
+      "category": "k1"
+    },
+    {
+      "initialValue": "of",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": "all",
+      "value": "all",
+      "category": "k1"
+    },
+    {
+      "initialValue": "substances,",
+      "value": "substance",
+      "category": "k1"
+    },
+    {
+      "initialValue": "which",
+      "value": "which",
+      "category": "k1"
+    },
+    {
+      "initialValue": "are",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "incapable",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "of",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": "further",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "division",
+      "value": "division",
+      "category": "k1"
+    },
+    {
+      "initialValue": "without",
+      "value": "without",
+      "category": "k1"
+    },
+    {
+      "initialValue": "entirely",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "changing",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "nature",
+      "value": "nature",
+      "category": "k1"
+    },
+    {
+      "initialValue": "of",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "substance.",
+      "value": "substance",
+      "category": "k1"
+    },
+    {
+      "initialValue": "To",
+      "value": "to",
+      "category": "k1"
+    },
+    {
+      "initialValue": "these",
+      "value": "these",
+      "category": "k1"
+    },
+    {
+      "initialValue": "smallest",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "particles",
+      "value": "particle",
+      "category": "k1"
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "name",
+      "value": "name",
+      "category": "k1"
+    },
+    {
+      "initialValue": "molecules",
+      "value": "molecule",
+      "category": "k1"
+    },
+    {
+      "initialValue": "is",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "given.",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "A",
+      "value": "a",
+      "category": "k1"
+    },
+    {
+      "initialValue": "mass",
+      "value": "mass",
+      "category": "k2"
+    },
+    {
+      "initialValue": "is",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "any",
+      "value": "any",
+      "category": "k1"
+    },
+    {
+      "initialValue": "portion",
+      "value": "portion",
+      "category": "k2"
+    },
+    {
+      "initialValue": "of",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": "a",
+      "value": "a",
+      "category": "k1"
+    },
+    {
+      "initialValue": "substance",
+      "value": "substance",
+      "category": "k1"
+    },
+    {
+      "initialValue": "larger",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "than",
+      "value": "than",
+      "category": "k1"
+    },
+    {
+      "initialValue": "a",
+      "value": "a",
+      "category": "k1"
+    },
+    {
+      "initialValue": "molecule;",
+      "value": "molecule",
+      "category": "k1"
+    },
+    {
+      "initialValue": "it",
+      "value": "it",
+      "category": "k1"
+    },
+    {
+      "initialValue": "is",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "an",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "aggregation",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "of",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": "molecules.",
+      "value": "molecule",
+      "category": "k1"
+    },
+    {
+      "initialValue": "",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "A",
+      "value": "a",
+      "category": "k1"
+    },
+    {
+      "initialValue": "molecule",
+      "value": "molecule",
+      "category": "k1"
+    },
+    {
+      "initialValue": "is",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "the",
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "initialValue": "smallest",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "particle",
+      "value": "particle",
+      "category": "k1"
+    },
+    {
+      "initialValue": "of",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": "a",
+      "value": "a",
+      "category": "k1"
+    },
+    {
+      "initialValue": "substance",
+      "value": "substance",
+      "category": "k1"
+    },
+    {
+      "initialValue": "that",
+      "value": "that",
+      "category": "k1"
+    },
+    {
+      "initialValue": "can",
+      "value": "can",
+      "category": "k1"
+    },
+    {
+      "initialValue": "exist",
+      "value": "exist",
+      "category": "k1"
+    },
+    {
+      "initialValue": "alone.",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "A",
+      "value": "a",
+      "category": "k1"
+    },
+    {
+      "initialValue": "substance",
+      "value": "substance",
+      "category": "k1"
+    },
+    {
+      "initialValue": "in",
+      "value": "in",
+      "category": "k1"
+    },
+    {
+      "initialValue": "solution",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "may",
+      "value": "may",
+      "category": "k1"
+    },
+    {
+      "initialValue": "be",
+      "value": "be",
+      "category": "k1"
+    },
+    {
+      "initialValue": "in",
+      "value": "in",
+      "category": "k1"
+    },
+    {
+      "initialValue": "a",
+      "value": "a",
+      "category": "k1"
+    },
+    {
+      "initialValue": "more",
+      "value": "more",
+      "category": "k1"
+    },
+    {
+      "initialValue": "finely",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "divided",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "state",
+      "value": "state",
+      "category": "k1"
+    },
+    {
+      "initialValue": "than",
+      "value": "than",
+      "category": "k1"
+    },
+    {
+      "initialValue": "otherwise,",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "but",
+      "value": "but",
+      "category": "k1"
+    },
+    {
+      "initialValue": "it",
+      "value": "it",
+      "category": "k1"
+    },
+    {
+      "initialValue": "is",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "not",
+      "value": "not",
+      "category": "k1"
+    },
+    {
+      "initialValue": "necessarily",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "in",
+      "value": "in",
+      "category": "k1"
+    },
+    {
+      "initialValue": "its",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "ultimate",
+      "value": null,
+      "category": null
+    },
+    {
+      "initialValue": "state",
+      "value": "state",
+      "category": "k1"
+    },
+    {
+      "initialValue": "of",
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "initialValue": "division.",
+      "value": "division",
+      "category": "k1"
+    }
+  ],
+  "sentenceCount": 12,
+  "fleschReadingScore": 54.133333333333354,
+  "statistics": {
+    "wordCount": {
+      "offList": 52,
+      "k1": 128,
+      "k2": 8,
+      "k3": 0,
+      "awl": 0,
+      "baw": 0,
+      "stem": 0,
+      "hi": 0,
+      "med": 0,
+      "low": 0,
+      "total": 188
+    },
+    "wordPercentage": {
+      "offList": 0.2765957446808511,
+      "k1": 0.6808510638297872,
+      "k2": 0.0425531914893617,
+      "k3": 0,
+      "awl": 0,
+      "baw": 0,
+      "stem": 0,
+      "hi": 0,
+      "med": 0,
+      "low": 0
+    }
+  }
+}
