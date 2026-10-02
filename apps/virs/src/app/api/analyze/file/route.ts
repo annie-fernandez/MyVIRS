@@ -3,7 +3,7 @@ import { analyze } from "@/lib/analysis/analyze";
 import { extractTextFromFile } from "@/lib/analysis/extract";
 import { badRequest, HttpError, route } from "@/lib/api/http";
 
-// Textract and large PDFs can take a while.
+// Large PDFs can take a while. Images never reach this route; the browser reads them.
 export const maxDuration = 60;
 
 export const POST = route(async (request) => {

@@ -46,7 +46,7 @@ Errors always come back as `{ "error": { "code", "message", "details"? } }`. Whi
 | Method | Path | Auth | Replaces (legacy) |
 | --- | --- | --- | --- |
 | `POST` | `/api/analyze/text` `{ text }` | – | `POST /api/analyzeText` |
-| `POST` | `/api/analyze/file` multipart `file`, `kind=pdf\|document\|image` | – | `POST /api/analyzeFile?type=` |
+| `POST` | `/api/analyze/file` multipart `file`, `kind=pdf\|document` | – | `POST /api/analyzeFile?type=` |
 | `GET` | `/api/dictionary/:word` | – | `GET /api/entries/:word?source=WIKI` |
 | `GET` | `/api/words?category&grade&q&page&pageSize&sort` | – | `GET /api/words`, `/api/words/valueandcat` |
 | `GET` | `/api/words/:value` | – | `GET /api/words/:value/:categories` |
@@ -69,6 +69,6 @@ Useful Better Auth endpoints: `POST /api/auth/sign-up/email` `{ email, password,
 - **Security:** passwords are hashed server-side and sessions are real. Legacy login downloaded the user record and compared passwords in the browser. Admin is a role on the account, not a shared basic-auth user. Dictionary HTML is sanitized. Password recovery no longer reveals whether an account exists.
 - **Analysis:** tokens are stripped of punctuation before singularizing, and the word as written is tried before its singular. Hyphenated list entries ("co-worker") now match. Basic Academic Words count in the statistics; before, they silently dropped out of the totals.
 - **Categories** are lowercase enums (`k1`, `awl`, …). Grades are `K`, `G1`…`G12`.
-- **Files:** scanned PDFs are no longer OCR'd with Tesseract (upload the pages as images, which use AWS Textract). Images are capped at 10 MB, Textract's synchronous limit.
+- **Files:** scanned PDFs are no longer OCR'd on the server (upload the pages as images). Images are read in the browser with tesseract.js, and the extracted text is posted to `POST /api/analyze/text`. The server does not call AWS.
 - **Paragraphs:** the enhanced text now breaks only at blank lines. Before, a double space also started a new paragraph.
 - **Not ported:** the Oxford dictionary (its v1 API is shut down), the unfinished and hidden vocabulary tests, and the header language switcher (it translated only about 20 navigation labels, in English, Spanish and Farsi).

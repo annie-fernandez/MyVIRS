@@ -8,7 +8,7 @@ export const maxDuration = 60;
 
 const KINDS: Record<string, AnalyzableFileKind> = { PDF: "pdf", DOC: "document", IMG: "image" };
 
-/** Legacy UI: POST /api/analyzeFile?type=PDF|DOC|IMG with a multipart `file`. */
+/** Legacy UI: POST /api/analyzeFile?type=PDF|DOC with a multipart `file`. IMG is rejected; the browser reads images. */
 export const POST = route(async (request) => {
   const kind = KINDS[request.nextUrl.searchParams.get("type") ?? ""];
   if (!kind) throw badRequest("type must be PDF, DOC or IMG.");

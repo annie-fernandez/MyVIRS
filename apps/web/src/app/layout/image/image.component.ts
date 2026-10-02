@@ -1,4 +1,5 @@
-import { Component, Input, NgModule, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, Input, NgModule, NgZone, OnInit, ElementRef, ViewChild } from '@angular/core';
+declare var Tesseract: any;
 import { routerTransition } from '../../router.animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
@@ -22,7 +23,7 @@ export class ImageComponent implements OnInit {
   error: boolean;
   fileSizeExceeded: boolean;
   formData: FormData;
-  constructor(private _textService: TextService, public router: Router, private elem: ElementRef, private http: HttpClient, private _itranslate:iTranslateService) { }
+  constructor(private _textService: TextService, public router: Router, private elem: ElementRef, private http: HttpClient, private _itranslate:iTranslateService, private zone: NgZone) { }
 
   processTextResults(translatedResults: string, url : string)
   {
@@ -80,52 +81,60 @@ export class ImageComponent implements OnInit {
   }
 
   public uploadImage(url: string): void {
-    this.formData = new FormData();
     this.processing = true;
+    this.error = false;
+    this.fileSizeExceeded = false;
     const fileBrowser = this.fileInput.nativeElement;
-    if (fileBrowser.files && fileBrowser.files[0]) {
-      this.userImageFile = fileBrowser.files[0];
-
-      // check filesize
-      if (this.userImageFile.size > 26214400) {
-        this.fileSizeExceeded = true;
-        this.processing = false;
-        return;
-      }
-
-      this.formData.append('file', fileBrowser.files[0]);
-    } else {
+    if (!(fileBrowser.files && fileBrowser.files[0])) {
+      this.processing = false;
       return;
     }
 
-    const DocFile: File = this.userImageFile;
-    this._textService.enhancedImage(this.formData)
-      .subscribe
-      (
-        res =>
-        {
-          var results = this._itranslate.transformTextToString(res);
-          if(results === "")
-          {
-            this.error = true;
-            this.processing = false;
-            results = null;
-            return;
-          }//if
+    this.userImageFile = fileBrowser.files[0];
+    if (this.userImageFile.size > 26214400) {
+      this.fileSizeExceeded = true;
+      this.processing = false;
+      return;
+    }
 
-          this.translateResults(results, url);
-        },
-        (err: HttpErrorResponse) => {
-          if (err.error instanceof Error) {
-            console.log('Client-side Error occured');
-          } else {
-            this.error = true;
-            this.processing = false;
-            console.log('Server-side Error occured');
-          }
+    if (typeof Tesseract === 'undefined' || !Tesseract.recognize) {
+      this.error = true;
+      this.processing = false;
+      return;
+    }
+
+    // The photo stays in the browser. Only the extracted text is sent to the server.
+    Tesseract.recognize(this.userImageFile, 'eng').then((result) => {
+      var extracted = result && result.data && result.data.text ? String(result.data.text).trim() : '';
+      this.zone.run(() => {
+        if (!extracted) {
+          this.error = true;
+          this.processing = false;
+          return;
         }
-      );
-
+        this._textService.analyzeExtractedText(extracted)
+          .subscribe((res) => {
+            var legacy = this._textService.toLegacyAnalysis(res);
+            if (!legacy || !legacy.words || legacy.words.length === 0) {
+              this.error = true;
+              this.processing = false;
+              return;
+            }
+            this.text = legacy;
+            this._textService.resultText = legacy;
+            this.processing = false;
+            this.router.navigateByUrl(url);
+          }, () => {
+            this.error = true;
+            this.processing = false;
+          });
+      });
+    }).catch(() => {
+      this.zone.run(() => {
+        this.error = true;
+        this.processing = false;
+      });
+    });
   }
 
   ngOnInit() {

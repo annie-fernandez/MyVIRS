@@ -54,8 +54,8 @@ export const ANALYZABLE_FILE_KINDS = {
   },
   image: {
     label: "Image",
-    // AWS Textract's synchronous API rejects documents larger than 10 MB.
-    maxBytes: 10 * 1024 * 1024,
+    // The browser reads images locally, so this is no longer an upload cap. It matches the page's own 25 MB check.
+    maxBytes: 25 * 1024 * 1024,
     mimeTypes: ["image/jpeg", "image/png"],
     extensions: [".jpg", ".jpeg", ".png"],
   },

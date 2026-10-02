@@ -13,7 +13,6 @@
     "build:legacy-ui": "./scripts/build-legacy-ui.sh"
   },
   "dependencies": {
-    "@aws-sdk/client-textract": "^3.1131.0",
     "@repo/core": "workspace:*",
     "@repo/db": "workspace:*",
     "better-auth": "^1.7.4",
