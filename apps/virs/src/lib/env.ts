@@ -9,7 +9,6 @@ const serverEnvSchema = z.object({
   EMAIL_FROM: z.string().default("VIRS <do-not-reply@myvirs.com>"),
   RESEND_API_KEY: z.string().optional(),
   CONTACT_EMAIL_TO: z.email().default("vocabinreading@gmail.com"),
-  AWS_REGION: z.string().default("us-east-1"),
 });
 
 export type ServerEnv = z.infer<typeof serverEnvSchema>;

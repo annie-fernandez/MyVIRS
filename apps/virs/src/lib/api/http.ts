@@ -1,7 +1,8 @@
 import "server-only";
 import type { ApiErrorBody } from "@repo/core";
-import type { NextRequest } from "next/server";
+import { after, type NextRequest } from "next/server";
 import { z, ZodError, type ZodType } from "zod";
+import { reportServerError } from "../email";
 import { EnvConfigError } from "../env";
 
 export class HttpError extends Error {
@@ -20,6 +21,13 @@ export const badRequest = (message: string, details?: unknown) =>
 export const unauthorized = () => new HttpError(401, "unauthorized", "Sign in to continue.");
 export const forbidden = () => new HttpError(403, "forbidden", "You do not have access to this resource.");
 export const notFound = (message = "Not found.") => new HttpError(404, "not_found", message);
+
+function notifyOperator(request: NextRequest, error: unknown) {
+  const where = { method: request.method, path: request.nextUrl.pathname };
+  after(() => {
+    void reportServerError(error, where);
+  });
+}
 
 function errorResponse(status: number, body: ApiErrorBody): Response {
   return Response.json(body, { status });
@@ -42,6 +50,7 @@ export function route<Context>(
       // and never echo the variable names back to the client.
       if (error instanceof EnvConfigError) {
         console.error(`[api] ${request.method} ${request.nextUrl.pathname} — ${error.message}`);
+        notifyOperator(request, error);
         return errorResponse(500, {
           error: { code: "server_misconfigured", message: "The server is not configured correctly." },
         });
@@ -56,6 +65,7 @@ export function route<Context>(
         });
       }
       console.error(`[api] ${request.method} ${request.nextUrl.pathname}`, error);
+      notifyOperator(request, error);
       return errorResponse(500, {
         error: { code: "internal_error", message: "Something went wrong. Please try again." },
       });

@@ -1,9 +1,7 @@
 import "server-only";
-import { DetectDocumentTextCommand, TextractClient } from "@aws-sdk/client-textract";
 import { ANALYZABLE_FILE_KINDS, type AnalyzableFileKind } from "@repo/core";
 import { extractText, getDocumentProxy } from "unpdf";
 import WordExtractor from "word-extractor";
-import { env } from "../env";
 import { HttpError } from "../api/http";
 
 const MAX_PDF_PAGES = 300;
@@ -19,10 +17,6 @@ const SIGNATURES = {
   pdf: [[0x25, 0x50, 0x44, 0x46, 0x2d]],
   doc: [[0xd0, 0xcf, 0x11, 0xe0]],
   docx: [[0x50, 0x4b, 0x03, 0x04]],
-  image: [
-    [0xff, 0xd8, 0xff],
-    [0x89, 0x50, 0x4e, 0x47],
-  ],
 } satisfies Record<string, number[][]>;
 
 function matchesAny(bytes: Uint8Array, signatures: number[][]): boolean {
@@ -70,29 +64,20 @@ async function extractDocument(bytes: Uint8Array, filename: string): Promise<str
   return document.getBody();
 }
 
-let textract: TextractClient | undefined;
-
-async function extractImage(bytes: Uint8Array): Promise<string> {
-  if (!matchesAny(bytes, SIGNATURES.image)) throw unsupportedFile("Images must be JPEG or PNG.");
-  textract ??= new TextractClient({ region: env().AWS_REGION });
-  const result = await textract.send(new DetectDocumentTextCommand({ Document: { Bytes: bytes } }));
-  return (result.Blocks ?? [])
-    .filter((block) => block.BlockType === "LINE" && block.Text)
-    .map((block) => block.Text)
-    .join("\n");
-}
-
-/** Extracts plain text from an uploaded file. Throws HttpError for invalid or unreadable input. */
+/** Extracts plain text from an uploaded PDF or Word file. Images are read in the browser. */
 export async function extractTextFromFile(file: File, kind: AnalyzableFileKind): Promise<string> {
+  if (kind === "image") {
+    throw new HttpError(
+      400,
+      "use_browser_ocr",
+      "Images are read in the browser. Send the extracted text to /api/analyze/text.",
+    );
+  }
+
   validateUpload(file, kind);
   const bytes = new Uint8Array(await file.arrayBuffer());
 
-  const text =
-    kind === "pdf"
-      ? await extractPdf(bytes)
-      : kind === "document"
-        ? await extractDocument(bytes, file.name)
-        : await extractImage(bytes);
+  const text = kind === "pdf" ? await extractPdf(bytes) : await extractDocument(bytes, file.name);
 
   if (!text.trim()) {
     throw unreadableFile(
