@@ -15,41 +15,11 @@ export class iTranslateService
   }
   getTranslation(text: string, language: string)
   {
-    return this.http.get("https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=" + language + "&hl=" + language + "&dt=t&q=" + encodeURI(text));
+    return this.http.post('/api/translate', { text: text, target: language });
   }
   retrieveTextFromResults(rec : any) : string
   {
-    var isArray = rec != null && Array.isArray(rec) && rec.length > 0;
-    var results = [];
-    if(isArray)
-    {
-      var isNestedArray = Array.isArray(rec[0]) && rec[0].length > 0;
-
-      if(isNestedArray)
-      {
-        var n = rec[0].length;
-        for(var i = 0; i < n; ++i)
-        {
-          var currentTextArray = rec[0][i];
-          var isCurrentArray = currentTextArray != null && Array.isArray(currentTextArray) && currentTextArray.length > 0;
-          if(isCurrentArray)
-          {
-            results.push(currentTextArray[0]);
-          }//if
-          currentTextArray = null;
-          isCurrentArray = null;
-        }//for i
-        i = null;
-        n = null;
-      }//if
-      isNestedArray = null;
-    }//if
-    isArray = null;
-
-    var concatenated = results.length > 0 ? results.join(" ") : "";
-    results = null;
-
-    return concatenated;
+    return rec && typeof rec.translatedText === 'string' ? rec.translatedText : '';
   }
   transformTextToString(text : IText) : string
   {
