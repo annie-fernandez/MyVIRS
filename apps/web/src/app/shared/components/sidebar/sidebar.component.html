@@ -85,6 +85,9 @@
                         </div>
 
                         <div *ngIf="login">
+                            <a href="/history" class="list-group-item">
+                                <i class="fa fa-fw fa-history"></i>&nbsp;History
+                            </a>
                             <a [routerLink]="['/account']" [routerLinkActive]="['router-link-active']" class="list-group-item">
                                 <i class="fa fa-fw fa-address-card"></i>&nbsp;{{ 'My Profile' | translate }}
                             </a>

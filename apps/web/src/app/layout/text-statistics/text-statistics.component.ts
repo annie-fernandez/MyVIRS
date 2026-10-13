@@ -65,7 +65,7 @@ export class TextStatisticsComponent implements OnInit {
 
   ngOnInit() {
     window.scrollTo(0, 0);
-    this.text = this._textService.resultText;
+    this.text = this._textService.resultText || this._textService.takeSavedHistoryResult();
     if (!this.text) {
       return;
     } else {

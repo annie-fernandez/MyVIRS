@@ -53,6 +53,7 @@ export class PdfComponent implements OnInit {
       (res => {
         this.text = res;
         this._textService.resultText = this.text;
+        this._textService.clearSavedHistoryResult();
         this.processing = false;
         this.router.navigateByUrl(url);
       },

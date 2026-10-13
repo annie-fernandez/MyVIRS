@@ -39,6 +39,7 @@ export class ImageComponent implements OnInit {
       }//if
       this.text = res;
       this._textService.resultText = this.text;
+      this._textService.clearSavedHistoryResult();
       this.processing = false;
       this.router.navigateByUrl(url);
     },
@@ -122,6 +123,7 @@ export class ImageComponent implements OnInit {
             }
             this.text = legacy;
             this._textService.resultText = legacy;
+            this._textService.clearSavedHistoryResult();
             this.processing = false;
             this.router.navigateByUrl(url);
           }, () => {

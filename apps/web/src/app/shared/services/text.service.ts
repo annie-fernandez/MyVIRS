@@ -12,8 +12,32 @@ export class TextService {
 
   // TextService store the result from text component into resultText so later on can be passed to enhancedTextResultPage
   public resultText: IText;
+  private static readonly HISTORY_RESULT_KEY = "virs-history-result";
 
   constructor(private http: HttpClient) {
+  }
+
+  /** Opens a saved analysis in the existing results pages without analyzing it again. */
+  takeSavedHistoryResult(): IText | null {
+    try {
+      const raw = sessionStorage.getItem(TextService.HISTORY_RESULT_KEY);
+      if (!raw) return null;
+      const parsed = JSON.parse(raw) as IText;
+      if (!parsed || !parsed.words) return null;
+      this.resultText = parsed;
+      return parsed;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  /** A new analysis replaces any saved entry that was opened earlier. */
+  clearSavedHistoryResult(): void {
+    try {
+      sessionStorage.removeItem(TextService.HISTORY_RESULT_KEY);
+    } catch (e) {
+      return;
+    }
   }
 
   enhancedText(textArea: string): Observable<IText> {

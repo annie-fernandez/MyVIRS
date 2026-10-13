@@ -1,6 +1,7 @@
 import { MAX_EXTRACTED_TEXT_LENGTH, type AnalyzableFileKind } from "@repo/core";
 import { analyze } from "@/lib/analysis/analyze";
 import { extractTextFromFile } from "@/lib/analysis/extract";
+import { saveSignedInAnalysis } from "@/lib/analysis/record";
 import { badRequest, HttpError, route } from "@/lib/api/http";
 import { toLegacyText } from "@/lib/legacy/format";
 
@@ -23,5 +24,7 @@ export const POST = route(async (request) => {
   if (text.length > MAX_EXTRACTED_TEXT_LENGTH) {
     throw new HttpError(422, "text_too_long", "The file contains too much text.");
   }
-  return Response.json(toLegacyText(await analyze(text)));
+  const result = await analyze(text);
+  await saveSignedInAnalysis(request, { sourceKind: kind, inputText: text, result });
+  return Response.json(toLegacyText(result));
 });

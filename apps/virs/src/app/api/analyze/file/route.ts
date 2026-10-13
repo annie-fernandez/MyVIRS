@@ -1,6 +1,7 @@
 import { analyzableFileKindSchema, MAX_EXTRACTED_TEXT_LENGTH } from "@repo/core";
 import { analyze } from "@/lib/analysis/analyze";
 import { extractTextFromFile } from "@/lib/analysis/extract";
+import { saveSignedInAnalysis } from "@/lib/analysis/record";
 import { badRequest, HttpError, route } from "@/lib/api/http";
 
 // Large PDFs can take a while. Images never reach this route; the browser reads them.
@@ -24,5 +25,7 @@ export const POST = route(async (request) => {
     );
   }
 
-  return Response.json(await analyze(text));
+  const result = await analyze(text);
+  await saveSignedInAnalysis(request, { sourceKind: kind, inputText: text, result });
+  return Response.json(result);
 });

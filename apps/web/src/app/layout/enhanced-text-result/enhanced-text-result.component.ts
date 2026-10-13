@@ -47,7 +47,7 @@ export class EnhancedTextResultComponent implements OnInit {
     window.scrollTo(0, 0);
     this.showOnlyIcons = window.innerWidth <= 680;
     this.updaTeLabels();
-    this.text = this._textService.resultText;
+    this.text = this._textService.resultText || this._textService.takeSavedHistoryResult();
     this.numberOfTotalWords = this.text.words.length;
     this.addPage();
     this.getDefinition('book')
