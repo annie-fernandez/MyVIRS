@@ -13,8 +13,13 @@
     "build:legacy-ui": "./scripts/build-legacy-ui.sh"
   },
   "dependencies": {
+    "@mantine/core": "9.6.1",
+    "@mantine/dropzone": "9.6.1",
+    "@mantine/form": "9.6.1",
+    "@mantine/hooks": "9.6.1",
     "@repo/core": "workspace:*",
     "@repo/db": "workspace:*",
+    "@tabler/icons-react": "^3.49.0",
     "better-auth": "^1.7.4",
     "next": "16.3.5",
     "node-html-parser": "^9.0.4",
@@ -24,6 +29,7 @@
     "resend": "^6.28.0",
     "sanitize-html": "^2.17.7",
     "server-only": "^0.0.1",
+    "tesseract.js": "^5.1.1",
     "unpdf": "^1.8.1",
     "word-extractor": "^1.0.4",
     "zod": "^4.6.5"
@@ -38,6 +44,9 @@
     "@types/sanitize-html": "^2.16.1",
     "@types/word-extractor": "^1.0.6",
     "eslint": "10.9.1",
+    "postcss": "^8.5.28",
+    "postcss-preset-mantine": "^1.18.0",
+    "postcss-simple-vars": "^7.0.1",
     "vitest": "^5.0.0"
   }
 }

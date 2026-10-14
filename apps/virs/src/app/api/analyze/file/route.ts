@@ -1,6 +1,7 @@
 import { analyzableFileKindSchema, MAX_EXTRACTED_TEXT_LENGTH } from "@repo/core";
 import { analyze } from "@/lib/analysis/analyze";
 import { extractTextFromFile } from "@/lib/analysis/extract";
+import { saveToHistory, type AnalyzeResponse } from "@/lib/analysis/history";
 import { badRequest, HttpError, route } from "@/lib/api/http";
 
 // Large PDFs can take a while. Images never reach this route; the browser reads them.
@@ -24,5 +25,8 @@ export const POST = route(async (request) => {
     );
   }
 
-  return Response.json(await analyze(text));
+  const result = await analyze(text);
+  // The file's name is a better label in the history list than the first line of its text.
+  const historyId = await saveToHistory(request, { sourceKind: kind, inputText: text, result, title: file.name.slice(0, 120) || undefined });
+  return Response.json({ ...result, historyId } satisfies AnalyzeResponse);
 });

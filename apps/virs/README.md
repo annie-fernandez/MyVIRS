@@ -4,12 +4,19 @@ Next.js rewrite of the Vocabulary in Reading Study backend. It replaces the Spri
 
 ## Frontend
 
-- **Original Angular UI (live).** `public/` holds the production build of `apps/web`. `next.config.ts` rewrites every non-API URL to `public/index.html`, so Angular's routes (`/dashboard`, `/search-words`, `/restore?token=…`) and deep-link reloads work. Vercel can't build Angular CLI 1.7 (it needs Node 8), so rebuild locally after changing `apps/web` and commit the output:
+- **Original Angular UI (fallback).** `public/` holds the production build of `apps/web`. `next.config.ts` rewrites every URL that has no Next.js page to `public/index.html`, so the Angular routes that haven't moved to Mantine (now only `/tests/*`) and their deep-link reloads still work. Vercel can't build Angular CLI 1.7 (it needs Node 8), so rebuild locally after changing `apps/web` and commit the output:
   ```sh
   pnpm --filter virs build:legacy-ui   # needs Node 8 via nvm
   ```
 - **Compatibility layer.** The Angular screens still call the old endpoints (`/api/analyzeText`, `/api/words?…&sortDirection=`, `/api/user/*`, `/api/download/*`, …). Those routes, plus `src/lib/legacy/*`, return the old response shapes on top of the new services. The only Angular changes: login now checks the password on the server (`POST /api/user/login`), logout ends the server session, and the minimum password length is 8.
-- **Mantine redesign (not released).** The new Mantine 9 UI lives on the `mantine-ui` branch and will replace these screens progressively.
+- **Mantine screens.** Every screen is a Next.js page under `src/app`, at the same URL the Angular screen used (`/dashboard`, `/text`, `/doc`, `/pdf`, `/image`, `/enhanced-text-result`, `/text-statistics`, `/search-words`, `/download-words`, `/itranslate`, `/contact-us`, `/credits`, `/register`, `/account`, `/change-password`, `/restore`, `/admin`). Only the hidden vocabulary tests (`/tests/*`) still fall through to Angular.
+  - **Design rules:** `DESIGN.md` covers colors, type, layout, which component to use for what, and writing. Values live in `src/theme.ts`, shared components in `src/components/ui`, and `/style-guide` (not linked anywhere) renders all of it.
+  - **Shell:** `src/components/layout` holds the header (site name, citation button, account menu with the login and password-recovery dialogs), the sidebar (Analyze, Word lists, Tools) and the footer. All links come from `nav.ts`; `MANTINE_PATHS` lists the URLs that are Mantine pages, so links to them navigate client-side.
+  - **Pages that need an account** (`/account`, `/change-password`, `/admin`) send signed-out visitors to `/dashboard?login=1&next=<page>`, which opens the login dialog and returns them afterwards (`src/lib/session.ts`). `/admin` answers 404 to non-admins.
+  - **Results** (`/enhanced-text-result`, `/text-statistics`) read the latest analysis from `sessionStorage` (`src/lib/analysis-store.tsx`), so they survive a reload in the same tab.
+  - **Photos** are read in the browser with tesseract.js; only the extracted text is sent to `/api/analyze/text`.
+  - **Translation** calls Google from the browser (`src/lib/translate-client.ts`). Google answers browsers but rejects requests from servers with HTTP 429, so `/api/translate` fails on Vercel; it is kept only for the Angular screen.
+  - **Sign-in across both UIs:** both use the same Better Auth session cookie. Angular decides what to show from `localStorage` (`currentUser`, `userName`, `level`, `email`), so the Mantine shell rewrites those keys to match the real session on every page (`src/lib/legacy-session.ts`).
 
 ## Setup
 

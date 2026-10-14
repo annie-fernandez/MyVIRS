@@ -30,10 +30,6 @@ export const gradeSchema = z.string({ error: "Choose a grade" }).transform((valu
   return grade;
 });
 
-export const analyzeTextInput = z.object({
-  text: z.string().trim().min(1, "Text is required").max(MAX_TEXT_LENGTH),
-});
-export type AnalyzeTextInput = z.infer<typeof analyzeTextInput>;
 
 export const ANALYZABLE_FILE_KINDS = {
   pdf: {
@@ -75,6 +71,19 @@ export const ANALYSIS_SOURCE_KINDS = ["text", ...(Object.keys(ANALYZABLE_FILE_KI
 ];
 export type AnalysisSourceKind = (typeof ANALYSIS_SOURCE_KINDS)[number];
 export const analysisSourceKindSchema = z.enum(ANALYSIS_SOURCE_KINDS);
+
+export const analyzeTextInput = z.object({
+  text: z.string().trim().min(1, "Text is required").max(MAX_TEXT_LENGTH),
+  /** Where the text came from, for the signed-in user's history. Photos are read in the browser and arrive as text. */
+  sourceKind: analysisSourceKindSchema.default("text"),
+});
+export type AnalyzeTextInput = z.infer<typeof analyzeTextInput>;
+
+export const historyListQuery = z.object({
+  page: z.coerce.number().int().min(1).default(1),
+  pageSize: z.coerce.number().int().min(1).max(50).default(10),
+});
+export type HistoryListQuery = z.infer<typeof historyListQuery>;
 
 export const sortDirectionSchema = z.enum(["asc", "desc"]);
 
