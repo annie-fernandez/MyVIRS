@@ -313,6 +313,9 @@ importers:
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
+      '@types/node':
+        specifier: 26.5.1
+        version: 26.5.1
       '@types/pluralize':
         specifier: ^0.0.33
         version: 0.0.33

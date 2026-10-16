@@ -1,0 +1,71 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  merge_group:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    name: ${{ matrix.name }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Type checks
+            task: check-types
+          - name: Lint
+            task: lint
+          - name: Tests
+            task: test
+          - name: Build
+            task: build
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v6
+        # Reads the version from package.json's packageManager field.
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --filter=virs...
+
+      - name: Run ${{ matrix.name }}
+        # Includes the current app and its workspace dependencies.
+        run: pnpm exec turbo run ${{ matrix.task }} --filter=virs...
+
+  ci-passed:
+    name: CI passed
+    needs: checks
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Require every check to pass
+        env:
+          CHECKS_RESULT: ${{ needs.checks.result }}
+        run: |
+          if [ "$CHECKS_RESULT" != "success" ]; then
+            echo "CI checks did not all pass (result: $CHECKS_RESULT)."
+            exit 1
+          fi

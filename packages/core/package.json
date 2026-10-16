@@ -9,7 +9,8 @@
   "scripts": {
     "check-types": "tsc --noEmit",
     "lint": "eslint .",
-    "test": "vitest run"
+    "test": "vitest run",
+    "test:analyzer": "vitest run src/analyze.regression.test.ts"
   },
   "dependencies": {
     "pluralize": "^8.0.0",
@@ -18,6 +19,7 @@
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
+    "@types/node": "26.5.1",
     "@types/pluralize": "^0.0.33",
     "eslint": "10.9.1",
     "vitest": "^5.0.0"

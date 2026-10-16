@@ -129,14 +129,22 @@ Because the passages are intended as baselines, changes in output should come fr
 
 ## Recorded analyzer outputs
 
-Each passage is paired with a same-named `.expected.json` file containing the
-complete output of `packages/core/src/analyze.ts`: ordered word matches,
-sentence count, Flesch reading score, and category counts and percentages.
-Passage files are preserved exactly as supplied.
+Run all 10 passage regression tests from the repository root:
 
-Outputs were recorded on 2026-10-02 using the current repo analyzer and
-`packages/db/seed/words.csv`, normalized as in the database seed importer.
-Word-list SHA-256: `a29b9047903e2f2d83f324e13758a38fa3f93064316020ec33689e6f70ae5f27`.
-These are recorded current-behavior baselines, not independently certified
-answers or a capture of the production database. Compare future results using
-the same word lists; dictionary changes can also change classifications.
+```sh
+pnpm test:analyzer
+```
+
+On Windows PowerShell, use `pnpm.cmd test:analyzer` if script execution is disabled.
+The suite also runs with the core unit tests via `pnpm --filter @repo/core test`.
+
+Each passage is a separate named test. The suite runs the core analyzer with the
+checked-in seed dictionary (no database or environment variables required) and
+compares its complete result to the paired expected JSON. Missing files or any
+output difference fail the command with a nonzero exit code and a test diff.
+
+When changing the analyzer or dictionary, run the tests and review any differences.
+Only edit the expected JSON after confirming that the new behavior is intended;
+tests never rewrite baselines automatically. To add a passage, add its `.txt` and
+reviewed `.expected.json` files here and its name to `src/analyze.regression.test.ts`
+in the core package.

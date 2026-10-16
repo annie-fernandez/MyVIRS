@@ -65,6 +65,9 @@ pnpm check-types
 pnpm format
 ```
 
+The pull-request CI workflow and instructions for requiring it before merging
+to `main` are documented in [`.github/CI.md`](.github/CI.md).
+
 ## Generated files that aren't committed
 
 - `apps/api/src/main/resources/static/`: the Angular bundle that gets baked into the API jar for production. To rebuild it, run `web`'s build and copy `apps/web/dist/` here.
