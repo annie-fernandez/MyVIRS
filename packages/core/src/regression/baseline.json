@@ -1,0 +1,1456 @@
+{
+  "$comment": "GENERATED FILE — do not hand-edit. Produced by packages/db/scripts/build-regression-baseline.ts. Expected analyzer output for the fixture passages, recorded against the frozen word list in word-list.json. Regenerate with `pnpm --filter @repo/db db:build-regression-baseline` only as a deliberate, reviewed change.",
+  "intentionalDifferencesFromLegacy": [
+    "Paragraph breaks: blank line only. The Spring app also broke on a double space.",
+    "Lookup order: the token as written is tried before its singular form.",
+    "Punctuation is stripped before lookup, so hyphenated entries such as co-worker match.",
+    "Basic Academic Words (baw) are counted in the statistics; the legacy app dropped them from totals.",
+    "13 hyphenated duplicates were merged during the migration (non-essential -> nonessential).",
+    "The Oxford dictionary is not available (its v1 API is shut down); Wiktionary only."
+  ],
+  "recordedAt": "2026-09-26",
+  "wordListSize": 346,
+  "passages": [
+    {
+      "id": "paragraphs",
+      "pins": "Paragraph breaks come from blank lines only. The legacy app also broke on a double space, so the two spaces after 'mat.' must NOT produce a paragraph marker.",
+      "result": {
+        "words": [
+          {
+            "initialValue": "The",
+            "value": "the",
+            "category": "k1"
+          },
+          {
+            "initialValue": "cat",
+            "value": "cat",
+            "category": "k2"
+          },
+          {
+            "initialValue": "sat",
+            "value": "sat",
+            "category": "k1"
+          },
+          {
+            "initialValue": "on",
+            "value": "on",
+            "category": "k1"
+          },
+          {
+            "initialValue": "the",
+            "value": "the",
+            "category": "k1"
+          },
+          {
+            "initialValue": "mat.",
+            "value": "mat",
+            "category": "k3"
+          },
+          {
+            "initialValue": "Then",
+            "value": "then",
+            "category": "k1"
+          },
+          {
+            "initialValue": "it",
+            "value": "it",
+            "category": "k1"
+          },
+          {
+            "initialValue": "slept",
+            "value": "slept",
+            "category": "k2"
+          },
+          {
+            "initialValue": "by",
+            "value": "by",
+            "category": "k1"
+          },
+          {
+            "initialValue": "the",
+            "value": "the",
+            "category": "k1"
+          },
+          {
+            "initialValue": "warm",
+            "value": "warm",
+            "category": "k1"
+          },
+          {
+            "initialValue": "fire.",
+            "value": "fire",
+            "category": "k1"
+          },
+          {
+            "initialValue": "",
+            "value": null,
+            "category": null
+          },
+          {
+            "initialValue": "A",
+            "value": "a",
+            "category": "k1"
+          },
+          {
+            "initialValue": "second",
+            "value": "second",
+            "category": "k1"
+          },
+          {
+            "initialValue": "paragraph",
+            "value": "paragraph",
+            "category": "k2"
+          },
+          {
+            "initialValue": "begins",
+            "value": "begins",
+            "category": "k1"
+          },
+          {
+            "initialValue": "here,",
+            "value": "here",
+            "category": "k1"
+          },
+          {
+            "initialValue": "after",
+            "value": "after",
+            "category": "k1"
+          },
+          {
+            "initialValue": "a",
+            "value": "a",
+            "category": "k1"
+          },
+          {
+            "initialValue": "blank",
+            "value": "blank",
+            "category": "k3"
+          },
+          {
+            "initialValue": "line.",
+            "value": "line",
+            "category": "k1"
+          }
+        ],
+        "sentenceCount": 3,
+        "fleschReadingScore": 0,
+        "statistics": {
+          "wordCount": {
+            "offList": 0,
+            "k1": 17,
+            "k2": 3,
+            "k3": 2,
+            "awl": 0,
+            "baw": 0,
+            "stem": 0,
+            "hi": 0,
+            "med": 0,
+            "low": 0,
+            "total": 22
+          },
+          "wordPercentage": {
+            "offList": 0,
+            "k1": 0.7727272727272727,
+            "k2": 0.13636363636363635,
+            "k3": 0.09090909090909091,
+            "awl": 0,
+            "baw": 0,
+            "stem": 0,
+            "hi": 0,
+            "med": 0,
+            "low": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "as-written-before-singular",
+      "pins": "A token is looked up exactly as written before its singular form. 'data' and 'analyses' must not be silently rewritten to 'datum' or 'analysis' when the plural is itself listed.",
+      "result": {
+        "words": [
+          {
+            "initialValue": "The",
+            "value": "the",
+            "category": "k1"
+          },
+          {
+            "initialValue": "children",
+            "value": "children",
+            "category": "k1"
+          },
+          {
+            "initialValue": "analyzed",
+            "value": "analyzed",
+            "category": "k1"
+          },
+          {
+            "initialValue": "the",
+            "value": "the",
+            "category": "k1"
+          },
+          {
+            "initialValue": "data",
+            "value": "data",
+            "category": "k1"
+          },
+          {
+            "initialValue": "carefully.",
+            "value": "carefully",
+            "category": "k1"
+          },
+          {
+            "initialValue": "Their",
+            "value": "their",
+            "category": "k1"
+          },
+          {
+            "initialValue": "analyses",
+            "value": "analyses",
+            "category": "k1"
+          },
+          {
+            "initialValue": "were",
+            "value": "were",
+            "category": "k1"
+          },
+          {
+            "initialValue": "thorough",
+            "value": "thorough",
+            "category": "med"
+          },
+          {
+            "initialValue": "and",
+            "value": "and",
+            "category": "k1"
+          },
+          {
+            "initialValue": "their",
+            "value": "their",
+            "category": "k1"
+          },
+          {
+            "initialValue": "conclusions",
+            "value": "conclusions",
+            "category": "k1"
+          },
+          {
+            "initialValue": "consistent.",
+            "value": "consistent",
+            "category": "k2"
+          }
+        ],
+        "sentenceCount": 2,
+        "fleschReadingScore": 0,
+        "statistics": {
+          "wordCount": {
+            "offList": 0,
+            "k1": 12,
+            "k2": 1,
+            "k3": 0,
+            "awl": 0,
+            "baw": 0,
+            "stem": 0,
+            "hi": 0,
+            "med": 1,
+            "low": 0,
+            "total": 14
+          },
+          "wordPercentage": {
+            "offList": 0,
+            "k1": 0.8571428571428571,
+            "k2": 0.07142857142857142,
+            "k3": 0,
+            "awl": 0,
+            "baw": 0,
+            "stem": 0,
+            "hi": 0,
+            "med": 0.07142857142857142,
+            "low": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "punctuation-and-hyphens",
+      "pins": "Punctuation is stripped before lookup, so hyphenated list entries match. Also covers the hyphen merge: 'non-essential' resolves to the merged 'nonessential' entry.",
+      "result": {
+        "words": [
+          {
+            "initialValue": "A",
+            "value": "a",
+            "category": "k1"
+          },
+          {
+            "initialValue": "co-worker",
+            "value": "coworker",
+            "category": "k1"
+          },
+          {
+            "initialValue": "made",
+            "value": "made",
+            "category": "k1"
+          },
+          {
+            "initialValue": "a",
+            "value": "a",
+            "category": "k1"
+          },
+          {
+            "initialValue": "non-essential",
+            "value": "nonessential",
+            "category": "k1"
+          },
+          {
+            "initialValue": "request",
+            "value": "request",
+            "category": "hi"
+          },
+          {
+            "initialValue": "—",
+            "value": null,
+            "category": null
+          },
+          {
+            "initialValue": "\"well-meant,\"",
+            "value": null,
+            "category": null
+          },
+          {
+            "initialValue": "she",
+            "value": "she",
+            "category": "k1"
+          },
+          {
+            "initialValue": "said,",
+            "value": "said",
+            "category": "k1"
+          },
+          {
+            "initialValue": "but",
+            "value": "but",
+            "category": "k1"
+          },
+          {
+            "initialValue": "poorly",
+            "value": "poorly",
+            "category": "k2"
+          },
+          {
+            "initialValue": "timed.",
+            "value": "timed",
+            "category": "k1"
+          }
+        ],
+        "sentenceCount": 1,
+        "fleschReadingScore": 0,
+        "statistics": {
+          "wordCount": {
+            "offList": 1,
+            "k1": 9,
+            "k2": 1,
+            "k3": 0,
+            "awl": 0,
+            "baw": 0,
+            "stem": 0,
+            "hi": 1,
+            "med": 0,
+            "low": 0,
+            "total": 12
+          },
+          "wordPercentage": {
+            "offList": 0.08333333333333333,
+            "k1": 0.75,
+            "k2": 0.08333333333333333,
+            "k3": 0,
+            "awl": 0,
+            "baw": 0,
+            "stem": 0,
+            "hi": 0.08333333333333333,
+            "med": 0,
+            "low": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "academic-and-basic-academic",
+      "pins": "Academic Word List and Basic Academic Word matches are both counted in the statistics. The legacy app silently dropped baw from the totals.",
+      "result": {
+        "words": [
+          {
+            "initialValue": "Research",
+            "value": "research",
+            "category": "k1"
+          },
+          {
+            "initialValue": "indicates",
+            "value": "indicates",
+            "category": "k1"
+          },
+          {
+            "initialValue": "that",
+            "value": "that",
+            "category": "k1"
+          },
+          {
+            "initialValue": "significant",
+            "value": "significant",
+            "category": "k1"
+          },
+          {
+            "initialValue": "analysis",
+            "value": "analysis",
+            "category": "k1"
+          },
+          {
+            "initialValue": "requires",
+            "value": "requires",
+            "category": "k1"
+          },
+          {
+            "initialValue": "adequate",
+            "value": "adequate",
+            "category": "k3"
+          },
+          {
+            "initialValue": "data.",
+            "value": "data",
+            "category": "k1"
+          },
+          {
+            "initialValue": "The",
+            "value": "the",
+            "category": "k1"
+          },
+          {
+            "initialValue": "method",
+            "value": "method",
+            "category": "k1"
+          },
+          {
+            "initialValue": "must",
+            "value": "must",
+            "category": "k1"
+          },
+          {
+            "initialValue": "remain",
+            "value": "remain",
+            "category": "k1"
+          },
+          {
+            "initialValue": "consistent",
+            "value": "consistent",
+            "category": "k2"
+          },
+          {
+            "initialValue": "throughout.",
+            "value": "throughout",
+            "category": "k1"
+          }
+        ],
+        "sentenceCount": 2,
+        "fleschReadingScore": 0,
+        "statistics": {
+          "wordCount": {
+            "offList": 0,
+            "k1": 12,
+            "k2": 1,
+            "k3": 1,
+            "awl": 0,
+            "baw": 0,
+            "stem": 0,
+            "hi": 0,
+            "med": 0,
+            "low": 0,
+            "total": 14
+          },
+          "wordPercentage": {
+            "offList": 0,
+            "k1": 0.8571428571428571,
+            "k2": 0.07142857142857142,
+            "k3": 0.07142857142857142,
+            "awl": 0,
+            "baw": 0,
+            "stem": 0,
+            "hi": 0,
+            "med": 0,
+            "low": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "readability-and-sentences",
+      "pins": "Sentence counting and the Flesch reading-ease score across sentences of varied length.",
+      "result": {
+        "words": [
+          {
+            "initialValue": "Photosynthesis",
+            "value": "photosynthesis",
+            "category": "k2"
+          },
+          {
+            "initialValue": "converts",
+            "value": "converts",
+            "category": "k1"
+          },
+          {
+            "initialValue": "light",
+            "value": "light",
+            "category": "k1"
+          },
+          {
+            "initialValue": "into",
+            "value": "into",
+            "category": "k1"
+          },
+          {
+            "initialValue": "chemical",
+            "value": "chemical",
+            "category": "k1"
+          },
+          {
+            "initialValue": "energy.",
+            "value": "energy",
+            "category": "k1"
+          },
+          {
+            "initialValue": "Plants",
+            "value": "plants",
+            "category": "k1"
+          },
+          {
+            "initialValue": "need",
+            "value": "need",
+            "category": "k1"
+          },
+          {
+            "initialValue": "it.",
+            "value": "it",
+            "category": "k1"
+          },
+          {
+            "initialValue": "Without",
+            "value": "without",
+            "category": "k1"
+          },
+          {
+            "initialValue": "sufficient",
+            "value": "sufficient",
+            "category": "k3"
+          },
+          {
+            "initialValue": "sunlight,",
+            "value": "sunlight",
+            "category": "k1"
+          },
+          {
+            "initialValue": "growth",
+            "value": "growth",
+            "category": "k1"
+          },
+          {
+            "initialValue": "slows",
+            "value": "slow",
+            "category": "k1"
+          },
+          {
+            "initialValue": "and",
+            "value": "and",
+            "category": "k1"
+          },
+          {
+            "initialValue": "eventually",
+            "value": "eventually",
+            "category": "k2"
+          },
+          {
+            "initialValue": "stops",
+            "value": "stops",
+            "category": "k1"
+          },
+          {
+            "initialValue": "altogether.",
+            "value": null,
+            "category": null
+          }
+        ],
+        "sentenceCount": 3,
+        "fleschReadingScore": 0,
+        "statistics": {
+          "wordCount": {
+            "offList": 1,
+            "k1": 14,
+            "k2": 2,
+            "k3": 1,
+            "awl": 0,
+            "baw": 0,
+            "stem": 0,
+            "hi": 0,
+            "med": 0,
+            "low": 0,
+            "total": 18
+          },
+          "wordPercentage": {
+            "offList": 0.05555555555555555,
+            "k1": 0.7777777777777778,
+            "k2": 0.1111111111111111,
+            "k3": 0.05555555555555555,
+            "awl": 0,
+            "baw": 0,
+            "stem": 0,
+            "hi": 0,
+            "med": 0,
+            "low": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "off-list-and-names",
+      "pins": "Proper nouns and unlisted words fall through to offList rather than being dropped, so the category totals still reconcile with the overall word count.",
+      "result": {
+        "words": [
+          {
+            "initialValue": "Reykjavik",
+            "value": null,
+            "category": null
+          },
+          {
+            "initialValue": "chilled",
+            "value": "chilled",
+            "category": "med"
+          },
+          {
+            "initialValue": "Bjorn",
+            "value": null,
+            "category": null
+          },
+          {
+            "initialValue": "thoroughly.",
+            "value": "thoroughly",
+            "category": "med"
+          },
+          {
+            "initialValue": "The",
+            "value": "the",
+            "category": "k1"
+          },
+          {
+            "initialValue": "zyzzyva",
+            "value": null,
+            "category": null
+          },
+          {
+            "initialValue": "beetle",
+            "value": "beetle",
+            "category": "k3"
+          },
+          {
+            "initialValue": "eluded",
+            "value": "eluded",
+            "category": "med"
+          },
+          {
+            "initialValue": "every",
+            "value": "every",
+            "category": "k1"
+          },
+          {
+            "initialValue": "entomologist",
+            "value": "entomologist",
+            "category": "med"
+          },
+          {
+            "initialValue": "who",
+            "value": "who",
+            "category": "k1"
+          },
+          {
+            "initialValue": "searched.",
+            "value": "searched",
+            "category": "k2"
+          }
+        ],
+        "sentenceCount": 2,
+        "fleschReadingScore": 0,
+        "statistics": {
+          "wordCount": {
+            "offList": 3,
+            "k1": 3,
+            "k2": 1,
+            "k3": 1,
+            "awl": 0,
+            "baw": 0,
+            "stem": 0,
+            "hi": 0,
+            "med": 4,
+            "low": 0,
+            "total": 12
+          },
+          "wordPercentage": {
+            "offList": 0.25,
+            "k1": 0.25,
+            "k2": 0.08333333333333333,
+            "k3": 0.08333333333333333,
+            "awl": 0,
+            "baw": 0,
+            "stem": 0,
+            "hi": 0,
+            "med": 0.3333333333333333,
+            "low": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "readability-long",
+      "pins": "The Flesch calculation itself. fleschReadingEase returns 0 below MIN_WORDS_FOR_READABILITY (100 words), which every shorter passage here hits — so without a passage over that floor the score, the syllable counting and the averages would all go unchecked.",
+      "result": {
+        "words": [
+          {
+            "initialValue": "Reading",
+            "value": "reading",
+            "category": "k1"
+          },
+          {
+            "initialValue": "widely",
+            "value": "widely",
+            "category": "k1"
+          },
+          {
+            "initialValue": "is",
+            "value": "is",
+            "category": "k1"
+          },
+          {
+            "initialValue": "the",
+            "value": "the",
+            "category": "k1"
+          },
+          {
+            "initialValue": "most",
+            "value": "most",
+            "category": "k1"
+          },
+          {
+            "initialValue": "reliable",
+            "value": "reliable",
+            "category": "k3"
+          },
+          {
+            "initialValue": "way",
+            "value": "way",
+            "category": "k1"
+          },
+          {
+            "initialValue": "to",
+            "value": "to",
+            "category": "k1"
+          },
+          {
+            "initialValue": "build",
+            "value": "build",
+            "category": "k1"
+          },
+          {
+            "initialValue": "a",
+            "value": "a",
+            "category": "k1"
+          },
+          {
+            "initialValue": "large",
+            "value": "large",
+            "category": "k1"
+          },
+          {
+            "initialValue": "vocabulary.",
+            "value": "vocabulary",
+            "category": "k1"
+          },
+          {
+            "initialValue": "When",
+            "value": "when",
+            "category": "k1"
+          },
+          {
+            "initialValue": "a",
+            "value": "a",
+            "category": "k1"
+          },
+          {
+            "initialValue": "student",
+            "value": "student",
+            "category": "k1"
+          },
+          {
+            "initialValue": "meets",
+            "value": "meets",
+            "category": "k1"
+          },
+          {
+            "initialValue": "an",
+            "value": "an",
+            "category": "k1"
+          },
+          {
+            "initialValue": "unfamiliar",
+            "value": "unfamiliar",
+            "category": "k2"
+          },
+          {
+            "initialValue": "word",
+            "value": "word",
+            "category": "k1"
+          },
+          {
+            "initialValue": "inside",
+            "value": "inside",
+            "category": "k1"
+          },
+          {
+            "initialValue": "a",
+            "value": "a",
+            "category": "k1"
+          },
+          {
+            "initialValue": "sentence,",
+            "value": "sentence",
+            "category": "k1"
+          },
+          {
+            "initialValue": "the",
+            "value": "the",
+            "category": "k1"
+          },
+          {
+            "initialValue": "surrounding",
+            "value": "surrounding",
+            "category": "k2"
+          },
+          {
+            "initialValue": "words",
+            "value": "words",
+            "category": "k1"
+          },
+          {
+            "initialValue": "often",
+            "value": "often",
+            "category": "k1"
+          },
+          {
+            "initialValue": "suggest",
+            "value": "suggest",
+            "category": "k2"
+          },
+          {
+            "initialValue": "its",
+            "value": "its",
+            "category": "k1"
+          },
+          {
+            "initialValue": "meaning,",
+            "value": "meaning",
+            "category": "k1"
+          },
+          {
+            "initialValue": "and",
+            "value": "and",
+            "category": "k1"
+          },
+          {
+            "initialValue": "that",
+            "value": "that",
+            "category": "k1"
+          },
+          {
+            "initialValue": "guess",
+            "value": "guess",
+            "category": "k2"
+          },
+          {
+            "initialValue": "becomes",
+            "value": "becomes",
+            "category": "k1"
+          },
+          {
+            "initialValue": "easier",
+            "value": "easier",
+            "category": "k1"
+          },
+          {
+            "initialValue": "to",
+            "value": "to",
+            "category": "k1"
+          },
+          {
+            "initialValue": "remember",
+            "value": "remember",
+            "category": "k1"
+          },
+          {
+            "initialValue": "than",
+            "value": "than",
+            "category": "k1"
+          },
+          {
+            "initialValue": "a",
+            "value": "a",
+            "category": "k1"
+          },
+          {
+            "initialValue": "definition",
+            "value": "definition",
+            "category": "k1"
+          },
+          {
+            "initialValue": "copied",
+            "value": "copied",
+            "category": "k2"
+          },
+          {
+            "initialValue": "from",
+            "value": "from",
+            "category": "k1"
+          },
+          {
+            "initialValue": "a",
+            "value": "a",
+            "category": "k1"
+          },
+          {
+            "initialValue": "list.",
+            "value": "list",
+            "category": "k1"
+          },
+          {
+            "initialValue": "Teachers",
+            "value": "teachers",
+            "category": "k1"
+          },
+          {
+            "initialValue": "have",
+            "value": "have",
+            "category": "k1"
+          },
+          {
+            "initialValue": "known",
+            "value": "known",
+            "category": "k1"
+          },
+          {
+            "initialValue": "this",
+            "value": "this",
+            "category": "k1"
+          },
+          {
+            "initialValue": "for",
+            "value": "for",
+            "category": "k1"
+          },
+          {
+            "initialValue": "a",
+            "value": "a",
+            "category": "k1"
+          },
+          {
+            "initialValue": "long",
+            "value": "long",
+            "category": "k1"
+          },
+          {
+            "initialValue": "time.",
+            "value": "time",
+            "category": "k1"
+          },
+          {
+            "initialValue": "The",
+            "value": "the",
+            "category": "k1"
+          },
+          {
+            "initialValue": "difficulty",
+            "value": "difficulty",
+            "category": "k1"
+          },
+          {
+            "initialValue": "is",
+            "value": "is",
+            "category": "k1"
+          },
+          {
+            "initialValue": "that",
+            "value": "that",
+            "category": "k1"
+          },
+          {
+            "initialValue": "useful",
+            "value": "useful",
+            "category": "k1"
+          },
+          {
+            "initialValue": "words",
+            "value": "words",
+            "category": "k1"
+          },
+          {
+            "initialValue": "appear",
+            "value": "appear",
+            "category": "k1"
+          },
+          {
+            "initialValue": "rarely,",
+            "value": "rarely",
+            "category": "k2"
+          },
+          {
+            "initialValue": "so",
+            "value": "so",
+            "category": "k1"
+          },
+          {
+            "initialValue": "a",
+            "value": "a",
+            "category": "k1"
+          },
+          {
+            "initialValue": "reader",
+            "value": null,
+            "category": null
+          },
+          {
+            "initialValue": "must",
+            "value": "must",
+            "category": "k1"
+          },
+          {
+            "initialValue": "cover",
+            "value": "cover",
+            "category": "k1"
+          },
+          {
+            "initialValue": "a",
+            "value": "a",
+            "category": "k1"
+          },
+          {
+            "initialValue": "great",
+            "value": "great",
+            "category": "k1"
+          },
+          {
+            "initialValue": "deal",
+            "value": "deal",
+            "category": "k2"
+          },
+          {
+            "initialValue": "of",
+            "value": "of",
+            "category": "k1"
+          },
+          {
+            "initialValue": "text",
+            "value": "text",
+            "category": "k1"
+          },
+          {
+            "initialValue": "before",
+            "value": "before",
+            "category": "k1"
+          },
+          {
+            "initialValue": "meeting",
+            "value": "meeting",
+            "category": "k1"
+          },
+          {
+            "initialValue": "them",
+            "value": "them",
+            "category": "k1"
+          },
+          {
+            "initialValue": "often",
+            "value": "often",
+            "category": "k1"
+          },
+          {
+            "initialValue": "enough",
+            "value": "enough",
+            "category": "k1"
+          },
+          {
+            "initialValue": "to",
+            "value": "to",
+            "category": "k1"
+          },
+          {
+            "initialValue": "retain",
+            "value": "retain",
+            "category": "k3"
+          },
+          {
+            "initialValue": "them.",
+            "value": "them",
+            "category": "k1"
+          },
+          {
+            "initialValue": "This",
+            "value": "this",
+            "category": "k1"
+          },
+          {
+            "initialValue": "is",
+            "value": "is",
+            "category": "k1"
+          },
+          {
+            "initialValue": "why",
+            "value": "why",
+            "category": "k1"
+          },
+          {
+            "initialValue": "word",
+            "value": "word",
+            "category": "k1"
+          },
+          {
+            "initialValue": "lists",
+            "value": "lists",
+            "category": "k1"
+          },
+          {
+            "initialValue": "matter.",
+            "value": "matter",
+            "category": "k1"
+          },
+          {
+            "initialValue": "A",
+            "value": "a",
+            "category": "k1"
+          },
+          {
+            "initialValue": "list",
+            "value": "list",
+            "category": "k1"
+          },
+          {
+            "initialValue": "tells",
+            "value": "tells",
+            "category": "k1"
+          },
+          {
+            "initialValue": "a",
+            "value": "a",
+            "category": "k1"
+          },
+          {
+            "initialValue": "teacher",
+            "value": "teacher",
+            "category": "k1"
+          },
+          {
+            "initialValue": "which",
+            "value": "which",
+            "category": "k1"
+          },
+          {
+            "initialValue": "words",
+            "value": "words",
+            "category": "k1"
+          },
+          {
+            "initialValue": "repay",
+            "value": "repay",
+            "category": "med"
+          },
+          {
+            "initialValue": "direct",
+            "value": "direct",
+            "category": "k1"
+          },
+          {
+            "initialValue": "attention",
+            "value": "attention",
+            "category": "k2"
+          },
+          {
+            "initialValue": "and",
+            "value": "and",
+            "category": "k1"
+          },
+          {
+            "initialValue": "which",
+            "value": "which",
+            "category": "k1"
+          },
+          {
+            "initialValue": "will",
+            "value": "will",
+            "category": "k1"
+          },
+          {
+            "initialValue": "arrive",
+            "value": "arrive",
+            "category": "k2"
+          },
+          {
+            "initialValue": "on",
+            "value": "on",
+            "category": "k1"
+          },
+          {
+            "initialValue": "their",
+            "value": "their",
+            "category": "k1"
+          },
+          {
+            "initialValue": "own",
+            "value": "own",
+            "category": "k2"
+          },
+          {
+            "initialValue": "through",
+            "value": "through",
+            "category": "k1"
+          },
+          {
+            "initialValue": "ordinary",
+            "value": "ordinary",
+            "category": "k3"
+          },
+          {
+            "initialValue": "reading.",
+            "value": "reading",
+            "category": "k1"
+          },
+          {
+            "initialValue": "The",
+            "value": "the",
+            "category": "k1"
+          },
+          {
+            "initialValue": "lists",
+            "value": "lists",
+            "category": "k1"
+          },
+          {
+            "initialValue": "in",
+            "value": "in",
+            "category": "k1"
+          },
+          {
+            "initialValue": "this",
+            "value": "this",
+            "category": "k1"
+          },
+          {
+            "initialValue": "study",
+            "value": "study",
+            "category": "k1"
+          },
+          {
+            "initialValue": "group",
+            "value": "group",
+            "category": "k1"
+          },
+          {
+            "initialValue": "words",
+            "value": "words",
+            "category": "k1"
+          },
+          {
+            "initialValue": "by",
+            "value": "by",
+            "category": "k1"
+          },
+          {
+            "initialValue": "how",
+            "value": "how",
+            "category": "k1"
+          },
+          {
+            "initialValue": "frequently",
+            "value": "frequently",
+            "category": "k2"
+          },
+          {
+            "initialValue": "they",
+            "value": "they",
+            "category": "k1"
+          },
+          {
+            "initialValue": "occur,",
+            "value": "occur",
+            "category": "k1"
+          },
+          {
+            "initialValue": "from",
+            "value": "from",
+            "category": "k1"
+          },
+          {
+            "initialValue": "the",
+            "value": "the",
+            "category": "k1"
+          },
+          {
+            "initialValue": "most",
+            "value": "most",
+            "category": "k1"
+          },
+          {
+            "initialValue": "common",
+            "value": "common",
+            "category": "k1"
+          },
+          {
+            "initialValue": "thousand",
+            "value": "thousand",
+            "category": "k1"
+          },
+          {
+            "initialValue": "through",
+            "value": "through",
+            "category": "k1"
+          },
+          {
+            "initialValue": "the",
+            "value": "the",
+            "category": "k1"
+          },
+          {
+            "initialValue": "academic",
+            "value": "academic",
+            "category": "k2"
+          },
+          {
+            "initialValue": "vocabulary",
+            "value": "vocabulary",
+            "category": "k1"
+          },
+          {
+            "initialValue": "that",
+            "value": "that",
+            "category": "k1"
+          },
+          {
+            "initialValue": "university",
+            "value": "university",
+            "category": "k2"
+          },
+          {
+            "initialValue": "courses",
+            "value": "courses",
+            "category": "k1"
+          },
+          {
+            "initialValue": "assume",
+            "value": "assume",
+            "category": "k1"
+          },
+          {
+            "initialValue": "every",
+            "value": "every",
+            "category": "k1"
+          },
+          {
+            "initialValue": "student",
+            "value": "student",
+            "category": "k1"
+          },
+          {
+            "initialValue": "already",
+            "value": "already",
+            "category": "k1"
+          },
+          {
+            "initialValue": "understands.",
+            "value": "understands",
+            "category": "k1"
+          }
+        ],
+        "sentenceCount": 7,
+        "fleschReadingScore": 51.18136363636367,
+        "statistics": {
+          "wordCount": {
+            "offList": 1,
+            "k1": 114,
+            "k2": 13,
+            "k3": 3,
+            "awl": 0,
+            "baw": 0,
+            "stem": 0,
+            "hi": 0,
+            "med": 1,
+            "low": 0,
+            "total": 132
+          },
+          "wordPercentage": {
+            "offList": 0.007575757575757576,
+            "k1": 0.8636363636363636,
+            "k2": 0.09848484848484848,
+            "k3": 0.022727272727272728,
+            "awl": 0,
+            "baw": 0,
+            "stem": 0,
+            "hi": 0,
+            "med": 0.007575757575757576,
+            "low": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "empty-ish",
+      "pins": "Degenerate input: punctuation and whitespace only must not crash or divide by zero.",
+      "result": {
+        "words": [
+          {
+            "initialValue": "...",
+            "value": null,
+            "category": null
+          },
+          {
+            "initialValue": "",
+            "value": null,
+            "category": null
+          },
+          {
+            "initialValue": "???",
+            "value": null,
+            "category": null
+          }
+        ],
+        "sentenceCount": 1,
+        "fleschReadingScore": 0,
+        "statistics": {
+          "wordCount": {
+            "offList": 0,
+            "k1": 0,
+            "k2": 0,
+            "k3": 0,
+            "awl": 0,
+            "baw": 0,
+            "stem": 0,
+            "hi": 0,
+            "med": 0,
+            "low": 0,
+            "total": 0
+          },
+          "wordPercentage": {
+            "offList": 0,
+            "k1": 0,
+            "k2": 0,
+            "k3": 0,
+            "awl": 0,
+            "baw": 0,
+            "stem": 0,
+            "hi": 0,
+            "med": 0,
+            "low": 0
+          }
+        }
+      }
+    }
+  ]
+}

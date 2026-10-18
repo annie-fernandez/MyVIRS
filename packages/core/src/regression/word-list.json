@@ -1,0 +1,1389 @@
+{
+  "$comment": "GENERATED FILE — frozen word-list entries the fixture passages touch.",
+  "entries": [
+    {
+      "value": "a",
+      "category": "k1"
+    },
+    {
+      "value": "academic",
+      "category": "hi"
+    },
+    {
+      "value": "academic",
+      "category": "k2"
+    },
+    {
+      "value": "adequate",
+      "category": "hi"
+    },
+    {
+      "value": "adequate",
+      "category": "k3"
+    },
+    {
+      "value": "after",
+      "category": "hi"
+    },
+    {
+      "value": "after",
+      "category": "k1"
+    },
+    {
+      "value": "already",
+      "category": "k1"
+    },
+    {
+      "value": "an",
+      "category": "k1"
+    },
+    {
+      "value": "analyses",
+      "category": "hi"
+    },
+    {
+      "value": "analyses",
+      "category": "k1"
+    },
+    {
+      "value": "analysis",
+      "category": "awl"
+    },
+    {
+      "value": "analysis",
+      "category": "baw"
+    },
+    {
+      "value": "analysis",
+      "category": "hi"
+    },
+    {
+      "value": "analysis",
+      "category": "k1"
+    },
+    {
+      "value": "analyzed",
+      "category": "hi"
+    },
+    {
+      "value": "analyzed",
+      "category": "k1"
+    },
+    {
+      "value": "and",
+      "category": "k1"
+    },
+    {
+      "value": "appear",
+      "category": "hi"
+    },
+    {
+      "value": "appear",
+      "category": "k1"
+    },
+    {
+      "value": "arrive",
+      "category": "hi"
+    },
+    {
+      "value": "arrive",
+      "category": "k2"
+    },
+    {
+      "value": "assume",
+      "category": "awl"
+    },
+    {
+      "value": "assume",
+      "category": "baw"
+    },
+    {
+      "value": "assume",
+      "category": "hi"
+    },
+    {
+      "value": "assume",
+      "category": "k1"
+    },
+    {
+      "value": "attention",
+      "category": "hi"
+    },
+    {
+      "value": "attention",
+      "category": "k2"
+    },
+    {
+      "value": "become",
+      "category": "hi"
+    },
+    {
+      "value": "become",
+      "category": "k1"
+    },
+    {
+      "value": "becomes",
+      "category": "hi"
+    },
+    {
+      "value": "becomes",
+      "category": "k1"
+    },
+    {
+      "value": "beetle",
+      "category": "hi"
+    },
+    {
+      "value": "beetle",
+      "category": "k3"
+    },
+    {
+      "value": "before",
+      "category": "k1"
+    },
+    {
+      "value": "begin",
+      "category": "hi"
+    },
+    {
+      "value": "begin",
+      "category": "k1"
+    },
+    {
+      "value": "begins",
+      "category": "hi"
+    },
+    {
+      "value": "begins",
+      "category": "k1"
+    },
+    {
+      "value": "blank",
+      "category": "hi"
+    },
+    {
+      "value": "blank",
+      "category": "k3"
+    },
+    {
+      "value": "build",
+      "category": "hi"
+    },
+    {
+      "value": "build",
+      "category": "k1"
+    },
+    {
+      "value": "but",
+      "category": "hi"
+    },
+    {
+      "value": "but",
+      "category": "k1"
+    },
+    {
+      "value": "by",
+      "category": "hi"
+    },
+    {
+      "value": "by",
+      "category": "k1"
+    },
+    {
+      "value": "carefully",
+      "category": "hi"
+    },
+    {
+      "value": "carefully",
+      "category": "k1"
+    },
+    {
+      "value": "cat",
+      "category": "hi"
+    },
+    {
+      "value": "cat",
+      "category": "k2"
+    },
+    {
+      "value": "chemical",
+      "category": "hi"
+    },
+    {
+      "value": "chemical",
+      "category": "k1"
+    },
+    {
+      "value": "chemical",
+      "category": "stem"
+    },
+    {
+      "value": "child",
+      "category": "hi"
+    },
+    {
+      "value": "child",
+      "category": "k1"
+    },
+    {
+      "value": "children",
+      "category": "hi"
+    },
+    {
+      "value": "children",
+      "category": "k1"
+    },
+    {
+      "value": "chilled",
+      "category": "med"
+    },
+    {
+      "value": "common",
+      "category": "hi"
+    },
+    {
+      "value": "common",
+      "category": "k1"
+    },
+    {
+      "value": "conclusion",
+      "category": "awl"
+    },
+    {
+      "value": "conclusion",
+      "category": "baw"
+    },
+    {
+      "value": "conclusion",
+      "category": "hi"
+    },
+    {
+      "value": "conclusion",
+      "category": "k1"
+    },
+    {
+      "value": "conclusions",
+      "category": "hi"
+    },
+    {
+      "value": "conclusions",
+      "category": "k1"
+    },
+    {
+      "value": "consistent",
+      "category": "hi"
+    },
+    {
+      "value": "consistent",
+      "category": "k2"
+    },
+    {
+      "value": "convert",
+      "category": "awl"
+    },
+    {
+      "value": "convert",
+      "category": "baw"
+    },
+    {
+      "value": "convert",
+      "category": "hi"
+    },
+    {
+      "value": "convert",
+      "category": "k1"
+    },
+    {
+      "value": "converts",
+      "category": "hi"
+    },
+    {
+      "value": "converts",
+      "category": "k1"
+    },
+    {
+      "value": "copied",
+      "category": "hi"
+    },
+    {
+      "value": "copied",
+      "category": "k2"
+    },
+    {
+      "value": "course",
+      "category": "hi"
+    },
+    {
+      "value": "course",
+      "category": "k1"
+    },
+    {
+      "value": "courses",
+      "category": "hi"
+    },
+    {
+      "value": "courses",
+      "category": "k1"
+    },
+    {
+      "value": "cover",
+      "category": "hi"
+    },
+    {
+      "value": "cover",
+      "category": "k1"
+    },
+    {
+      "value": "coworker",
+      "category": "k1"
+    },
+    {
+      "value": "data",
+      "category": "awl"
+    },
+    {
+      "value": "data",
+      "category": "baw"
+    },
+    {
+      "value": "data",
+      "category": "hi"
+    },
+    {
+      "value": "data",
+      "category": "k1"
+    },
+    {
+      "value": "deal",
+      "category": "hi"
+    },
+    {
+      "value": "deal",
+      "category": "k2"
+    },
+    {
+      "value": "definition",
+      "category": "awl"
+    },
+    {
+      "value": "definition",
+      "category": "baw"
+    },
+    {
+      "value": "definition",
+      "category": "hi"
+    },
+    {
+      "value": "definition",
+      "category": "k1"
+    },
+    {
+      "value": "difficulty",
+      "category": "hi"
+    },
+    {
+      "value": "difficulty",
+      "category": "k1"
+    },
+    {
+      "value": "difficulty",
+      "category": "k2"
+    },
+    {
+      "value": "direct",
+      "category": "hi"
+    },
+    {
+      "value": "direct",
+      "category": "k1"
+    },
+    {
+      "value": "easier",
+      "category": "hi"
+    },
+    {
+      "value": "easier",
+      "category": "k1"
+    },
+    {
+      "value": "eluded",
+      "category": "med"
+    },
+    {
+      "value": "energy",
+      "category": "awl"
+    },
+    {
+      "value": "energy",
+      "category": "hi"
+    },
+    {
+      "value": "energy",
+      "category": "k1"
+    },
+    {
+      "value": "enough",
+      "category": "k1"
+    },
+    {
+      "value": "entomologist",
+      "category": "med"
+    },
+    {
+      "value": "eventually",
+      "category": "hi"
+    },
+    {
+      "value": "eventually",
+      "category": "k2"
+    },
+    {
+      "value": "every",
+      "category": "hi"
+    },
+    {
+      "value": "every",
+      "category": "k1"
+    },
+    {
+      "value": "fire",
+      "category": "hi"
+    },
+    {
+      "value": "fire",
+      "category": "k1"
+    },
+    {
+      "value": "for",
+      "category": "hi"
+    },
+    {
+      "value": "for",
+      "category": "k1"
+    },
+    {
+      "value": "frequently",
+      "category": "hi"
+    },
+    {
+      "value": "frequently",
+      "category": "k2"
+    },
+    {
+      "value": "from",
+      "category": "hi"
+    },
+    {
+      "value": "from",
+      "category": "k1"
+    },
+    {
+      "value": "great",
+      "category": "hi"
+    },
+    {
+      "value": "great",
+      "category": "k1"
+    },
+    {
+      "value": "group",
+      "category": "hi"
+    },
+    {
+      "value": "group",
+      "category": "k1"
+    },
+    {
+      "value": "growth",
+      "category": "hi"
+    },
+    {
+      "value": "growth",
+      "category": "k1"
+    },
+    {
+      "value": "guess",
+      "category": "hi"
+    },
+    {
+      "value": "guess",
+      "category": "k2"
+    },
+    {
+      "value": "have",
+      "category": "hi"
+    },
+    {
+      "value": "have",
+      "category": "k1"
+    },
+    {
+      "value": "here",
+      "category": "hi"
+    },
+    {
+      "value": "here",
+      "category": "k1"
+    },
+    {
+      "value": "how",
+      "category": "hi"
+    },
+    {
+      "value": "how",
+      "category": "k1"
+    },
+    {
+      "value": "in",
+      "category": "hi"
+    },
+    {
+      "value": "in",
+      "category": "k1"
+    },
+    {
+      "value": "indicate",
+      "category": "awl"
+    },
+    {
+      "value": "indicate",
+      "category": "baw"
+    },
+    {
+      "value": "indicate",
+      "category": "hi"
+    },
+    {
+      "value": "indicate",
+      "category": "k1"
+    },
+    {
+      "value": "indicates",
+      "category": "hi"
+    },
+    {
+      "value": "indicates",
+      "category": "k1"
+    },
+    {
+      "value": "inside",
+      "category": "hi"
+    },
+    {
+      "value": "inside",
+      "category": "k1"
+    },
+    {
+      "value": "into",
+      "category": "k1"
+    },
+    {
+      "value": "is",
+      "category": "hi"
+    },
+    {
+      "value": "is",
+      "category": "k1"
+    },
+    {
+      "value": "it",
+      "category": "k1"
+    },
+    {
+      "value": "its",
+      "category": "hi"
+    },
+    {
+      "value": "its",
+      "category": "k1"
+    },
+    {
+      "value": "known",
+      "category": "hi"
+    },
+    {
+      "value": "known",
+      "category": "k1"
+    },
+    {
+      "value": "large",
+      "category": "hi"
+    },
+    {
+      "value": "large",
+      "category": "k1"
+    },
+    {
+      "value": "light",
+      "category": "hi"
+    },
+    {
+      "value": "light",
+      "category": "k1"
+    },
+    {
+      "value": "line",
+      "category": "hi"
+    },
+    {
+      "value": "line",
+      "category": "k1"
+    },
+    {
+      "value": "list",
+      "category": "hi"
+    },
+    {
+      "value": "list",
+      "category": "k1"
+    },
+    {
+      "value": "lists",
+      "category": "hi"
+    },
+    {
+      "value": "lists",
+      "category": "k1"
+    },
+    {
+      "value": "long",
+      "category": "hi"
+    },
+    {
+      "value": "long",
+      "category": "k1"
+    },
+    {
+      "value": "made",
+      "category": "hi"
+    },
+    {
+      "value": "made",
+      "category": "k1"
+    },
+    {
+      "value": "mat",
+      "category": "hi"
+    },
+    {
+      "value": "mat",
+      "category": "k3"
+    },
+    {
+      "value": "matter",
+      "category": "hi"
+    },
+    {
+      "value": "matter",
+      "category": "k1"
+    },
+    {
+      "value": "matter",
+      "category": "stem"
+    },
+    {
+      "value": "meaning",
+      "category": "hi"
+    },
+    {
+      "value": "meaning",
+      "category": "k1"
+    },
+    {
+      "value": "meet",
+      "category": "hi"
+    },
+    {
+      "value": "meet",
+      "category": "k1"
+    },
+    {
+      "value": "meeting",
+      "category": "hi"
+    },
+    {
+      "value": "meeting",
+      "category": "k1"
+    },
+    {
+      "value": "meets",
+      "category": "hi"
+    },
+    {
+      "value": "meets",
+      "category": "k1"
+    },
+    {
+      "value": "method",
+      "category": "awl"
+    },
+    {
+      "value": "method",
+      "category": "baw"
+    },
+    {
+      "value": "method",
+      "category": "hi"
+    },
+    {
+      "value": "method",
+      "category": "k1"
+    },
+    {
+      "value": "most",
+      "category": "hi"
+    },
+    {
+      "value": "most",
+      "category": "k1"
+    },
+    {
+      "value": "must",
+      "category": "hi"
+    },
+    {
+      "value": "must",
+      "category": "k1"
+    },
+    {
+      "value": "need",
+      "category": "hi"
+    },
+    {
+      "value": "need",
+      "category": "k1"
+    },
+    {
+      "value": "nonessential",
+      "category": "hi"
+    },
+    {
+      "value": "nonessential",
+      "category": "k1"
+    },
+    {
+      "value": "occur",
+      "category": "awl"
+    },
+    {
+      "value": "occur",
+      "category": "baw"
+    },
+    {
+      "value": "occur",
+      "category": "hi"
+    },
+    {
+      "value": "occur",
+      "category": "k1"
+    },
+    {
+      "value": "of",
+      "category": "k1"
+    },
+    {
+      "value": "often",
+      "category": "hi"
+    },
+    {
+      "value": "often",
+      "category": "k1"
+    },
+    {
+      "value": "on",
+      "category": "hi"
+    },
+    {
+      "value": "on",
+      "category": "k1"
+    },
+    {
+      "value": "ordinary",
+      "category": "hi"
+    },
+    {
+      "value": "ordinary",
+      "category": "k3"
+    },
+    {
+      "value": "own",
+      "category": "hi"
+    },
+    {
+      "value": "own",
+      "category": "k2"
+    },
+    {
+      "value": "paragraph",
+      "category": "hi"
+    },
+    {
+      "value": "paragraph",
+      "category": "k2"
+    },
+    {
+      "value": "photosynthesis",
+      "category": "hi"
+    },
+    {
+      "value": "photosynthesis",
+      "category": "k2"
+    },
+    {
+      "value": "plant",
+      "category": "hi"
+    },
+    {
+      "value": "plant",
+      "category": "k1"
+    },
+    {
+      "value": "plants",
+      "category": "hi"
+    },
+    {
+      "value": "plants",
+      "category": "k1"
+    },
+    {
+      "value": "poorly",
+      "category": "hi"
+    },
+    {
+      "value": "poorly",
+      "category": "k2"
+    },
+    {
+      "value": "rarely",
+      "category": "hi"
+    },
+    {
+      "value": "rarely",
+      "category": "k2"
+    },
+    {
+      "value": "reading",
+      "category": "hi"
+    },
+    {
+      "value": "reading",
+      "category": "k1"
+    },
+    {
+      "value": "reliable",
+      "category": "hi"
+    },
+    {
+      "value": "reliable",
+      "category": "k3"
+    },
+    {
+      "value": "remain",
+      "category": "hi"
+    },
+    {
+      "value": "remain",
+      "category": "k1"
+    },
+    {
+      "value": "remember",
+      "category": "hi"
+    },
+    {
+      "value": "remember",
+      "category": "k1"
+    },
+    {
+      "value": "repay",
+      "category": "med"
+    },
+    {
+      "value": "request",
+      "category": "hi"
+    },
+    {
+      "value": "require",
+      "category": "awl"
+    },
+    {
+      "value": "require",
+      "category": "baw"
+    },
+    {
+      "value": "require",
+      "category": "hi"
+    },
+    {
+      "value": "require",
+      "category": "k1"
+    },
+    {
+      "value": "requires",
+      "category": "hi"
+    },
+    {
+      "value": "requires",
+      "category": "k1"
+    },
+    {
+      "value": "research",
+      "category": "awl"
+    },
+    {
+      "value": "research",
+      "category": "baw"
+    },
+    {
+      "value": "research",
+      "category": "hi"
+    },
+    {
+      "value": "research",
+      "category": "k1"
+    },
+    {
+      "value": "retain",
+      "category": "awl"
+    },
+    {
+      "value": "retain",
+      "category": "hi"
+    },
+    {
+      "value": "retain",
+      "category": "k3"
+    },
+    {
+      "value": "said",
+      "category": "hi"
+    },
+    {
+      "value": "said",
+      "category": "k1"
+    },
+    {
+      "value": "sat",
+      "category": "hi"
+    },
+    {
+      "value": "sat",
+      "category": "k1"
+    },
+    {
+      "value": "searched",
+      "category": "hi"
+    },
+    {
+      "value": "searched",
+      "category": "k2"
+    },
+    {
+      "value": "second",
+      "category": "hi"
+    },
+    {
+      "value": "second",
+      "category": "k1"
+    },
+    {
+      "value": "sentence",
+      "category": "hi"
+    },
+    {
+      "value": "sentence",
+      "category": "k1"
+    },
+    {
+      "value": "she",
+      "category": "hi"
+    },
+    {
+      "value": "she",
+      "category": "k1"
+    },
+    {
+      "value": "significant",
+      "category": "hi"
+    },
+    {
+      "value": "significant",
+      "category": "k1"
+    },
+    {
+      "value": "slept",
+      "category": "hi"
+    },
+    {
+      "value": "slept",
+      "category": "k2"
+    },
+    {
+      "value": "slow",
+      "category": "hi"
+    },
+    {
+      "value": "slow",
+      "category": "k1"
+    },
+    {
+      "value": "slow",
+      "category": "k2"
+    },
+    {
+      "value": "so",
+      "category": "hi"
+    },
+    {
+      "value": "so",
+      "category": "k1"
+    },
+    {
+      "value": "stop",
+      "category": "hi"
+    },
+    {
+      "value": "stop",
+      "category": "k1"
+    },
+    {
+      "value": "stops",
+      "category": "hi"
+    },
+    {
+      "value": "stops",
+      "category": "k1"
+    },
+    {
+      "value": "student",
+      "category": "hi"
+    },
+    {
+      "value": "student",
+      "category": "k1"
+    },
+    {
+      "value": "study",
+      "category": "hi"
+    },
+    {
+      "value": "study",
+      "category": "k1"
+    },
+    {
+      "value": "sufficient",
+      "category": "awl"
+    },
+    {
+      "value": "sufficient",
+      "category": "hi"
+    },
+    {
+      "value": "sufficient",
+      "category": "k3"
+    },
+    {
+      "value": "suggest",
+      "category": "hi"
+    },
+    {
+      "value": "suggest",
+      "category": "k2"
+    },
+    {
+      "value": "sunlight",
+      "category": "k1"
+    },
+    {
+      "value": "surrounding",
+      "category": "hi"
+    },
+    {
+      "value": "surrounding",
+      "category": "k2"
+    },
+    {
+      "value": "teacher",
+      "category": "hi"
+    },
+    {
+      "value": "teacher",
+      "category": "k1"
+    },
+    {
+      "value": "teachers",
+      "category": "hi"
+    },
+    {
+      "value": "teachers",
+      "category": "k1"
+    },
+    {
+      "value": "tell",
+      "category": "hi"
+    },
+    {
+      "value": "tell",
+      "category": "k1"
+    },
+    {
+      "value": "tells",
+      "category": "hi"
+    },
+    {
+      "value": "tells",
+      "category": "k1"
+    },
+    {
+      "value": "text",
+      "category": "hi"
+    },
+    {
+      "value": "text",
+      "category": "k1"
+    },
+    {
+      "value": "than",
+      "category": "hi"
+    },
+    {
+      "value": "than",
+      "category": "k1"
+    },
+    {
+      "value": "that",
+      "category": "hi"
+    },
+    {
+      "value": "that",
+      "category": "k1"
+    },
+    {
+      "value": "the",
+      "category": "k1"
+    },
+    {
+      "value": "their",
+      "category": "hi"
+    },
+    {
+      "value": "their",
+      "category": "k1"
+    },
+    {
+      "value": "them",
+      "category": "hi"
+    },
+    {
+      "value": "them",
+      "category": "k1"
+    },
+    {
+      "value": "then",
+      "category": "hi"
+    },
+    {
+      "value": "then",
+      "category": "k1"
+    },
+    {
+      "value": "they",
+      "category": "hi"
+    },
+    {
+      "value": "they",
+      "category": "k1"
+    },
+    {
+      "value": "this",
+      "category": "k1"
+    },
+    {
+      "value": "thorough",
+      "category": "med"
+    },
+    {
+      "value": "thoroughly",
+      "category": "med"
+    },
+    {
+      "value": "thousand",
+      "category": "hi"
+    },
+    {
+      "value": "thousand",
+      "category": "k1"
+    },
+    {
+      "value": "through",
+      "category": "hi"
+    },
+    {
+      "value": "through",
+      "category": "k1"
+    },
+    {
+      "value": "throughout",
+      "category": "k1"
+    },
+    {
+      "value": "time",
+      "category": "hi"
+    },
+    {
+      "value": "time",
+      "category": "k1"
+    },
+    {
+      "value": "timed",
+      "category": "hi"
+    },
+    {
+      "value": "timed",
+      "category": "k1"
+    },
+    {
+      "value": "to",
+      "category": "k1"
+    },
+    {
+      "value": "understand",
+      "category": "hi"
+    },
+    {
+      "value": "understand",
+      "category": "k1"
+    },
+    {
+      "value": "understands",
+      "category": "hi"
+    },
+    {
+      "value": "understands",
+      "category": "k1"
+    },
+    {
+      "value": "unfamiliar",
+      "category": "hi"
+    },
+    {
+      "value": "unfamiliar",
+      "category": "k2"
+    },
+    {
+      "value": "university",
+      "category": "hi"
+    },
+    {
+      "value": "university",
+      "category": "k2"
+    },
+    {
+      "value": "useful",
+      "category": "hi"
+    },
+    {
+      "value": "useful",
+      "category": "k1"
+    },
+    {
+      "value": "vocabulary",
+      "category": "hi"
+    },
+    {
+      "value": "vocabulary",
+      "category": "k1"
+    },
+    {
+      "value": "warm",
+      "category": "hi"
+    },
+    {
+      "value": "warm",
+      "category": "k1"
+    },
+    {
+      "value": "way",
+      "category": "hi"
+    },
+    {
+      "value": "way",
+      "category": "k1"
+    },
+    {
+      "value": "were",
+      "category": "hi"
+    },
+    {
+      "value": "were",
+      "category": "k1"
+    },
+    {
+      "value": "when",
+      "category": "hi"
+    },
+    {
+      "value": "when",
+      "category": "k1"
+    },
+    {
+      "value": "which",
+      "category": "k1"
+    },
+    {
+      "value": "who",
+      "category": "hi"
+    },
+    {
+      "value": "who",
+      "category": "k1"
+    },
+    {
+      "value": "why",
+      "category": "hi"
+    },
+    {
+      "value": "why",
+      "category": "k1"
+    },
+    {
+      "value": "widely",
+      "category": "hi"
+    },
+    {
+      "value": "widely",
+      "category": "k1"
+    },
+    {
+      "value": "will",
+      "category": "hi"
+    },
+    {
+      "value": "will",
+      "category": "k1"
+    },
+    {
+      "value": "without",
+      "category": "hi"
+    },
+    {
+      "value": "without",
+      "category": "k1"
+    },
+    {
+      "value": "word",
+      "category": "hi"
+    },
+    {
+      "value": "word",
+      "category": "k1"
+    },
+    {
+      "value": "words",
+      "category": "hi"
+    },
+    {
+      "value": "words",
+      "category": "k1"
+    }
+  ]
+}
