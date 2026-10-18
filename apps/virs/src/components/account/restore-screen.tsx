@@ -1,6 +1,6 @@
 "use client";
 
-import { Alert, Button, Group, PasswordInput, SimpleGrid, Stack } from "@mantine/core";
+import { Alert, Button, Group, PasswordInput, Stack } from "@mantine/core";
 import { schemaResolver, useForm } from "@mantine/form";
 import { IconCheck, IconLogin, IconX } from "@tabler/icons-react";
 import { useSearchParams } from "next/navigation";
@@ -10,7 +10,7 @@ import { Marker, PageHeader, Surface } from "@/components/ui";
 import { newPasswordSchema, type NewPasswordValues } from "@/lib/account-schemas";
 import { authClient } from "@/lib/auth-client";
 
-const BAD_LINK = "This reset link is invalid or has expired. Use Forgot password in the My Profile menu to get a new one.";
+const BAD_LINK = "This reset link is invalid or has expired. Use “Forgot your password?” in the Log in pop-up to get a new one.";
 
 /** Where the password-reset email lands (/restore?token=…). */
 export function RestoreScreen() {
@@ -46,11 +46,11 @@ export function RestoreScreen() {
         }
         description="Pick a password you haven't used here before."
       />
-      <Surface maw={640}>
+      <Surface maw={460}>
         {done ? (
           <Stack gap="md">
             <Alert color="virsGreen" icon={<IconCheck size={18} />} title="Password changed">
-              You can log in with your new password now. Any other devices have been signed out.
+              Log in with your user name (or email) and the new password. Any other devices have been signed out.
             </Alert>
             <Group justify="flex-end">
               <Button component={ShellLink} href="/dashboard?login=1" leftSection={<IconLogin size={16} />}>
@@ -60,15 +60,13 @@ export function RestoreScreen() {
           </Stack>
         ) : !token ? (
           <Alert color="red" icon={<IconX size={18} />}>
-            {error ?? "This page needs the link from your password reset email. Use Forgot password in the My Profile menu to get one."}
+            {error ?? "This page needs the link from your password reset email. Use “Forgot your password?” in the Log in pop-up to get one."}
           </Alert>
         ) : (
           <form onSubmit={form.onSubmit(onSubmit)}>
             <Stack gap="md">
-              <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="md">
-                <PasswordInput label="New password" description="At least 8 characters." autoComplete="new-password" data-autofocus key={form.key("password")} {...form.getInputProps("password")} />
-                <PasswordInput label="Confirm new password" autoComplete="new-password" key={form.key("confirmPassword")} {...form.getInputProps("confirmPassword")} />
-              </SimpleGrid>
+              <PasswordInput label="New password" description="At least 8 characters." autoComplete="new-password" data-autofocus key={form.key("password")} {...form.getInputProps("password")} />
+              <PasswordInput label="Confirm new password" autoComplete="new-password" key={form.key("confirmPassword")} {...form.getInputProps("confirmPassword")} />
               {error && (
                 <Alert color="red" icon={<IconX size={18} />}>
                   {error}

@@ -138,13 +138,18 @@ function LoginModal({ opened, onClose, onSuccess, onForgot, onRegister }: { open
     event.preventDefault();
     setError(null);
     setSubmitting(true);
-    const { data, error: signInError } = await authClient.signIn.username({ username: username.trim(), password });
+    // Accept a user name or an email, like Forgot password does. Sending an email to the
+    // user-name sign-in fails as an "invalid username", which read as a wrong password.
+    const identifier = username.trim();
+    const { data, error: signInError } = identifier.includes("@")
+      ? await authClient.signIn.email({ email: identifier.toLowerCase(), password })
+      : await authClient.signIn.username({ username: identifier, password });
     setSubmitting(false);
     if (signInError) {
       setError(
         signInError.status === 429
           ? "Too many attempts. Try again in a minute."
-          : "Incorrect user name or password.",
+          : "That user name or email and password don't match. Check them, or use Forgot your password below.",
       );
       return;
     }
@@ -158,7 +163,7 @@ function LoginModal({ opened, onClose, onSuccess, onForgot, onRegister }: { open
     <Modal opened={opened} onClose={onClose} title="Log in to VIRS">
       <form onSubmit={submit}>
         <Stack gap="sm">
-          <TextInput label="User name" value={username} onChange={(e) => setUsername(e.currentTarget.value)} autoComplete="username" required withAsterisk={false} data-autofocus />
+          <TextInput label="User name or email" value={username} onChange={(e) => setUsername(e.currentTarget.value)} autoComplete="username" required withAsterisk={false} data-autofocus />
           <PasswordInput label="Password" value={password} onChange={(e) => setPassword(e.currentTarget.value)} autoComplete="current-password" required withAsterisk={false} />
           {error && <Alert color="red" icon={<IconX size={18} />}>{error}</Alert>}
           <Button type="submit" loading={submitting} fullWidth>
