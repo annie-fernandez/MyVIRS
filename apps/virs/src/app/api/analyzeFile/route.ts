@@ -1,6 +1,7 @@
 import { MAX_EXTRACTED_TEXT_LENGTH, type AnalyzableFileKind } from "@repo/core";
 import { analyze } from "@/lib/analysis/analyze";
 import { extractTextFromFile } from "@/lib/analysis/extract";
+import { saveToHistory } from "@/lib/analysis/history";
 import { badRequest, HttpError, route } from "@/lib/api/http";
 import { toLegacyText } from "@/lib/legacy/format";
 
@@ -23,5 +24,8 @@ export const POST = route(async (request) => {
   if (text.length > MAX_EXTRACTED_TEXT_LENGTH) {
     throw new HttpError(422, "text_too_long", "The file contains too much text.");
   }
-  return Response.json(toLegacyText(await analyze(text)));
+  const result = await analyze(text);
+  // Analyses run from the Angular screens go into the same history as the Mantine ones.
+  await saveToHistory(request, { sourceKind: kind, inputText: text, result, title: file.name.slice(0, 120) || undefined });
+  return Response.json(toLegacyText(result));
 });
