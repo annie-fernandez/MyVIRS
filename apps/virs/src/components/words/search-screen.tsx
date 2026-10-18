@@ -3,11 +3,7 @@
 import {
   Alert,
   Anchor,
-  Button,
   Group,
-  LoadingOverlay,
-  Pagination,
-  SegmentedControl,
   Select,
   SimpleGrid,
   Skeleton,
@@ -15,15 +11,16 @@ import {
   Table,
   Text,
   TextInput,
+  UnstyledButton,
 } from "@mantine/core";
 import { useDebouncedValue } from "@mantine/hooks";
-import { IconDownload, IconInfoCircle, IconSearch, IconX } from "@tabler/icons-react";
+import { IconArrowDown, IconArrowUp, IconInfoCircle, IconSearch, IconX } from "@tabler/icons-react";
 import { CATEGORY_INFO, gradeLabel, parseGrade, parseWordCategory, type Paginated, type Word, type WordCategory } from "@repo/core";
 import type { Route } from "next";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { DefinitionModal, type DefinitionTarget } from "@/components/analysis/definition-modal";
-import { Marker, PageHeader, Surface, WordTag } from "@/components/ui";
+import { Marker, PageHeader, Pager, Surface, WordTag } from "@/components/ui";
 import { apiFetch, ApiClientError, errorMessage } from "@/lib/api-client";
 import { CATEGORY_SELECT_DATA, GRADE_SELECT_DATA } from "@/lib/categories";
 
@@ -65,6 +62,7 @@ export function SearchScreen() {
   const [search, setSearch] = useState(searchParams.get("q") ?? "");
   const [debounced] = useDebouncedValue(search.trim(), 300);
   const [definition, setDefinition] = useState<DefinitionTarget | null>(null);
+  const results = useRef<HTMLDivElement>(null);
 
   function update(changes: Record<string, string | null>, resetPage = true) {
     const params = new URLSearchParams(searchParams);
@@ -130,20 +128,6 @@ export function SearchScreen() {
           <Select label="Grade" placeholder="All grades" data={GRADE_SELECT_DATA} value={grade} onChange={(value) => update({ grade: value })} clearable allowDeselect />
           <Select label="Words per page" data={PAGE_SIZES} value={pageSize} onChange={(value) => value && update({ pageSize: value })} />
         </SimpleGrid>
-        <Group justify="space-between" mt="md" gap="sm">
-          <SegmentedControl
-            size="sm"
-            value={sort}
-            onChange={(value) => update({ sort: value })}
-            data={[
-              { value: "asc", label: "A to Z" },
-              { value: "desc", label: "Z to A" },
-            ]}
-          />
-          <Button component="a" href={`/api/words/export?categories=${category}`} variant="default" leftSection={<IconDownload size={16} />}>
-            Download the {label} list
-          </Button>
-        </Group>
       </Surface>
 
       {debounced && lookup.length > 0 && (
@@ -171,20 +155,27 @@ export function SearchScreen() {
         </Alert>
       )}
 
-      <Surface p={0} pos="relative">
-        <LoadingOverlay visible={refreshing && words.status === "ready"} overlayProps={{ blur: 1 }} loaderProps={{ size: "sm" }} />
-        <Text size="sm" c="dimmed" px="md" pt="md">
-          {words.status === "ready"
-            ? `${words.data.total.toLocaleString()} ${label} words${grade ? ` for ${gradeLabel(grade)}` : ""}${debounced ? ` starting with "${debounced}"` : ""}`
-            : "Loading words…"}
-        </Text>
+      {/* While the next page loads, the current words stay, slightly faded (no white cover over them). */}
+      <Surface p={0} style={{ opacity: refreshing && words.status === "ready" ? 0.6 : 1, transition: "opacity 120ms ease" }}>
+        <div ref={results} style={{ scrollMarginTop: 80 }} />
         <div style={{ overflowX: "auto" }}>
-          <Table miw={420}>
+          {/* Fixed column widths, so List and Grade stay put when sorting or filtering changes the words shown. */}
+          <Table miw={420} layout="fixed">
             <Table.Thead>
               <Table.Tr>
-                <Table.Th>Word</Table.Th>
-                <Table.Th>List</Table.Th>
-                <Table.Th>Grade</Table.Th>
+                <Table.Th w="50%" aria-sort={sort === "asc" ? "ascending" : "descending"}>
+                  {/* Sorts like the column headers on History's Your words: click to flip the order. */}
+                  <UnstyledButton
+                    onClick={() => update({ sort: sort === "asc" ? "desc" : "asc" })}
+                    style={{ display: "inline-flex", alignItems: "center", gap: 4, fontWeight: 600, fontSize: "inherit" }}
+                    aria-label={sort === "asc" ? "Word, A to Z. Sort Z to A" : "Word, Z to A. Sort A to Z"}
+                  >
+                    Word
+                    {sort === "asc" ? <IconArrowUp size={14} aria-hidden /> : <IconArrowDown size={14} aria-hidden />}
+                  </UnstyledButton>
+                </Table.Th>
+                <Table.Th w="30%">List</Table.Th>
+                <Table.Th w="20%">Grade</Table.Th>
               </Table.Tr>
             </Table.Thead>
             <Table.Tbody>
@@ -226,12 +217,26 @@ export function SearchScreen() {
             </Table.Tbody>
           </Table>
         </div>
-        {words.status === "ready" && words.data.totalPages > 1 && (
-          <Group justify="center" p="md">
-            <Pagination total={words.data.totalPages} value={page} onChange={(next) => update({ page: String(next) }, false)} siblings={1} boundaries={1} />
-          </Group>
-        )}
       </Surface>
+
+      {/* The same footer as the lists in History: what's shown on the left, the pager on the right. */}
+      <Group justify="space-between" mt={-16}>
+        <Text size="sm" c="dimmed">
+          {words.status === "ready"
+            ? `${words.data.total.toLocaleString()} ${label} words${grade ? ` for ${gradeLabel(grade)}` : ""}${debounced ? ` starting with "${debounced}"` : ""}`
+            : "Loading words…"}
+        </Text>
+        {words.status === "ready" && (
+          <Pager
+            page={page}
+            total={words.data.totalPages}
+            onChange={(next) => {
+              update({ page: String(next) }, false);
+              results.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+            }}
+          />
+        )}
+      </Group>
 
       <DefinitionModal target={definition} onClose={() => setDefinition(null)} />
     </Stack>

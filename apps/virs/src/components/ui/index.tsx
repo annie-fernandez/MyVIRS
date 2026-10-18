@@ -5,6 +5,7 @@
 // screen needs it.
 
 import {
+  ActionIcon,
   Box,
   Group,
   Paper,
@@ -16,14 +17,13 @@ import {
   UnstyledButton,
   type PaperProps,
 } from "@mantine/core";
-import { IconArrowRight, type Icon } from "@tabler/icons-react";
+import { IconArrowRight, IconChevronLeft, IconChevronRight, type Icon } from "@tabler/icons-react";
 import type { CSSProperties, ReactNode } from "react";
 import { ShellLink } from "@/components/layout/shell-link";
 import { categoryDescription, categoryLabel } from "@/lib/categories";
 import {
   CATEGORY_STYLES,
   RATING_SCALE,
-  textOn,
   tintVars,
   type CategoryKey,
   type RatingValue,
@@ -53,10 +53,12 @@ interface PageHeaderProps {
   description?: ReactNode;
   /** The page's main action(s), shown under the description. */
   actions?: ReactNode;
+  /** Height kept for the description: 2 lines by default so panels line up across screens; 1 for a one-line one. */
+  descriptionLines?: 1 | 2;
 }
 
 /** The top of every screen: optional eyebrow, the title, a short description and the main action. */
-export function PageHeader({ eyebrow, title, description, actions }: PageHeaderProps) {
+export function PageHeader({ eyebrow, title, description, actions, descriptionLines = 2 }: PageHeaderProps) {
   return (
     <Box>
       {eyebrow && (
@@ -68,7 +70,7 @@ export function PageHeader({ eyebrow, title, description, actions }: PageHeaderP
         {title}
       </Title>
       {description && (
-        <Text c="dimmed" fz="lg" maw={640} className={classes.lead}>
+        <Text c="dimmed" fz="lg" maw={640} className={descriptionLines === 2 ? classes.lead : undefined}>
           {description}
         </Text>
       )}
@@ -248,7 +250,6 @@ export function RatingButtons({ value, onChange, word, disabled }: RatingButtons
             data-selected={value === step.value || undefined}
             disabled={disabled}
             onClick={() => onChange(step.value)}
-            style={{ ...tintVars(step.color), "--tint-on": textOn(step.color) } as CSSProperties}
           >
             {step.value}
           </UnstyledButton>
@@ -280,5 +281,26 @@ export function EmptyState({ icon: IconComponent, title, description, action }: 
       )}
       {action && <Box mt="md">{action}</Box>}
     </Box>
+  );
+}
+
+/**
+ * "‹ 1 of 3 ›" under a paged list: back, where you are, forward. Used instead of numbered page
+ * buttons, which looked too much like the 1–5 rating squares.
+ */
+export function Pager({ page, total, onChange }: { page: number; total: number; onChange: (page: number) => void }) {
+  if (total <= 1) return null;
+  return (
+    <Group gap={4} wrap="nowrap" component="nav" aria-label="Pages">
+      <ActionIcon variant="subtle" color="charcoal" className={classes.pagerArrow} aria-label="Previous page" disabled={page <= 1} onClick={() => onChange(page - 1)}>
+        <IconChevronLeft size={18} />
+      </ActionIcon>
+      <Text size="sm" miw={56} ta="center" aria-live="polite">
+        {page} of {total}
+      </Text>
+      <ActionIcon variant="subtle" color="charcoal" className={classes.pagerArrow} aria-label="Next page" disabled={page >= total} onClick={() => onChange(page + 1)}>
+        <IconChevronRight size={18} />
+      </ActionIcon>
+    </Group>
   );
 }

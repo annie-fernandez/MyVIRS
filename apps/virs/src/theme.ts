@@ -1,5 +1,5 @@
 import { colorsTuple, createTheme, isLightColor, type CSSVariablesResolver, type MantineColor } from "@mantine/core";
-import type { WordCategory } from "@repo/core";
+import type { RatingValue, WordCategory } from "@repo/core";
 
 // The VIRS design system: colors, tokens and component defaults. The rules for using them are in
 // apps/virs/DESIGN.md, and /style-guide shows every piece rendered. Change the look here, not in
@@ -80,15 +80,19 @@ export const CATEGORY_STYLES: Record<CategoryKey, { text: string; tint: string }
 
 /* ───────────────────────── Word ratings ───────────────────────── */
 
-export type RatingValue = 1 | 2 | 3 | 4 | 5;
+export type { RatingValue } from "@repo/core";
 
-/** The five self-ratings a student gives a word, stored as 1–5. Wording can change; the numbers can't. */
+/**
+ * The five self-ratings a student gives a word, stored as 1–5. Wording can change; the numbers can't.
+ * The wording follows the Vocabulary Knowledge Scale (Paribakht & Wesche): each step is something the
+ * student can or can't do with the word, not how confident they feel.
+ */
 export const RATING_SCALE: { value: RatingValue; label: string; color: VirsColor }[] = [
-  { value: 1, label: "Never seen it", color: "virsPink" },
-  { value: 2, label: "Slightly familiar", color: "virsOrange" },
-  { value: 3, label: "I know it", color: "virsGold" },
-  { value: 4, label: "I really know it", color: "virsBlue" },
-  { value: 5, label: "I'm super confident", color: "virsGreen" },
+  { value: 1, label: "I've never seen it", color: "virsPink" },
+  { value: 2, label: "I've seen it, but don't know what it means", color: "virsOrange" },
+  { value: 3, label: "I think I know what it means", color: "virsGold" },
+  { value: 4, label: "I know what it means", color: "virsBlue" },
+  { value: 5, label: "I can use it in a sentence", color: "virsGreen" },
 ];
 
 /* ───────────────────────── Helpers ───────────────────────── */

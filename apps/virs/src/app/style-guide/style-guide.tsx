@@ -28,6 +28,7 @@ import {
   EmptyState,
   Marker,
   OptionCard,
+  Pager,
   PageHeader,
   RatingButtons,
   Section,
@@ -164,6 +165,15 @@ export function StyleGuide() {
           </Button>
           <Button loading>Loading</Button>
           <Button disabled>Disabled</Button>
+        </Group>
+      </Section>
+
+      <Section title="Pager" description="Under a paged list, on the right, with what's shown on the left. Not numbered buttons: they look like the 1–5 rating squares.">
+        <Group justify="space-between">
+          <Text size="sm" c="dimmed">
+            19 words
+          </Text>
+          <Pager page={1} total={3} onChange={() => {}} />
         </Group>
       </Section>
 

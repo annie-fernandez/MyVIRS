@@ -144,29 +144,37 @@
 }
 
 .ratingStep {
-  min-width: 36px;
+  /* A fixed square with the number centered both ways (padding alone left it off-center).
+     Plain grey until chosen; the chosen one is filled in indigo. One color, not five. */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
   height: 32px;
-  padding-inline: 10px;
+  padding: 0;
+  line-height: 1;
   border-radius: var(--mantine-radius-md);
-  border: 1px solid var(--tint-border);
+  border: 1px solid var(--mantine-color-charcoal-2);
   background: var(--virs-surface);
-  color: var(--tint-strong);
+  color: var(--virs-text-muted);
   font-weight: 600;
   font-size: var(--mantine-font-size-sm);
   transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease;
 
   &:hover {
-    background: var(--tint-bg);
+    border-color: var(--mantine-color-charcoal-4);
+    color: var(--virs-text);
   }
 
-  &[data-selected] {
-    background: var(--tint-color);
-    border-color: var(--tint-color);
-    color: var(--tint-on);
+  &[data-selected],
+  &[data-selected]:hover {
+    background: var(--mantine-color-virsIndigo-6);
+    border-color: var(--mantine-color-virsIndigo-6);
+    color: #fff;
   }
 
   &:focus-visible {
-    outline: 2px solid var(--tint-color);
+    outline: 2px solid var(--mantine-color-virsIndigo-5);
     outline-offset: 2px;
   }
 }
@@ -177,4 +185,10 @@
   border: 1px dashed var(--mantine-color-charcoal-2);
   border-radius: var(--mantine-radius-lg);
   background: var(--virs-surface);
+}
+
+/* Pager arrows: a disabled one is just a faint arrow, not a grey box. */
+.pagerArrow:disabled {
+  background: transparent;
+  color: var(--mantine-color-charcoal-2);
 }

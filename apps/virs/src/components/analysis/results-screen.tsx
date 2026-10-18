@@ -19,7 +19,7 @@ import {
   Title,
 } from "@mantine/core";
 import { IconChartBar, IconCheck, IconHighlight, IconInfoCircle, IconPlus, IconTextScan2 } from "@tabler/icons-react";
-import { READING_LEVEL_LABELS, readingLevel, type AnalysisResult, type ReadingLevel, type WordMatch } from "@repo/core";
+import { READING_LEVEL_LABELS, readingLevel, sentenceAround, type AnalysisResult, type ReadingLevel, type WordMatch } from "@repo/core";
 import type { Route } from "next";
 import { useRouter } from "next/navigation";
 import { Fragment, useMemo, useState } from "react";
@@ -147,7 +147,10 @@ export function ResultsScreen({ view }: { view: View }) {
       <HistoryNote saved={Boolean(historyId)} />
 
       {view === "enhanced" ? (
-        <EnhancedText result={result} onWord={setDefinition} />
+        <EnhancedText
+          result={result}
+          onWord={(target) => setDefinition({ ...target, analysisId: historyId ?? null })}
+        />
       ) : (
         <Statistics result={result} />
       )}
@@ -175,7 +178,13 @@ function HistoryNote({ saved }: { saved: boolean }) {
   );
 }
 
-function EnhancedText({ result, onWord }: { result: AnalysisResult; onWord: (target: DefinitionTarget) => void }) {
+function EnhancedText({
+  result,
+  onWord,
+}: {
+  result: AnalysisResult;
+  onWord: (target: DefinitionTarget) => void;
+}) {
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const [listCategory, setListCategory] = useState<CategoryKey | null>(null);
   const paragraphs = useMemo(() => toParagraphs(result.words), [result.words]);
@@ -215,7 +224,7 @@ function EnhancedText({ result, onWord }: { result: AnalysisResult; onWord: (tar
                 {paragraph.map(({ word, index }) =>
                   index >= visibleCount ? null : (
                     <Fragment key={index}>
-                      <WordTag variant="inline" category={categoryOf(word)} onClick={() => onWord({ word: word.value ?? word.initialValue, category: categoryOf(word) })}>
+                      <WordTag variant="inline" category={categoryOf(word)} onClick={() => onWord({ word: word.value ?? word.initialValue, category: categoryOf(word), context: sentenceAround(result.words, index) })}>
                         {word.initialValue}
                       </WordTag>{" "}
                     </Fragment>

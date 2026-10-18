@@ -1,3 +1,14 @@
+/* Source tabs: hovering underlines a tab instead of filling it, same as the History tabs. */
+.tab {
+  &:hover {
+    background-color: transparent;
+  }
+
+  &:hover:not([data-active]) {
+    border-bottom-color: var(--mantine-color-charcoal-3);
+  }
+}
+
 /* The chosen file, shown in place of the drop area. */
 .fileRow {
   padding: 12px 14px;
@@ -8,6 +19,9 @@
 
 /* Drop area: the page gray inside the white panel, with a dashed edge that turns indigo. */
 .dropzone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: var(--virs-page);
   border: 2px dashed var(--mantine-color-charcoal-2);
   border-radius: var(--mantine-radius-md);

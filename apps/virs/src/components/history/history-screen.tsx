@@ -1,16 +1,20 @@
 "use client";
 
-import { ActionIcon, Alert, Button, Group, Modal, Pagination, Skeleton, Stack, Table, Text, ThemeIcon, Tooltip, UnstyledButton } from "@mantine/core";
+import { ActionIcon, Alert, Button, Group, Modal, Skeleton, Stack, Table, Tabs, Text, ThemeIcon, Tooltip, UnstyledButton } from "@mantine/core";
 import { IconHistory, IconLogin, IconPlus, IconTrash, IconUserPlus, IconX } from "@tabler/icons-react";
-import { READING_LEVEL_LABELS, readingLevel, type AnalysisSourceKind, type Paginated } from "@repo/core";
+import { READING_LEVEL_LABELS, readingLevel, summarizeWords, type AnalysisSourceKind, type Paginated, type RatingEvent, type RatingValue } from "@repo/core";
 import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
 import type { SavedAnalysis } from "@/app/api/history/[id]/route";
+import type { ProgressData } from "@/app/api/progress/route";
 import { ShellLink } from "@/components/layout/shell-link";
-import { EmptyState, Marker, PageHeader, Surface } from "@/components/ui";
+import { EmptyState, Marker, PageHeader, Pager, Surface } from "@/components/ui";
 import { useAnalysis } from "@/lib/analysis-store";
 import { apiFetch, errorMessage } from "@/lib/api-client";
 import { TEXT_SOURCES, type TextSource } from "@/lib/sources";
+import { ProgressPanel } from "./progress-panel";
+import classes from "./history.module.css";
+import { WordsPanel, type RatingFilter } from "./words-panel";
 
 /** One row of GET /api/history. */
 interface HistoryItem {
@@ -39,7 +43,7 @@ function readability(item: HistoryItem): string {
   return level === "too-short" || level === "needs-more-sentences" ? "Too short to score" : `${item.fleschReadingScore.toFixed(0)} · ${READING_LEVEL_LABELS[level]}`;
 }
 
-/** The signed-in user's saved analyses. Signed-out visitors are told history needs an account. */
+/** The signed-in user's progress, rated words and saved analyses. Signed-out visitors are told history needs an account. */
 export function HistoryScreen({ signedIn }: { signedIn: boolean }) {
   return (
     <Stack gap="xl">
@@ -49,11 +53,102 @@ export function HistoryScreen({ signedIn }: { signedIn: boolean }) {
             Your <Marker>history</Marker>
           </>
         }
-        description="Every text you analyze while logged in is kept here, with the results exactly as they were that day."
+        description="Your words, your progress and your saved passages."
+        descriptionLines={1}
       />
-      {signedIn ? <HistoryList /> : <SignedOut />}
+      {signedIn ? <SignedIn /> : <SignedOut />}
     </Stack>
   );
+}
+
+/** The three tabs share one width, whatever their labels. */
+const TAB_WIDTH = 140;
+
+type ProgressState = { status: "loading" } | { status: "error"; message: string } | { status: "ready"; data: ProgressData };
+
+function SignedIn() {
+  const [progress, setProgress] = useState<ProgressState>({ status: "loading" });
+  const [tab, setTab] = useState<string>("progress");
+  const [wordsRating, setWordsRating] = useState<RatingFilter>("all");
+
+  useEffect(() => {
+    apiFetch<ProgressData>("/api/progress")
+      .then((data) => setProgress({ status: "ready", data }))
+      .catch((caught: unknown) => setProgress({ status: "error", message: errorMessage(caught) }));
+  }, []);
+
+  const words = useMemo(() => (progress.status === "ready" ? summarizeWords(progress.data.ratings) : []), [progress]);
+
+  function addRating(saved: RatingEvent) {
+    setProgress((current) => (current.status === "ready" ? { status: "ready", data: { ...current.data, ratings: [...current.data.ratings, saved] } } : current));
+  }
+
+  // Shown at once and saved in the background; taken back out if the save fails.
+  async function rate(word: string, rating: RatingValue, context: string | null) {
+    const pending: RatingEvent = { word, rating, context, createdAt: new Date().toISOString() };
+    addRating(pending);
+    try {
+      await apiFetch<RatingEvent>("/api/ratings", { method: "POST", json: { word, rating, context } });
+    } catch (caught) {
+      setProgress((current) =>
+        current.status === "ready" ? { status: "ready", data: { ...current.data, ratings: current.data.ratings.filter((event) => event !== pending) } } : current,
+      );
+      throw caught;
+    }
+  }
+
+  return (
+    <Tabs value={tab} onChange={(value) => value && setTab(value)} keepMounted={false}>
+      <Tabs.List mb="lg" aria-label="History sections">
+        <Tabs.Tab value="progress" w={TAB_WIDTH} className={classes.tab}>
+          Progress
+        </Tabs.Tab>
+        <Tabs.Tab value="words" w={TAB_WIDTH} className={classes.tab}>
+          Your words
+        </Tabs.Tab>
+        <Tabs.Tab value="passages" w={TAB_WIDTH} className={classes.tab}>
+          Passages
+        </Tabs.Tab>
+      </Tabs.List>
+      <Tabs.Panel value="progress">
+        <ProgressGate progress={progress}>{(data) => (
+            <ProgressPanel
+              data={data}
+              words={words}
+              onOpen={(link) => {
+                if (link.to === "words") setWordsRating(link.rating);
+                setTab(link.to);
+              }}
+            />
+          )}</ProgressGate>
+      </Tabs.Panel>
+      <Tabs.Panel value="words">
+        <ProgressGate progress={progress}>{() => <WordsPanel words={words} rating={wordsRating} onRatingChange={setWordsRating} onRate={rate} onRated={addRating} />}</ProgressGate>
+      </Tabs.Panel>
+      <Tabs.Panel value="passages">
+        <HistoryList />
+      </Tabs.Panel>
+    </Tabs>
+  );
+}
+
+function ProgressGate({ progress, children }: { progress: ProgressState; children: (data: ProgressData) => ReactNode }) {
+  if (progress.status === "loading") {
+    return (
+      <Stack gap="md" aria-label="Loading your progress">
+        <Skeleton height={88} />
+        <Skeleton height={300} />
+      </Stack>
+    );
+  }
+  if (progress.status === "error") {
+    return (
+      <Alert color="red" icon={<IconX size={18} />} title="We couldn't load your progress">
+        {progress.message}
+      </Alert>
+    );
+  }
+  return <>{children(progress.data)}</>;
 }
 
 function SignedOut() {
@@ -169,7 +264,7 @@ function HistoryList() {
             <Table.Tr>
               <Table.Th>Text</Table.Th>
               <Table.Th>Analyzed</Table.Th>
-              <Table.Th ta="right">Words</Table.Th>
+              <Table.Th>Words</Table.Th>
               <Table.Th>Readability</Table.Th>
               <Table.Th aria-label="Actions" />
             </Table.Tr>
@@ -202,15 +297,16 @@ function HistoryList() {
                         </UnstyledButton>
                       </Table.Td>
                       <Table.Td style={{ whiteSpace: "nowrap" }}>{formatDate(item.createdAt)}</Table.Td>
-                      <Table.Td ta="right">{item.wordCount.toLocaleString()}</Table.Td>
+                      <Table.Td>{item.wordCount.toLocaleString()}</Table.Td>
                       <Table.Td style={{ whiteSpace: "nowrap" }}>{readability(item)}</Table.Td>
                       <Table.Td>
-                        <Group gap={4} justify="flex-end" wrap="nowrap">
-                          <Button variant="default" size="compact-sm" loading={opening === item.id} disabled={opening !== null && opening !== item.id} onClick={() => open(item)}>
+                        {/* Open and delete share one height so the pair sits level in the row. */}
+                        <Group gap="xs" justify="flex-end" wrap="nowrap">
+                          <Button variant="light" size="xs" h={30} px="md" loading={opening === item.id} disabled={opening !== null && opening !== item.id} onClick={() => open(item)}>
                             Open
                           </Button>
                           <Tooltip label="Delete from history">
-                            <ActionIcon color="red" aria-label={`Delete ${item.title ?? "this analysis"}`} onClick={() => setToDelete(item)}>
+                            <ActionIcon color="red" size={30} aria-label={`Delete ${item.title ?? "this analysis"}`} onClick={() => setToDelete(item)}>
                               <IconTrash size={16} />
                             </ActionIcon>
                           </Tooltip>
@@ -228,7 +324,7 @@ function HistoryList() {
           <Text size="sm" c="dimmed">
             {list.data.total.toLocaleString()} saved
           </Text>
-          <Pagination total={list.data.totalPages} value={page} onChange={setPage} siblings={1} boundaries={1} />
+          <Pager page={page} total={list.data.totalPages} onChange={setPage} />
         </Group>
       )}
 

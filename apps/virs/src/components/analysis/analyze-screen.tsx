@@ -6,7 +6,7 @@ import { IconChartBar, IconFile, IconHighlight, IconInfoCircle, IconUpload, Icon
 import { ANALYZABLE_FILE_KINDS, MAX_TEXT_LENGTH, type AnalysisResult, type AnalyzableFileKind } from "@repo/core";
 import type { Route } from "next";
 import { useRouter } from "next/navigation";
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { Marker, PageHeader, Surface } from "@/components/ui";
 import { useAnalysis } from "@/lib/analysis-store";
 import { apiFetch, errorMessage } from "@/lib/api-client";
@@ -19,8 +19,8 @@ type View = "enhanced" | "statistics";
 /** Readability scores need at least this many words (see readingLevel in @repo/core). */
 const MIN_WORDS_FOR_SCORE = 100;
 
-/** Both result buttons share one width, so the pair looks even despite the different labels. */
-const RESULT_BUTTON_WIDTH = 164;
+/** Height of the text box and of the upload area, so every tab's panel is the same size. */
+const INPUT_AREA_HEIGHT = 200;
 
 const RESULT_PATH: Record<View, Route> = { enhanced: "/enhanced-text-result", statistics: "/text-statistics" };
 
@@ -60,12 +60,40 @@ async function readPhoto(file: File, onProgress: (fraction: number) => void): Pr
   return result.data.text.trim();
 }
 
+const DRAFT_KEY = "virs:analyze-draft";
+
+/**
+ * The Text tab's passage, kept in this browser tab's session storage so it's still there after
+ * leaving the screen and coming back. Storage can be blocked, so every read and write is guarded.
+ */
+function useDraft(): [string, (value: string) => void] {
+  const [text, setText] = useState("");
+  useEffect(() => {
+    try {
+      const saved = sessionStorage.getItem(DRAFT_KEY);
+      if (saved) setText(saved);
+    } catch {
+      // No storage: start empty.
+    }
+  }, []);
+  function update(value: string) {
+    setText(value);
+    try {
+      if (value) sessionStorage.setItem(DRAFT_KEY, value);
+      else sessionStorage.removeItem(DRAFT_KEY);
+    } catch {
+      // No storage: the text just isn't kept.
+    }
+  }
+  return [text, update];
+}
+
 export function AnalyzeScreen({ source }: { source: SourceKey }) {
   const router = useRouter();
   const { setAnalysis } = useAnalysis();
   const meta = TEXT_SOURCES[source];
 
-  const [text, setText] = useState("");
+  const [text, setText] = useDraft();
   const [file, setFile] = useState<File | null>(null);
   const [rejection, setRejection] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -144,7 +172,7 @@ export function AnalyzeScreen({ source }: { source: SourceKey }) {
             {(Object.keys(TEXT_SOURCES) as SourceKey[]).map((key) => {
               const { icon: SourceIcon, short } = TEXT_SOURCES[key];
               return (
-                <Tabs.Tab key={key} value={key} px={{ base: 4, sm: "md" }} disabled={running !== null}>
+                <Tabs.Tab key={key} value={key} px={{ base: 4, sm: "md" }} disabled={running !== null} className={classes.tab}>
                   <Group gap={8} justify="center" wrap="nowrap">
                     <Box component="span" visibleFrom="sm" lh={0}>
                       <SourceIcon size={18} stroke={1.8} />
@@ -161,9 +189,8 @@ export function AnalyzeScreen({ source }: { source: SourceKey }) {
             <Textarea
               aria-label="Your text"
               placeholder="Paste or type your text here"
-              autosize
-              minRows={8}
-              maxRows={22}
+              // Same fixed height as the upload area on the other tabs; long text scrolls inside.
+              styles={{ input: { height: INPUT_AREA_HEIGHT } }}
               maxLength={MAX_TEXT_LENGTH}
               value={text}
               onChange={(event) => setText(event.currentTarget.value)}
@@ -193,6 +220,7 @@ export function AnalyzeScreen({ source }: { source: SourceKey }) {
           ) : (
             <Dropzone
               className={classes.dropzone}
+              h={INPUT_AREA_HEIGHT}
               onDrop={(files) => {
                 setRejection(null);
                 setError(null);
@@ -250,7 +278,6 @@ export function AnalyzeScreen({ source }: { source: SourceKey }) {
             <Group gap="sm">
               <Button
                 variant="default"
-                w={RESULT_BUTTON_WIDTH}
                 leftSection={<IconChartBar size={16} />}
                 disabled={!ready || tooShortForScore || (running !== null && running !== "statistics")}
                 loading={running === "statistics"}
@@ -259,7 +286,6 @@ export function AnalyzeScreen({ source }: { source: SourceKey }) {
                 Statistics
               </Button>
               <Button
-                w={RESULT_BUTTON_WIDTH}
                 leftSection={<IconHighlight size={16} />}
                 disabled={!ready || (running !== null && running !== "enhanced")}
                 loading={running === "enhanced"}

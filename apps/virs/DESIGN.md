@@ -3,7 +3,7 @@
 These rules keep every Mantine screen consistent while the app moves over from Angular. They apply to people and to AI agents writing UI code here.
 
 - **Values** (colors, type, spacing, component defaults): `src/theme.ts`
-- **Shared components**: `src/components/ui` (`PageHeader`, `Marker`, `Section`, `OptionCard`, `Surface`, `WordTag`, `CategoryLegend`, `RatingButtons`, `EmptyState`)
+- **Shared components**: `src/components/ui` (`PageHeader`, `Marker`, `Section`, `OptionCard`, `Surface`, `WordTag`, `CategoryLegend`, `RatingButtons`, `EmptyState`, `Pager`)
 - **The site frame** (header, sidebar, footer, sign-in): `src/components/layout`
 - **The four ways to add text**: `src/lib/sources.ts`
 - **Everything rendered**: `/style-guide` on any running copy of the app
@@ -31,19 +31,18 @@ The personality comes from the original site's indigo and its source colors, the
   | --- | --- |
   | `virsIndigo` | The header bar, primary buttons, links, the current page in the sidebar, the eyebrow line, the "Text" source |
   | `virsCyan` / `virsGreen` / `virsPink` | Word documents / PDFs / photos, wherever those choices appear |
-  | `virsOrange` | Warnings, the loader, the second step of the rating scale |
+  | `virsOrange` | Warnings, the loader |
   | `virsBlue` | Information messages, the iTranslate screen |
   | `virsGreen` | Success messages |
   | `red` (Mantine's) | Errors and destructive actions |
-  | `virsGold` | The middle of the rating scale |
-  | `charcoal` | Text and neutral controls |
+    | `charcoal` | Text and neutral controls |
 
 - **Every screen looks the same except its highlighter.** The main panel is always a white `Surface` in the same place. A screen with its own color (text indigo, Word document cyan, PDF green, photo pink, iTranslate blue) shows it in the title's `Marker` stroke and in small icons, never in the panel. Screens without a color use the yellow marker.
 - **Gray desk, white paper, one indigo bar.** The page is a light neutral gray (`page`), cards, sidebar and footer are white (`surface`, `frame`), and the header is solid indigo (`header`). In the sidebar, hover is a faint gray fill; the current page is an indigo tint with indigo text and icon, and doesn't change on hover.
 - **No large blocks of saturated color besides the header bar.** Use tints (shade 0–2) for colored backgrounds and full color (shade 6) only for small things: filled buttons, the selected rating. No gradients anywhere.
 - **Text on color:** filled components switch to dark text on light colors automatically. If you put text on a colored block yourself, use `textOn(color)`. For text or thin icons *in* a color on white, use shade 8 (`--tint-strong`), never 6.
 - **Word categories** use `CATEGORY_STYLES` through `WordTag`, never the palette. Every category color reads at 4.5:1 or better. Show a `CategoryLegend` wherever `WordTag`s appear. The legend is plain text beside color swatches, not boxed chips; on the enhanced text it sits at the top of the same sheet as the passage.
-- **Ratings** use `RATING_SCALE` through `RatingButtons`. Pink (1) to green (5); the stored values are 1–5 and never change, but the labels can.
+- **Ratings** use `RATING_SCALE` through `RatingButtons`: plain grey squares numbered 1–5, the chosen one filled in indigo, each label on hover. The labels follow the Vocabulary Knowledge Scale (what the student can do with the word). The stored values are 1–5 and never change, but the labels can.
 
 ## Type
 
@@ -105,6 +104,7 @@ Which component for what:
 | A word marked by category | `WordTag`, plus `CategoryLegend` nearby |
 | Rating how well a student knows a word | `RatingButtons` |
 | A list or panel with nothing in it yet | `EmptyState` |
+| Moving between pages of a list | `Pager` ("‹ 1 of 3 ›"), under the list on the right, with the count on the left |
 | A link from a Mantine page | `component={ShellLink}` on `Anchor`, `Button`, `NavLink` or `UnstyledButton` |
 | Anything else | The Mantine component directly; the theme already styles it |
 
