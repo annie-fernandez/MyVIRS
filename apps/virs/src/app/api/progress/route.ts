@@ -1,17 +1,11 @@
-import type { RatingEvent } from "@repo/core";
+import type { ProgressData } from "@repo/core";
 import { getDb } from "@repo/db";
 import { getUserProgress } from "@repo/db/queries/ratings";
-import { requireSession } from "@/lib/api/guards";
-import { route } from "@/lib/api/http";
-
-/** The data behind the progress charts. The browser groups it by day, in the viewer's time zone. */
-export interface ProgressData {
-  ratings: RatingEvent[];
-  analyses: { createdAt: string; fleschReadingScore: number; wordCount: number }[];
-}
+import { requireSession } from "@/app/api/_lib/auth/require-session";
+import { apiRoute } from "@/app/api/_lib/http/api-route";
 
 /** GET /api/progress — every word rating and every saved analysis's score for the signed-in user, oldest first. */
-export const GET = route(async (request) => {
+export const GET = apiRoute(async (request) => {
   const { user } = await requireSession(request);
   const { ratings, analyses } = await getUserProgress(getDb(), user.id);
   const data: ProgressData = {

@@ -1,0 +1,241 @@
+/* Page gutter. Colors and borders come from the theme (--virs-* variables). Content fills the
+   width beside the side menu; screens lay panels side by side to use it. */
+:root {
+  --virs-gutter: 16px;
+}
+
+@media (min-width: $mantine-breakpoint-sm) {
+  :root {
+    --virs-gutter: 32px;
+  }
+}
+
+/* The site name, in Europa and white, on the side menu and the phone bar. */
+.brand {
+  font-family: var(--virs-europa);
+  font-weight: 700;
+  font-size: 1.2rem;
+  line-height: 1.25;
+  color: var(--virs-on-menu);
+  text-decoration: none;
+  min-width: 0;
+}
+
+/* Phones: a blue bar with the menu button and the site name. */
+.phoneBar {
+  display: flex;
+  align-items: center;
+  gap: var(--mantine-spacing-sm);
+  padding-inline: 12px 16px;
+  background-color: var(--virs-menu);
+  color: var(--virs-on-menu);
+
+  & .brand {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.burger {
+  --burger-color: var(--virs-on-menu);
+}
+
+/* Side menu: solid indigo with white text. Hover is a faint white fill; the current page is white
+   with indigo text, and doesn't change on hover. */
+.navbar {
+  background-color: var(--virs-menu);
+  color: var(--virs-on-menu);
+  padding: 12px 10px;
+  transition: width 150ms ease;
+
+  /* On phones it opens below the bar, which holds the button that closes it. */
+  @mixin smaller-than $mantine-breakpoint-sm {
+    top: var(--app-shell-header-height);
+    height: calc(100dvh - var(--app-shell-header-height));
+  }
+}
+
+.menuTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--mantine-spacing-xs);
+  padding: 4px 0 12px 10px;
+}
+
+.menuButton {
+  flex-shrink: 0;
+  color: var(--virs-menu-muted);
+
+  &:hover {
+    color: var(--virs-on-menu);
+    background: var(--virs-menu-hover);
+  }
+}
+
+.menuLinks {
+  margin-inline: -10px;
+  padding-inline: 10px;
+}
+
+.sectionLabel {
+  color: var(--virs-menu-muted);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 18px 10px 6px;
+  white-space: nowrap;
+}
+
+/* Links in the middle and the citation and account buttons at the bottom look the same. */
+.navLink,
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  color: var(--virs-on-menu);
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-bottom: 2px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background-color 120ms ease, color 120ms ease;
+
+  &:hover {
+    background-color: var(--virs-menu-hover);
+  }
+}
+
+.navIcon,
+.menuIcon {
+  flex-shrink: 0;
+  margin: 0;
+  color: var(--virs-menu-muted);
+}
+
+.navLink[data-active],
+.navLink[data-active]:hover {
+  background-color: var(--virs-on-menu);
+  color: var(--virs-menu);
+  font-weight: 600;
+
+  & .navIcon {
+    color: var(--virs-menu);
+  }
+}
+
+.label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.menuBottom {
+  padding-top: 8px;
+  border-top: 1px solid var(--virs-menu-hover);
+}
+
+/* The account button's avatar and chevron. */
+.menuChevron {
+  margin-left: auto;
+  color: var(--virs-menu-muted);
+}
+
+/* Signed out, "Log in" is the menu's accent: white with indigo text. */
+.loginButton {
+  margin-top: 4px;
+  color: var(--virs-menu);
+}
+
+/* Collapsed (tablets up): icons only, centered; labels show as tooltips instead. */
+@media (min-width: $mantine-breakpoint-sm) {
+  .navbar[data-collapsed] {
+    & .label,
+    & .menuChevron {
+      display: none;
+    }
+
+    & .menuTop {
+      justify-content: center;
+      padding-left: 0;
+    }
+
+    & .navLink,
+    & .menuItem {
+      justify-content: center;
+      padding-inline: 0;
+    }
+
+    /* Section titles become a thin rule between the groups. */
+    & .sectionLabel {
+      font-size: 0;
+      padding: 0;
+      margin: 12px 8px;
+      border-top: 1px solid var(--virs-menu-hover);
+    }
+  }
+}
+
+.main {
+  background-color: var(--virs-page);
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+  width: 100%;
+  padding: 40px var(--virs-gutter) 48px;
+}
+
+/* Footer: one band along the bottom of the window, beside the side menu. */
+.footer,
+.pageFooter {
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--mantine-spacing-xs) var(--mantine-spacing-lg);
+  background-color: var(--virs-frame);
+  color: var(--virs-frame-muted);
+  font-size: var(--mantine-font-size-sm);
+}
+
+.footer {
+  display: flex;
+  padding-inline: var(--virs-gutter) 16px;
+  border-top: 1px solid var(--virs-border);
+}
+
+/* On phones the footer scrolls with the page and its three parts stack. */
+.pageFooter {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 16px var(--virs-gutter) 20px;
+
+  @media (min-width: $mantine-breakpoint-sm) {
+    display: none;
+  }
+}
+
+.footerLink {
+  color: var(--virs-frame-muted);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--virs-frame-text);
+    text-decoration: underline;
+  }
+}
+
+/* Icon buttons on the footer. */
+.frameButton {
+  color: var(--virs-frame-muted);
+  background: transparent;
+
+  &:hover {
+    color: var(--virs-frame-text);
+    background: var(--virs-frame-border);
+  }
+}

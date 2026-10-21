@@ -1,24 +1,25 @@
 import { MAX_EXTRACTED_TEXT_LENGTH, type AnalyzableFileKind } from "@repo/core";
-import { analyze } from "@/lib/analysis/analyze";
-import { extractTextFromFile } from "@/lib/analysis/extract";
-import { saveToHistory } from "@/lib/analysis/history";
-import { badRequest, HttpError, route } from "@/lib/api/http";
-import { toLegacyText } from "@/lib/legacy/format";
+import { analyze } from "@/app/api/_lib/analysis/analyze";
+import { extractTextFromFile } from "@/app/api/_lib/analysis/extract-text-from-file";
+import { saveToHistory } from "@/app/api/_lib/analysis/save-to-history";
+import { apiRoute } from "@/app/api/_lib/http/api-route";
+import { HttpError } from "@/app/api/_lib/http/http-error";
+import { toLegacyText } from "@/app/api/_lib/legacy/to-legacy-text";
 
 export const maxDuration = 60;
 
 const KINDS: Record<string, AnalyzableFileKind> = { PDF: "pdf", DOC: "document", IMG: "image" };
 
 /** Legacy UI: POST /api/analyzeFile?type=PDF|DOC with a multipart `file`. IMG is rejected; the browser reads images. */
-export const POST = route(async (request) => {
+export const POST = apiRoute(async (request) => {
   const kind = KINDS[request.nextUrl.searchParams.get("type") ?? ""];
-  if (!kind) throw badRequest("type must be PDF, DOC or IMG.");
+  if (!kind) throw HttpError.badRequest("type must be PDF, DOC or IMG.");
 
   const form = await request.formData().catch(() => {
-    throw badRequest("Expected multipart/form-data.");
+    throw HttpError.badRequest("Expected multipart/form-data.");
   });
   const file = form.get("file");
-  if (!(file instanceof File)) throw badRequest("A file is required.");
+  if (!(file instanceof File)) throw HttpError.badRequest("A file is required.");
 
   const text = await extractTextFromFile(file, kind);
   if (text.length > MAX_EXTRACTED_TEXT_LENGTH) {

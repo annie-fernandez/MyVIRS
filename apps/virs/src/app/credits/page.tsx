@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ReferencesScreen } from "@/components/info/references-screen";
+import { ReferencesScreen } from "./_components/references-screen";
 
 export const metadata: Metadata = { title: "References" };
 

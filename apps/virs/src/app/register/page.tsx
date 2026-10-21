@@ -1,7 +1,6 @@
 import { redirect } from "next/navigation";
 
-// Registration is a pop-up opened from the account menu. Old links to /register land on Home with
-// the pop-up open.
+// Old links to /register land on the sign-in page with the sign-up form showing.
 export default function Page() {
-  redirect("/dashboard?register=1");
+  redirect("/sign-in?title=Create+a+free+VIRS+account&view=register");
 }

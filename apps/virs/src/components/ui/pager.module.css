@@ -1,0 +1,5 @@
+/* Pager arrows: a disabled one is just a faint arrow, not a grey box. */
+.pagerArrow:disabled {
+  background: transparent;
+  color: var(--mantine-color-charcoal-2);
+}

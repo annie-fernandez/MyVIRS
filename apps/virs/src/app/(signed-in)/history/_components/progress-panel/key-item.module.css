@@ -1,0 +1,16 @@
+/* A swatch in the "Words improved" key, matching the bar's segments. */
+.keySwatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  background: var(--mantine-color-virsIndigo-6);
+
+  &[data-variant="partway"] {
+    background: var(--mantine-color-virsIndigo-2);
+  }
+
+  &[data-variant="track"] {
+    background: var(--mantine-color-charcoal-0);
+    border: 1px solid var(--mantine-color-charcoal-2);
+  }
+}

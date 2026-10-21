@@ -1,0 +1,47 @@
+/* A word marked with its vocabulary category. */
+.wordTag {
+  font: inherit;
+  font-weight: 600;
+  border: 0;
+  border-radius: 6px;
+  padding: 1px 5px;
+  margin-inline: -1px;
+  white-space: nowrap;
+
+  &[data-variant="inline"] {
+    /* Inside a passage a "word" can be a long unbroken token (a URL, a file path): let it wrap. */
+    white-space: normal;
+    overflow-wrap: anywhere;
+    /* A wrapped word lines up with the passage; buttons center their text by default. */
+    text-align: inherit;
+    font-weight: 500;
+    padding-inline: 1px;
+    margin-inline: 0;
+    background: transparent;
+  }
+
+  &[data-plain] {
+    font-weight: 400;
+    background: transparent;
+    color: inherit;
+  }
+
+  &[data-clickable] {
+    cursor: pointer;
+    transition: background-color 100ms ease, filter 100ms ease;
+
+    /* Hovering a word fills it with its list's tint, like running a highlighter over it. */
+    &[data-variant="inline"]:hover {
+      background: var(--word-tint);
+    }
+
+    &[data-variant="chip"]:hover {
+      filter: brightness(0.95);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--mantine-color-virsIndigo-5);
+      outline-offset: 1px;
+    }
+  }
+}

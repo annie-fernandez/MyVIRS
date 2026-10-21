@@ -1,4 +1,5 @@
 export * from "./analyze";
+export * from "./api-types";
 export * from "./categories";
 export * from "./progress";
 export * from "./readability";

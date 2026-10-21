@@ -1,9 +1,10 @@
 import { analyzeTextInput } from "@repo/core";
-import { analyze } from "@/lib/analysis/analyze";
-import { saveToHistory, type AnalyzeResponse } from "@/lib/analysis/history";
-import { parseJson, route } from "@/lib/api/http";
+import { analyze } from "@/app/api/_lib/analysis/analyze";
+import { saveToHistory, type AnalyzeResponse } from "@/app/api/_lib/analysis/save-to-history";
+import { apiRoute } from "@/app/api/_lib/http/api-route";
+import { parseJson } from "@/app/api/_lib/http/parse-json";
 
-export const POST = route(async (request) => {
+export const POST = apiRoute(async (request) => {
   const { text, sourceKind } = await parseJson(request, analyzeTextInput);
   const result = await analyze(text);
   const historyId = await saveToHistory(request, { sourceKind, inputText: text, result });

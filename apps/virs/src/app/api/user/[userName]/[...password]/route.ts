@@ -1,13 +1,15 @@
-import { HttpError, route } from "@/lib/api/http";
-import { getAuth } from "@/lib/auth";
-import { authErrorCode, requireOwnSession } from "@/lib/legacy/auth";
-import { decryptLegacyPassword } from "@/lib/legacy/format";
+import { apiRoute } from "@/app/api/_lib/http/api-route";
+import { HttpError } from "@/app/api/_lib/http/http-error";
+import { decryptLegacyPassword } from "@/app/api/_lib/legacy/decrypt-legacy-password";
+import { authErrorCode } from "@/app/api/user/_lib/auth-error-code";
+import { requireOwnSession } from "@/app/api/user/_lib/require-own-session";
+import { getAuth } from "@/lib/auth/get-auth";
 
 /**
  * Legacy UI account deletion: DELETE /api/user/:userName/:encryptedPassword.
  * Catch-all because the base64 ciphertext can contain "/".
  */
-export const DELETE = route(async (request, context: RouteContext<"/api/user/[userName]/[...password]">) => {
+export const DELETE = apiRoute(async (request, context: RouteContext<"/api/user/[userName]/[...password]">) => {
   const { userName, password: segments } = await context.params;
   await requireOwnSession(request, userName);
 

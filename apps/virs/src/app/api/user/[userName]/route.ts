@@ -1,9 +1,14 @@
 import { USER_LEVELS } from "@repo/core";
 import { z } from "zod";
-import { badRequest, HttpError, notFound, parseJson, route } from "@/lib/api/http";
-import { getAuth } from "@/lib/auth";
-import { authErrorCode, findUserByUsername, requireOwnSession } from "@/lib/legacy/auth";
-import { decryptLegacyPassword, toLegacyUser } from "@/lib/legacy/format";
+import { apiRoute } from "@/app/api/_lib/http/api-route";
+import { HttpError } from "@/app/api/_lib/http/http-error";
+import { parseJson } from "@/app/api/_lib/http/parse-json";
+import { decryptLegacyPassword } from "@/app/api/_lib/legacy/decrypt-legacy-password";
+import { toLegacyUser } from "@/app/api/_lib/legacy/to-legacy-user";
+import { authErrorCode } from "@/app/api/user/_lib/auth-error-code";
+import { findUserByUsername } from "@/app/api/user/_lib/find-user-by-username";
+import { requireOwnSession } from "@/app/api/user/_lib/require-own-session";
+import { getAuth } from "@/lib/auth/get-auth";
 
 type Context = RouteContext<"/api/user/[userName]">;
 
@@ -11,10 +16,10 @@ type Context = RouteContext<"/api/user/[userName]">;
  * Legacy UI: GET /api/user/:userName. Registration uses it to check whether a name is taken
  * (404 = available). Only the signed-in owner gets the full profile; nobody gets a password.
  */
-export const GET = route(async (request, context: Context) => {
+export const GET = apiRoute(async (request, context: Context) => {
   const { userName } = await context.params;
   const match = await findUserByUsername(userName);
-  if (!match) throw notFound("User not found.");
+  if (!match) throw HttpError.notFound("User not found.");
 
   const session = await getAuth().api.getSession({ headers: request.headers });
   if (session?.user.id !== match.id) return Response.json({ userName: match.displayUsername ?? match.username });
@@ -35,7 +40,7 @@ const legacyUpdate = z.object({
  * Legacy UI: PATCH /api/user/:userName — profile update, or password change when
  * `updatePassword` is true. Status codes match what the Angular screens expect.
  */
-export const PATCH = route(async (request, context: Context) => {
+export const PATCH = apiRoute(async (request, context: Context) => {
   const { userName } = await context.params;
   const session = await requireOwnSession(request, userName);
   const body = await parseJson(request, legacyUpdate);
@@ -45,7 +50,7 @@ export const PATCH = route(async (request, context: Context) => {
     if (body.updatePassword) {
       const currentPassword = decryptLegacyPassword(body.password);
       const newPassword = decryptLegacyPassword(body.newPassword);
-      if (!currentPassword || !newPassword) throw badRequest("Both passwords are required.");
+      if (!currentPassword || !newPassword) throw HttpError.badRequest("Both passwords are required.");
       await auth.api.changePassword({ body: { currentPassword, newPassword }, headers: request.headers });
       return Response.json(toLegacyUser(session.user));
     }
@@ -53,7 +58,7 @@ export const PATCH = route(async (request, context: Context) => {
     const name = body.fullName?.trim();
     const email = body.email?.trim();
     const username = body.userName?.trim();
-    if (!name || !email || !username || !z.email().safeParse(email).success) throw badRequest("Invalid profile.");
+    if (!name || !email || !username || !z.email().safeParse(email).success) throw HttpError.badRequest("Invalid profile.");
     const userLevel = (USER_LEVELS as readonly string[]).includes(body.userLevel ?? "") ? body.userLevel! : "";
 
     if (email.toLowerCase() !== session.user.email.toLowerCase()) {
@@ -67,7 +72,7 @@ export const PATCH = route(async (request, context: Context) => {
     if (code === "USERNAME_IS_ALREADY_TAKEN" || code?.startsWith("USER_ALREADY_EXISTS")) {
       throw new HttpError(403, "taken", "That user name or email is already in use.");
     }
-    if (code) throw badRequest(code);
+    if (code) throw HttpError.badRequest(code);
     throw error;
   }
 });

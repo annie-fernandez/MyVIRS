@@ -1,17 +1,20 @@
 import { z } from "zod";
-import { HttpError, parseJson, route, unauthorized } from "@/lib/api/http";
-import { getAuth } from "@/lib/auth";
-import { decryptLegacyPassword, toLegacyUser, type LegacyUserSource } from "@/lib/legacy/format";
+import { apiRoute } from "@/app/api/_lib/http/api-route";
+import { HttpError } from "@/app/api/_lib/http/http-error";
+import { parseJson } from "@/app/api/_lib/http/parse-json";
+import { decryptLegacyPassword } from "@/app/api/_lib/legacy/decrypt-legacy-password";
+import { toLegacyUser, type LegacyUserSource } from "@/app/api/_lib/legacy/to-legacy-user";
+import { getAuth } from "@/lib/auth/get-auth";
 
 /**
  * Legacy UI sign-in: POST /api/user/login { userName, password (AES-encrypted by the UI) }.
  * Replaces the old flow that downloaded the stored password and compared it in the browser.
  * Sets the Better Auth session cookie and returns the user profile.
  */
-export const POST = route(async (request) => {
+export const POST = apiRoute(async (request) => {
   const body = await parseJson(request, z.object({ userName: z.string().trim().min(1), password: z.string().min(1) }));
   const password = decryptLegacyPassword(body.password);
-  if (!password) throw unauthorized();
+  if (!password) throw HttpError.unauthorized();
 
   const result = await getAuth().api.signInUsername({
     body: { username: body.userName, password },

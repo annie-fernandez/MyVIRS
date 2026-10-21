@@ -1,0 +1,5 @@
+/* A white surface on the gray page. */
+.surface {
+  background: var(--virs-surface);
+  border: 1px solid var(--virs-border);
+}

@@ -1,10 +1,13 @@
 import { adminWordInput, CATEGORY_INFO, normalizeWord } from "@repo/core";
 import { getDb } from "@repo/db";
 import { deleteWord, deleteWordsByValue, findWordsByValue, updateWord } from "@repo/db/queries/words";
-import { requireAdmin } from "@/lib/api/guards";
-import { HttpError, notFound, parseId, parseJson, route } from "@/lib/api/http";
-import { isUniqueViolation } from "@/lib/db-errors";
-import { toLegacyWord } from "@/lib/legacy/format";
+import { requireAdmin } from "@/app/api/_lib/auth/require-admin";
+import { apiRoute } from "@/app/api/_lib/http/api-route";
+import { HttpError } from "@/app/api/_lib/http/http-error";
+import { parseId } from "@/app/api/_lib/http/parse-id";
+import { parseJson } from "@/app/api/_lib/http/parse-json";
+import { toLegacyWord } from "@/app/api/_lib/legacy/to-legacy-word";
+import { isUniqueViolation } from "@/app/api/admin/words/_lib/is-unique-violation";
 
 type Context = RouteContext<"/api/admin/words/[id]">;
 
@@ -13,17 +16,17 @@ type Context = RouteContext<"/api/admin/words/[id]">;
 const isNumericId = (segment: string) => /^\d+$/.test(segment);
 
 /** Legacy admin page: GET /api/admin/words/:word → the word's first entry. */
-export const GET = route(async (request, context: Context) => {
+export const GET = apiRoute(async (request, context: Context) => {
   await requireAdmin(request);
   const { id: segment } = await context.params;
   const [match] = (await findWordsByValue(getDb(), normalizeWord(segment))).sort(
     (a, b) => CATEGORY_INFO[a.category].priority - CATEGORY_INFO[b.category].priority,
   );
-  if (!match) throw notFound("Word not found.");
+  if (!match) throw HttpError.notFound("Word not found.");
   return Response.json(toLegacyWord(match));
 });
 
-export const PATCH = route(async (request, context: Context) => {
+export const PATCH = apiRoute(async (request, context: Context) => {
   await requireAdmin(request);
   const id = parseId((await context.params).id);
   const input = await parseJson(request, adminWordInput);
@@ -34,21 +37,21 @@ export const PATCH = route(async (request, context: Context) => {
     }
     throw error;
   });
-  if (!word) throw notFound("Word not found.");
+  if (!word) throw HttpError.notFound("Word not found.");
   return Response.json(word);
 });
 
-export const DELETE = route(async (request, context: Context) => {
+export const DELETE = apiRoute(async (request, context: Context) => {
   await requireAdmin(request);
   const { id: segment } = await context.params;
 
   if (!isNumericId(segment)) {
     const deleted = await deleteWordsByValue(getDb(), normalizeWord(segment));
-    if (deleted === 0) throw notFound("Word not found.");
+    if (deleted === 0) throw HttpError.notFound("Word not found.");
     // JSON body: the Angular HTTP client treats empty 2xx bodies as errors.
     return Response.json({ deleted });
   }
 
-  if (!(await deleteWord(getDb(), parseId(segment)))) throw notFound("Word not found.");
+  if (!(await deleteWord(getDb(), parseId(segment)))) throw HttpError.notFound("Word not found.");
   return new Response(null, { status: 204 });
 });

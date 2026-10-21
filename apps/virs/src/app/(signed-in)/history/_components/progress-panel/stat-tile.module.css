@@ -1,0 +1,19 @@
+/* A headline number is a card you can click: it lifts its border on hover like other cards. */
+.statTile {
+  display: block;
+  padding: var(--mantine-spacing-md);
+  background: var(--virs-surface);
+  border: 1px solid var(--virs-border);
+  border-radius: var(--mantine-radius-lg);
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+
+  &:hover {
+    border-color: var(--mantine-color-virsIndigo-4);
+    box-shadow: var(--mantine-shadow-sm);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--mantine-color-virsIndigo-5);
+    outline-offset: 2px;
+  }
+}

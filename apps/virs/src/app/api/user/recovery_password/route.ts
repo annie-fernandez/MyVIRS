@@ -1,13 +1,14 @@
-import { HttpError, route } from "@/lib/api/http";
-import { getAuth } from "@/lib/auth";
-import { authErrorCode } from "@/lib/legacy/auth";
-import { decryptLegacyPassword } from "@/lib/legacy/format";
+import { apiRoute } from "@/app/api/_lib/http/api-route";
+import { HttpError } from "@/app/api/_lib/http/http-error";
+import { decryptLegacyPassword } from "@/app/api/_lib/legacy/decrypt-legacy-password";
+import { authErrorCode } from "@/app/api/user/_lib/auth-error-code";
+import { getAuth } from "@/lib/auth/get-auth";
 
 /**
  * Legacy /restore page: POST /api/user/recovery_password?token=…&password=… (also sent as a JSON
  * body). The token comes from the Better Auth reset link, which redirects to /restore?token=….
  */
-export const POST = route(async (request) => {
+export const POST = apiRoute(async (request) => {
   const body = (await request.json().catch(() => ({}))) as { token?: string; password?: string };
   const params = request.nextUrl.searchParams;
   const token = body.token ?? params.get("token") ?? "";

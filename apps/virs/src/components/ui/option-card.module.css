@@ -1,0 +1,43 @@
+/* Tinted with --tint-* variables, set by tintVars(color) from @/theme/tint-vars. */
+
+/* A link card: white and quiet so it never outshouts the screen's main action. Its palette color
+   shows on the icon, and on the border and arrow when hovered. */
+.optionCard {
+  display: block;
+  padding: 18px 20px;
+  background: var(--virs-surface);
+  border: 1px solid var(--virs-border);
+  border-radius: var(--mantine-radius-lg);
+  transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: var(--tint-color);
+    box-shadow: var(--mantine-shadow-md);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--tint-color);
+    outline-offset: 2px;
+  }
+
+  &[data-compact] {
+    padding: 12px 14px;
+  }
+}
+
+.optionCard .optionIcon {
+  background: var(--tint-bg);
+  color: var(--tint-strong);
+}
+
+.optionArrow {
+  flex-shrink: 0;
+  color: var(--mantine-color-charcoal-3);
+  transition: transform 120ms ease, color 120ms ease;
+}
+
+.optionCard:hover .optionArrow {
+  color: var(--tint-strong);
+  transform: translateX(3px);
+}

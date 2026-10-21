@@ -1,27 +1,19 @@
-import type { AnalysisResult, AnalysisSourceKind } from "@repo/core";
+import type { SavedAnalysis } from "@repo/core";
 import { getDb } from "@repo/db";
 import { deleteUserAnalysis, getUserAnalysis } from "@repo/db/queries/history";
 import { z } from "zod";
-import { requireSession } from "@/lib/api/guards";
-import { notFound, route } from "@/lib/api/http";
-
-/** One saved analysis as the results screens need it. */
-export interface SavedAnalysis {
-  id: string;
-  createdAt: string;
-  sourceKind: AnalysisSourceKind;
-  title: string | null;
-  result: AnalysisResult;
-}
+import { requireSession } from "@/app/api/_lib/auth/require-session";
+import { apiRoute } from "@/app/api/_lib/http/api-route";
+import { HttpError } from "@/app/api/_lib/http/http-error";
 
 const idSchema = z.uuid();
 
 // Someone else's analysis, a deleted one and a malformed id all read as "not found", so the
 // response never confirms that a row exists.
-const missing = () => notFound("This analysis isn't in your history.");
+const missing = () => HttpError.notFound("This analysis isn't in your history.");
 
 /** GET /api/history/:id — a saved analysis exactly as it was computed at the time. */
-export const GET = route(async (request, context: RouteContext<"/api/history/[id]">) => {
+export const GET = apiRoute(async (request, context: RouteContext<"/api/history/[id]">) => {
   const { user } = await requireSession(request);
   const id = idSchema.safeParse((await context.params).id);
   const row = id.success ? await getUserAnalysis(getDb(), user.id, id.data) : undefined;
@@ -42,7 +34,7 @@ export const GET = route(async (request, context: RouteContext<"/api/history/[id
 });
 
 /** DELETE /api/history/:id — removes one saved analysis. */
-export const DELETE = route(async (request, context: RouteContext<"/api/history/[id]">) => {
+export const DELETE = apiRoute(async (request, context: RouteContext<"/api/history/[id]">) => {
   const { user } = await requireSession(request);
   const id = idSchema.safeParse((await context.params).id);
   if (!id.success || !(await deleteUserAnalysis(getDb(), user.id, id.data))) throw missing();

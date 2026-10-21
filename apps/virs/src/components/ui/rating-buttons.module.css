@@ -1,0 +1,41 @@
+/* Five-step self-rating: one segment per level, the chosen one filled in its color. */
+.rating {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.ratingStep {
+  /* A fixed square with the number centered both ways (padding alone left it off-center).
+     Plain grey until chosen; the chosen one is filled in indigo. One color, not five. */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 32px;
+  padding: 0;
+  line-height: 1;
+  border-radius: var(--mantine-radius-md);
+  border: 1px solid var(--mantine-color-charcoal-2);
+  background: var(--virs-surface);
+  color: var(--virs-text-muted);
+  font-weight: 600;
+  font-size: var(--mantine-font-size-sm);
+  transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease;
+
+  &:hover {
+    border-color: var(--mantine-color-charcoal-4);
+    color: var(--virs-text);
+  }
+
+  &[data-selected],
+  &[data-selected]:hover {
+    background: var(--mantine-color-virsIndigo-6);
+    border-color: var(--mantine-color-virsIndigo-6);
+    color: #fff;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--mantine-color-virsIndigo-5);
+    outline-offset: 2px;
+  }
+}

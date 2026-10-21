@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { SearchScreen } from "@/components/words/search-screen";
+import { SearchScreen } from "./_components/search-screen";
 
 export const metadata: Metadata = { title: "Search the word lists" };
 

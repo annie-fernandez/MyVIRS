@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { RestoreScreen } from "@/components/account/restore-screen";
+import { RestoreScreen } from "./_components/restore-screen";
 
 export const metadata: Metadata = { title: "Choose a new password", robots: { index: false } };
 

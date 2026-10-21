@@ -1,9 +1,10 @@
 import { adminWordImportInput, normalizeWord, parseGrade, parseWordCategory } from "@repo/core";
 import { getDb, type NewWordRow } from "@repo/db";
 import { importWords } from "@repo/db/queries/words";
-import { requireAdmin } from "@/lib/api/guards";
-import { badRequest, HttpError, route } from "@/lib/api/http";
-import { parseWordsCsv } from "@/lib/csv";
+import { requireAdmin } from "@/app/api/_lib/auth/require-admin";
+import { parseWordsCsv } from "@/app/api/_lib/csv/parse-words-csv";
+import { apiRoute } from "@/app/api/_lib/http/api-route";
+import { HttpError } from "@/app/api/_lib/http/http-error";
 
 const MAX_CSV_BYTES = 5 * 1024 * 1024;
 const MAX_REPORTED_ERRORS = 50;
@@ -13,21 +14,21 @@ const MAX_REPORTED_ERRORS = 50;
  * When `category` is set every row goes into it; otherwise each row needs a category column.
  * `replace` first deletes the words of that category, in the same transaction as the import.
  */
-export const POST = route(async (request) => {
+export const POST = apiRoute(async (request) => {
   await requireAdmin(request);
 
   const form = await request.formData().catch(() => {
-    throw badRequest("Expected multipart/form-data.");
+    throw HttpError.badRequest("Expected multipart/form-data.");
   });
   const file = form.get("file");
-  if (!(file instanceof File)) throw badRequest("A CSV file is required.");
+  if (!(file instanceof File)) throw HttpError.badRequest("A CSV file is required.");
   if (file.size > MAX_CSV_BYTES) throw new HttpError(413, "file_too_large", "CSV files can be at most 5 MB.");
 
   const { category, replace } = adminWordImportInput.parse({
     category: form.get("category") || undefined,
     replace: form.get("replace") || undefined,
   });
-  if (replace && !category) throw badRequest("Choose the category to replace.");
+  if (replace && !category) throw HttpError.badRequest("Choose the category to replace.");
 
   const records = parseWordsCsv(await file.text());
   const rows: NewWordRow[] = [];
@@ -43,7 +44,7 @@ export const POST = route(async (request) => {
     rows.push({ value, category: rowCategory, grade: parseGrade(record.grade ?? "") ?? null });
   });
 
-  if (rows.length === 0) throw badRequest("The CSV does not contain any valid words.", errors.slice(0, MAX_REPORTED_ERRORS));
+  if (rows.length === 0) throw HttpError.badRequest("The CSV does not contain any valid words.", errors.slice(0, MAX_REPORTED_ERRORS));
 
   const imported = await importWords(getDb(), rows, { replace, category });
   return Response.json({

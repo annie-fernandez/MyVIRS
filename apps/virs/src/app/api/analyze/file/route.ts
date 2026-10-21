@@ -1,19 +1,20 @@
 import { analyzableFileKindSchema, MAX_EXTRACTED_TEXT_LENGTH } from "@repo/core";
-import { analyze } from "@/lib/analysis/analyze";
-import { extractTextFromFile } from "@/lib/analysis/extract";
-import { saveToHistory, type AnalyzeResponse } from "@/lib/analysis/history";
-import { badRequest, HttpError, route } from "@/lib/api/http";
+import { analyze } from "@/app/api/_lib/analysis/analyze";
+import { extractTextFromFile } from "@/app/api/_lib/analysis/extract-text-from-file";
+import { saveToHistory, type AnalyzeResponse } from "@/app/api/_lib/analysis/save-to-history";
+import { apiRoute } from "@/app/api/_lib/http/api-route";
+import { HttpError } from "@/app/api/_lib/http/http-error";
 
 // Large PDFs can take a while. Images never reach this route; the browser reads them.
 export const maxDuration = 60;
 
-export const POST = route(async (request) => {
+export const POST = apiRoute(async (request) => {
   const form = await request.formData().catch(() => {
-    throw badRequest("Expected multipart/form-data.");
+    throw HttpError.badRequest("Expected multipart/form-data.");
   });
 
   const file = form.get("file");
-  if (!(file instanceof File)) throw badRequest("A file is required.");
+  if (!(file instanceof File)) throw HttpError.badRequest("A file is required.");
   const kind = analyzableFileKindSchema.parse(form.get("kind"));
 
   const text = await extractTextFromFile(file, kind);

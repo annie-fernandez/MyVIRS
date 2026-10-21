@@ -1,5 +1,5 @@
 import { toNextJsHandler } from "better-auth/next-js";
-import { getAuth } from "@/lib/auth";
+import { getAuth } from "@/lib/auth/get-auth";
 
 // Better Auth serves sign-up, sign-in (email or username), sign-out, session, profile updates,
 // password change/reset and account deletion under /api/auth/*.

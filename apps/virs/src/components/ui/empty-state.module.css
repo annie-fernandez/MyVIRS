@@ -1,0 +1,7 @@
+.emptyState {
+  text-align: center;
+  padding: var(--mantine-spacing-xl) var(--mantine-spacing-md);
+  border: 1px dashed var(--mantine-color-charcoal-2);
+  border-radius: var(--mantine-radius-lg);
+  background: var(--virs-surface);
+}

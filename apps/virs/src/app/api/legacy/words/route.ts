@@ -1,18 +1,19 @@
 import { parseGrade, parseWordCategory, type WordSearchQuery } from "@repo/core";
 import { getDb } from "@repo/db";
 import { searchWords } from "@repo/db/queries/words";
-import { badRequest, route } from "@/lib/api/http";
-import { toLegacyPage } from "@/lib/legacy/format";
+import { apiRoute } from "@/app/api/_lib/http/api-route";
+import { HttpError } from "@/app/api/_lib/http/http-error";
+import { toLegacyPage } from "@/app/api/_lib/legacy/to-legacy-page";
 
 /**
  * Legacy UI word lists. next.config.ts rewrites these here:
  *   GET /api/words?category=k1&grade=K&page=0&size=20&sortKey=value&sortDirection=ASC
  *   GET /api/words/valueandcat?value=ab&category=k1&grade=K&page=0&size=20&sortDirection=ASC
  */
-export const GET = route(async (request) => {
+export const GET = apiRoute(async (request) => {
   const params = request.nextUrl.searchParams;
   const category = parseWordCategory(params.get("category") ?? "");
-  if (!category) throw badRequest("Unknown category.");
+  if (!category) throw HttpError.badRequest("Unknown category.");
 
   const size = Math.min(10_000, Math.max(1, Number(params.get("size")) || 20));
   const query: WordSearchQuery = {

@@ -1,0 +1,19 @@
+/* "Words improved": one bar for the words that were new to the student, filled by how many they
+   learned (dark) and how many are almost there (lighter). The empty track is "still new". */
+.learnTrack {
+  display: flex;
+  gap: 2px;
+  height: 14px;
+  background: var(--mantine-color-charcoal-0);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.learnBar {
+  height: 100%;
+  background: var(--mantine-color-virsIndigo-6);
+
+  &[data-partway] {
+    background: var(--mantine-color-virsIndigo-2);
+  }
+}

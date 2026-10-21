@@ -1,0 +1,6 @@
+/* Highlighter stroke behind one word of a page title, the way VIRS highlights words in a text. */
+.marker {
+  --marker-stroke: var(--marker-color, var(--virs-marker));
+  background-image: linear-gradient(transparent 58%, var(--marker-stroke) 58%, var(--marker-stroke) 92%, transparent 92%);
+  padding-inline: 2px;
+}

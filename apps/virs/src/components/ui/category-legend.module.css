@@ -1,0 +1,25 @@
+/* A legend entry is plain text beside its swatch: no box around it. A clickable one underlines. */
+.legendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding-block: 2px;
+  border-radius: 4px;
+
+  &[data-clickable]:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  &[data-clickable]:focus-visible {
+    outline: 2px solid var(--mantine-color-virsIndigo-5);
+    outline-offset: 2px;
+  }
+}
+
+.legendSwatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}

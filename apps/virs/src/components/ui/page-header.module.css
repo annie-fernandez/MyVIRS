@@ -1,0 +1,11 @@
+/* The lead under a page title always takes two lines' height from tablet width up, so the panel
+   below starts at the same place on every screen whether the sentence wraps or not. */
+.lead {
+  @media (min-width: $mantine-breakpoint-sm) {
+    min-height: calc(2 * var(--mantine-line-height-lg) * 1em);
+  }
+}
+
+.eyebrow {
+  color: var(--mantine-color-virsIndigo-7);
+}

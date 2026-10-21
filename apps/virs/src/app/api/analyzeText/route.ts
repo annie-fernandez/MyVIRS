@@ -1,11 +1,11 @@
 import { analyzeTextInput } from "@repo/core";
-import { analyze } from "@/lib/analysis/analyze";
-import { saveToHistory } from "@/lib/analysis/history";
-import { route } from "@/lib/api/http";
-import { toLegacyText } from "@/lib/legacy/format";
+import { analyze } from "@/app/api/_lib/analysis/analyze";
+import { saveToHistory } from "@/app/api/_lib/analysis/save-to-history";
+import { apiRoute } from "@/app/api/_lib/http/api-route";
+import { toLegacyText } from "@/app/api/_lib/legacy/to-legacy-text";
 
 /** Legacy UI: POST /api/analyzeText with the raw text as the request body. */
-export const POST = route(async (request) => {
+export const POST = apiRoute(async (request) => {
   const { text } = analyzeTextInput.parse({ text: await request.text() });
   const result = await analyze(text);
   // Analyses run from the Angular screens go into the same history as the Mantine ones.

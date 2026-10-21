@@ -1,0 +1,10 @@
+/* Page tabs on the gray page: hovering underlines a tab instead of filling it white. */
+.tab {
+  &:hover {
+    background-color: transparent;
+  }
+
+  &:hover:not([data-active]) {
+    border-bottom-color: var(--mantine-color-charcoal-3);
+  }
+}

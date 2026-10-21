@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { StyleGuide } from "./style-guide";
+import { StyleGuide } from "./_components/style-guide";
 
 export const metadata: Metadata = {
   title: "Style guide",

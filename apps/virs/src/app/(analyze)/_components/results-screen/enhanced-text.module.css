@@ -1,0 +1,21 @@
+/* The key to the word colors, at the top of the sheet with a rule under it. */
+.key {
+  padding-bottom: var(--mantine-spacing-md);
+  margin-bottom: var(--mantine-spacing-lg);
+  border-bottom: 1px solid var(--virs-border);
+}
+
+/* The enhanced text: large, roomy and easy to follow line by line. */
+.reading {
+  font-size: var(--mantine-font-size-lg);
+  line-height: 2;
+  overflow-wrap: anywhere;
+}
+
+.paragraph {
+  margin: 0 0 var(--mantine-spacing-md);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

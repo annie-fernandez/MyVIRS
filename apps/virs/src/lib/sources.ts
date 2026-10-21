@@ -1,5 +1,5 @@
 import { IconFileText, IconFileTypePdf, IconKeyboard, IconPhoto, type Icon } from "@tabler/icons-react";
-import type { VirsColor } from "@/theme";
+import type { VirsColor } from "@/theme/virs-colors";
 
 export interface TextSource {
   /** Where the screen for this source lives. */
