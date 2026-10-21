@@ -10,11 +10,12 @@ export type ReadingLevel =
 export const READING_LEVEL_LABELS: Record<ReadingLevel, string> = {
   beginner: "Beginner",
   intermediate: "Intermediate",
-  "upper-intermediate": "Upper Intermediate",
+  "upper-intermediate": "Upper intermediate",
   advanced: "Advanced",
   college: "College",
-  "too-short": "Not applicable for texts under 100 words",
-  "needs-more-sentences": "Impossible to comprehend (more sentences needed)",
+  // Plain words for a student: what the text needs before it can be scored, not a verdict on it.
+  "too-short": "Needs at least 100 words",
+  "needs-more-sentences": "Needs more sentences",
 };
 
 /** Maps a Flesch reading-ease score to the audience it suits. */

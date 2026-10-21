@@ -49,7 +49,7 @@ export function WordRating({ word, analysisId, context, onLeave }: { word: strin
         ) : (
           <Text size="sm" c="dimmed">
             {/* The sign-in page brings them back to this screen afterwards. */}
-            <Anchor component={Link} href={signInUrl(`${pathname}${searchParams.size ? `?${searchParams}` : ""}`, "Log in to rate words") as Route} onClick={onLeave} inherit fw={600}>
+            <Anchor component={Link} href={signInUrl(`${pathname}${searchParams.size ? `?${searchParams}` : ""}`, "Log in to rate words") as Route} onClick={onLeave} inherit underline="always" fw={600}>
               Log in
             </Anchor>{" "}
             to rate words and see your progress over time.

@@ -38,8 +38,6 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={lexend.variable} {...mantineHtmlProps}>
       <body>
-        {/* Europa, kept for the site title: the same Adobe Fonts kit the Angular header loads. */}
-        <link rel="stylesheet" href="https://use.typekit.net/wya3hqm.css" precedence="default" />
         <Providers user={user}>
           <SiteShell>{children}</SiteShell>
         </Providers>

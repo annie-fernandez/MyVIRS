@@ -124,7 +124,7 @@ export function StyleGuide() {
         </Group>
       </Section>
 
-      <Section title="Type" description="Lexend for everything; Europa only for the site name in the side menu.">
+      <Section title="Type" description="Lexend for everything, the site name included.">
         <Surface>
           <Stack gap="xs">
             <Title order={1}>Page title (h1)</Title>

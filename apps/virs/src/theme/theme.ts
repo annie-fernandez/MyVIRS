@@ -1,5 +1,4 @@
 import { createTheme } from "@mantine/core";
-import { EUROPA } from "./europa";
 import { LUMINANCE_THRESHOLD } from "./luminance-threshold";
 import { VIRS_COLORS } from "./virs-colors";
 import { VIRS_TOKENS } from "./virs-tokens";
@@ -45,8 +44,10 @@ export const theme = createTheme({
     xl: "0 18px 40px -16px rgba(42, 42, 42, 0.22)",
   },
   cursorType: "pointer",
+  // Mantine's own transitions (pop-ups, the drawer) follow the visitor's "reduce motion" setting.
+  respectReducedMotion: true,
 
-  other: { europa: EUROPA, tokens: VIRS_TOKENS },
+  other: { tokens: VIRS_TOKENS },
 
   // Defaults for every Mantine component the app uses, so screens get the house style without
   // passing props, and only pass what is genuinely different on that screen.
@@ -109,7 +110,8 @@ export const theme = createTheme({
     Tooltip: { defaultProps: { radius: "sm", withArrow: true, openDelay: 300 } },
 
     // Data display
-    Badge: { defaultProps: { radius: "sm", variant: "light" }, styles: { root: { textTransform: "none", fontWeight: 600 } } },
+    // Size lg is 13px, the smallest text the app uses (Mantine's default badge is 11px).
+    Badge: { defaultProps: { radius: "sm", variant: "light", size: "lg" }, styles: { root: { textTransform: "none", fontWeight: 600 } } },
     ThemeIcon: { defaultProps: { radius: "md" } },
     Avatar: { defaultProps: { radius: "xl", color: "virsOrange" } },
     Table: {

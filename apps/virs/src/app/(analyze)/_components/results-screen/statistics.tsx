@@ -1,7 +1,6 @@
 "use client";
 
-import { Accordion, Alert, Group, Progress, RingProgress, SimpleGrid, Stack, Table, Text, Title } from "@mantine/core";
-import { IconInfoCircle } from "@tabler/icons-react";
+import { Accordion, Group, Progress, RingProgress, SimpleGrid, Stack, Table, Text, Title } from "@mantine/core";
 import { READING_LEVEL_LABELS, readingLevel, type AnalysisResult, type ReadingLevel } from "@repo/core";
 import { Section } from "@/components/ui/section";
 import { Surface } from "@/components/ui/surface";
@@ -69,7 +68,16 @@ export function Statistics({ result }: { result: AnalysisResult }) {
               </div>
             </Group>
           ) : (
-            <Text size="sm">{READING_LEVEL_LABELS[level]}.</Text>
+            <>
+              <Text fw={600} fz="lg">
+                {READING_LEVEL_LABELS[level]}
+              </Text>
+              <Text size="sm" c="dimmed">
+                {level === "too-short"
+                  ? `This text has ${wordCount.total.toLocaleString()}. The word lists below still apply.`
+                  : "Break it into sentences with full stops to get a score. The word lists below still apply."}
+              </Text>
+            </>
           )}
         </Surface>
         <Surface>
@@ -91,16 +99,10 @@ export function Statistics({ result }: { result: AnalysisResult }) {
             {percent(onList)}
           </Title>
           <Text size="sm" c="dimmed" mt="sm">
-            {wordCount.offList.toLocaleString()} names and off-list words
+            {wordCount.offList.toLocaleString()} {wordCount.offList === 1 ? "name or off-list word" : "names and off-list words"}
           </Text>
         </Surface>
       </SimpleGrid>
-
-      {!scored && (
-        <Alert color="virsBlue" icon={<IconInfoCircle size={18} />}>
-          The readability score needs at least 100 words in several sentences. The word-list breakdown below still applies.
-        </Alert>
-      )}
 
       {/* Side by side on wide screens: the bars to compare at a glance, the table for the exact numbers. */}
       <SimpleGrid cols={{ base: 1, lg: 2 }} spacing="xl" style={{ alignItems: "start" }}>

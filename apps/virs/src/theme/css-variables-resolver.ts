@@ -1,5 +1,4 @@
 import type { CSSVariablesResolver } from "@mantine/core";
-import { EUROPA } from "./europa";
 import { VIRS_TOKENS } from "./virs-tokens";
 
 /** CSS variables for the tokens, plus a readable "dimmed" color. Passed to MantineProvider. */
@@ -19,7 +18,6 @@ export const cssVariablesResolver: CSSVariablesResolver = () => ({
     "--virs-menu-muted": VIRS_TOKENS.menuMuted,
     "--virs-menu-hover": VIRS_TOKENS.menuHover,
     "--virs-marker": VIRS_TOKENS.marker,
-    "--virs-europa": EUROPA,
   },
   light: { "--mantine-color-dimmed": VIRS_TOKENS.textMuted },
   dark: {},

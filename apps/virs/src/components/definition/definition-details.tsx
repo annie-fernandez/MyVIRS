@@ -36,7 +36,7 @@ export function DefinitionDetails({ target, onLeave }: { target: DefinitionTarge
           </Typography>
           <Text size="xs" c="dimmed">
             Definition from{" "}
-            <Anchor href={`https://en.wiktionary.org/wiki/${encodeURIComponent(definition.data.word)}`} target="_blank" rel="noreferrer" inherit>
+            <Anchor href={`https://en.wiktionary.org/wiki/${encodeURIComponent(definition.data.word)}`} target="_blank" rel="noreferrer" inherit underline="always">
               Wiktionary
             </Anchor>
             , available under CC BY-SA.

@@ -9,7 +9,7 @@ export function Entries({ items }: { items: { text: string; href?: string; link?
           <Text size="sm" span>
             {item.text}{" "}
             {item.href && (
-              <Anchor href={item.href} target="_blank" rel="noreferrer" inherit>
+              <Anchor href={item.href} target="_blank" rel="noreferrer" inherit underline="always">
                 {item.link}
               </Anchor>
             )}

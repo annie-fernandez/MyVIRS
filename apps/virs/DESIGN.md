@@ -30,7 +30,7 @@ VIRS is a reading and vocabulary tool for K-12 students and teachers. Screens sh
 
 **The screen guides the eye.** The indigo side menu says where you are, its current page picked out in white; the white footer stays quiet; and on the page the strongest thing is the one main action. Anything else on the screen (other options, links, history) is white and quiet. If two things compete for attention, tone one down.
 
-The personality comes from the original site's indigo and its source colors, the Europa site name, and the highlighter stroke on a key word. Keep those; don't add new decoration (no gradients, no cream or pastel washes, no glow).
+The personality comes from the original site's indigo and its source colors, the VIRS name at the top of the side menu, and the highlighter stroke on a key word. Keep those; don't add new decoration (no gradients, no cream or pastel washes, no glow).
 
 ## Color
 
@@ -56,7 +56,7 @@ The personality comes from the original site's indigo and its source colors, the
 
 ## Type
 
-- **Lexend for everything**, loaded in `app/layout.tsx`. **Europa only for the site name** at the top of the side menu, in white.
+- **Lexend for everything**, loaded (self-hosted) in `app/layout.tsx`, the site name included: "VIRS" in white with the full name small beneath it. One typeface: a second rounded sans next to Lexend reads as a mistake, not a choice.
 - Sizes come from the theme; don't set pixel sizes in screens.
   - Page title: `Title order={1}`, one per screen.
   - Section title: `Title order={2}`, or use `Section`.
@@ -65,7 +65,8 @@ The personality comes from the original site's indigo and its source colors, the
   - Secondary (counts, captions, help): `size="sm"` with `c="dimmed"`. Never smaller than `xs` (13 px).
 - Weights: 400 body, 500 labels and navigation, 600 titles, buttons and emphasis. No 300 or lighter.
 - **The marker** (`<Marker>`): one key word in a page title, at most once per screen. Not in body text, buttons or section titles. Yellow by default; pass `color` on a screen that has its own.
-- Sentence case everywhere ("Upload a photo", not "Upload A Photo"). No all-caps, except the side menu's small section labels.
+- Sentence case everywhere ("Upload a photo", not "Upload A Photo"), including labels: no all-caps anywhere, since lower case is easier to read (the British Dyslexia Association's style guide says the same).
+- A link inside a sentence is always underlined (`underline="always"`), so it doesn't rely on color alone. Standalone links (menus, buttons, table cells) don't need it.
 
 ## Layout and spacing
 

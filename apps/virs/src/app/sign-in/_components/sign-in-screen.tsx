@@ -22,9 +22,12 @@ export function SignInScreen({ title, next, startWith }: { title: string; next: 
     <Stack gap="xl">
       <PageHeader title={title} description="You need a free VIRS account for this. Log in, or create one, and you'll go straight back." />
       <Surface maw={460}>
-        <Title order={2} fz="lg" mb="md">
-          {ACCOUNT_FORM_TITLES[view]}
-        </Title>
+        {/* The page title already says "Log in"; only the other two forms need a heading of their own. */}
+        {view !== "login" && (
+          <Title order={2} fz="lg" mb="md">
+            {ACCOUNT_FORM_TITLES[view]}
+          </Title>
+        )}
         <AccountForms view={view} onViewChange={setView} onSignedIn={signedIn} />
       </Surface>
     </Stack>

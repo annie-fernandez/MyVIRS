@@ -32,9 +32,10 @@ export function SideMenu({ collapsed, onToggle, onNavigate }: { collapsed: boole
     <AppShell.Navbar className={classes.navbar} data-collapsed={collapsed || undefined}>
       {/* Phones show the site name in the bar above, and the menu never collapses there. */}
       <AppShell.Section className={classes.menuTop} visibleFrom="sm">
-        <a href="/dashboard" className={`${classes.brand} ${classes.label}`}>
-          Vocabulary in Reading Study
-        </a>
+<ShellLink href="/dashboard" className={`${classes.brand} ${classes.label}`} aria-label="VIRS, Vocabulary in Reading Study: home">
+          <span className={classes.brandMark}>VIRS</span>
+          <span className={classes.brandName}>Vocabulary in Reading Study</span>
+        </ShellLink>
         <Tooltip label={collapsed ? "Show the menu" : "Collapse the menu"} position="right">
           <ActionIcon variant="transparent" className={classes.menuButton} onClick={onToggle} aria-label={collapsed ? "Show the menu" : "Collapse the menu"} aria-expanded={!collapsed}>
             {collapsed ? <IconLayoutSidebarLeftExpand size={20} stroke={1.8} /> : <IconLayoutSidebarLeftCollapse size={20} stroke={1.8} />}

@@ -26,7 +26,7 @@ export function HomeScreen() {
           description="Paste a passage and VIRS analyzes it one word at a time: how common each word is in school reading, and how readable the whole text is."
           actions={
             <Button component={ShellLink} href={TEXT_SOURCES.text.href} size="lg" leftSection={<IconChartBar size={20} />}>
-              Measure readability
+              Analyze a text
             </Button>
           }
         />

@@ -118,7 +118,7 @@ export function SearchScreen() {
         <Alert color="virsBlue" icon={<IconInfoCircle size={18} />}>
           <Group gap="xs">
             <Text size="sm">
-              <Anchor component="button" inherit onClick={() => setDefinition({ word: lookup[0]!.value })}>
+              <Anchor component="button" inherit underline="always" onClick={() => setDefinition({ word: lookup[0]!.value })}>
                 {lookup[0]!.value}
               </Anchor>{" "}
               is in:

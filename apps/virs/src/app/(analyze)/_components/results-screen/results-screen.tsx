@@ -77,6 +77,8 @@ export function ResultsScreen({ view }: { view: ResultView }) {
           )
         }
         description={`${source} · ${total.toLocaleString()} ${total === 1 ? "word" : "words"} · analyzed ${new Date(analyzedAt).toLocaleString([], { dateStyle: "medium", timeStyle: "short" })}`}
+        // One line (source · words · date), so don't hold space for a second.
+        descriptionLines={1}
         actions={
           <>
             {/* A fixed width split evenly, so both halves are the same size whatever their labels. */}

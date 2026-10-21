@@ -14,7 +14,7 @@ export function HistoryNote({ saved }: { saved: boolean }) {
       <IconCheck size={16} />
       <Text size="sm">
         Saved to{" "}
-        <Anchor component={ShellLink} href="/history" inherit>
+        <Anchor component={ShellLink} href="/history" inherit underline="always">
           your history
         </Anchor>
         .

@@ -10,15 +10,28 @@
   }
 }
 
-/* The site name, in Europa and white, on the side menu and the phone bar. */
+/* The site name on the side menu and the phone bar: "VIRS" in white, the full name small beneath
+   it (beside it on phones). The app's own font, so it matches the menu items below it. */
 .brand {
-  font-family: var(--virs-europa);
-  font-weight: 700;
-  font-size: 1.2rem;
-  line-height: 1.25;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
   color: var(--virs-on-menu);
   text-decoration: none;
   min-width: 0;
+}
+
+.brandMark {
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+.brandName {
+  font-size: var(--mantine-font-size-xs);
+  line-height: 1.3;
+  color: var(--virs-menu-muted);
 }
 
 /* Phones: a blue bar with the menu button and the site name. */
@@ -31,6 +44,12 @@
   color: var(--virs-on-menu);
 
   & .brand {
+    flex-direction: row;
+    align-items: baseline;
+    gap: var(--mantine-spacing-xs);
+  }
+
+  & .brandName {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -56,16 +75,17 @@
   }
 }
 
+/* The collapse button sits in the top right corner, beside "VIRS", so the full name below gets
+   the menu's whole width. */
 .menuTop {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--mantine-spacing-xs);
+  position: relative;
   padding: 4px 0 12px 10px;
 }
 
 .menuButton {
-  flex-shrink: 0;
+  position: absolute;
+  top: 2px;
+  right: 0;
   color: var(--virs-menu-muted);
 
   &:hover {
@@ -79,12 +99,12 @@
   padding-inline: 10px;
 }
 
+/* Section titles: small but not below the app's 13px minimum, and in sentence case, which is
+   easier to read than spaced-out capitals. */
 .sectionLabel {
   color: var(--virs-menu-muted);
-  font-size: 11.5px;
+  font-size: var(--mantine-font-size-xs);
   font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
   padding: 18px 10px 6px;
   white-space: nowrap;
 }
@@ -133,6 +153,52 @@
   text-overflow: ellipsis;
 }
 
+/* Mantine's focus ring is indigo, invisible on the indigo menu: white there instead. */
+.navbar,
+.phoneBar {
+  & :focus-visible {
+    outline: 2px solid var(--virs-on-menu);
+    outline-offset: 2px;
+  }
+}
+
+/* Off screen until it's focused, then a white tab at the top left. */
+.skipLink {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 1000;
+  padding: 8px 16px;
+  border-radius: var(--mantine-radius-md);
+  background: var(--virs-surface);
+  color: var(--virs-menu);
+  font-weight: 600;
+  box-shadow: var(--mantine-shadow-md);
+  transform: translateY(-200%);
+
+  &:focus {
+    transform: none;
+    outline: 2px solid var(--virs-menu);
+    outline-offset: 2px;
+  }
+}
+
+/* The page itself receives focus from the skip link; it needs no ring of its own. */
+.main:focus {
+  outline: none;
+}
+
+/* Visitors who ask their system for less motion get none: no sliding menu, no lifting cards. */
+@media (prefers-reduced-motion: reduce) {
+  :global(*),
+  :global(*::before),
+  :global(*::after) {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 .menuBottom {
   padding-top: 8px;
   border-top: 1px solid var(--virs-menu-hover);
@@ -159,8 +225,13 @@
     }
 
     & .menuTop {
+      display: flex;
       justify-content: center;
       padding-left: 0;
+    }
+
+    & .menuButton {
+      position: static;
     }
 
     & .navLink,

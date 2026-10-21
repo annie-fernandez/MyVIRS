@@ -3,19 +3,22 @@
 import { ActionIcon, Anchor, Group, Text } from "@mantine/core";
 import { IconBrandFacebook, IconBrandInstagram } from "@tabler/icons-react";
 import { ShellLink } from "@/components/shell-link/shell-link";
+import { useSession } from "@/lib/auth/use-session";
 import { FOOTER_LINKS } from "./footer-links";
 import classes from "./site-shell.module.css";
 import { SOCIAL_LINKS } from "./social-links";
 
 /** The footer band: copyright, the footer links and the social buttons. */
 export function FooterContent() {
+  // Admin is a tool for the people who run VIRS; a student would only find a page they can't open.
+  const isAdmin = useSession()?.role === "admin";
   return (
     <>
       <Text size="sm" inherit>
         © 2017 Vocabulary in Reading Study
       </Text>
       <Group gap="md" component="nav" aria-label="Footer">
-        {FOOTER_LINKS.map((link) => (
+        {FOOTER_LINKS.filter((link) => isAdmin || link.href !== "/admin").map((link) => (
           <Anchor key={link.href} component={ShellLink} href={link.href} size="sm" className={classes.footerLink}>
             {link.label}
           </Anchor>

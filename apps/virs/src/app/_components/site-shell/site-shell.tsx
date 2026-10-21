@@ -3,6 +3,7 @@
 import { AppShell, Burger } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import type { ReactNode } from "react";
+import { ShellLink } from "@/components/shell-link/shell-link";
 import { FooterContent } from "./footer-content";
 import { SideMenu } from "./side-menu";
 import classes from "./site-shell.module.css";
@@ -27,17 +28,24 @@ export function SiteShell({ children }: { children: ReactNode }) {
       padding={0}
       withBorder={false}
     >
+      {/* The first thing Tab reaches: keyboard users can jump past the menu straight to the page. */}
+      <a href="#main-content" className={classes.skipLink}>
+        Skip to main content
+      </a>
+
       {/* Phones only: the side menu is hidden behind the burger. */}
       <AppShell.Header className={classes.phoneBar} hiddenFrom="sm">
         <Burger opened={opened} onClick={toggle} size="sm" className={classes.burger} aria-label={opened ? "Close menu" : "Open menu"} />
-        <a href="/dashboard" className={classes.brand}>
-          Vocabulary in Reading Study
-        </a>
+<ShellLink href="/dashboard" className={classes.brand} aria-label="VIRS, Vocabulary in Reading Study: home">
+          <span className={classes.brandMark}>VIRS</span>
+          <span className={classes.brandName}>Vocabulary in Reading Study</span>
+        </ShellLink>
       </AppShell.Header>
 
       <SideMenu collapsed={collapsed} onToggle={toggleCollapsed} onNavigate={close} />
 
-      <AppShell.Main className={classes.main}>
+      {/* tabIndex -1 lets the skip link move focus here, not just scroll. */}
+      <AppShell.Main id="main-content" tabIndex={-1} className={classes.main}>
         <div className={classes.content}>{children}</div>
         {/* Phones: the footer ends the page instead of staying on screen. */}
         <footer className={classes.pageFooter}>

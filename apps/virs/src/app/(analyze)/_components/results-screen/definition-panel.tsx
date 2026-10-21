@@ -1,6 +1,6 @@
 "use client";
 
-import { Box } from "@mantine/core";
+import { Box, VisuallyHidden } from "@mantine/core";
 import { IconClick } from "@tabler/icons-react";
 import { DefinitionDetails } from "@/components/definition/definition-details";
 import type { DefinitionTarget } from "@/components/definition/definition-target";
@@ -16,6 +16,8 @@ import classes from "./results-screen.module.css";
 export function DefinitionPanel({ target }: { target: DefinitionTarget | null }) {
   return (
     <Box className={classes.panel}>
+      {/* The panel changes beside the passage without moving focus; screen readers hear which word it now shows. */}
+      <VisuallyHidden aria-live="polite">{target ? `Showing the definition of ${target.word}.` : ""}</VisuallyHidden>
       {target ? (
         // Keyed by word, so a new word starts at the top of the card rather than where the last one was scrolled.
         <Surface key={target.word} className={classes.panelCard}>
