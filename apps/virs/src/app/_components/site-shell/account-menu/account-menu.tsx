@@ -1,6 +1,6 @@
 "use client";
 
-import { ActionIcon, Avatar, Button, Menu, Modal, Tooltip, UnstyledButton } from "@mantine/core";
+import { Avatar, Button, Menu, Modal, Tooltip, UnstyledButton } from "@mantine/core";
 import { IconChevronRight, IconId, IconKey, IconLogin, IconLogout } from "@tabler/icons-react";
 import { useState } from "react";
 import { useSession } from "@/lib/auth/use-session";
@@ -31,7 +31,8 @@ export function AccountMenu({ collapsed }: { collapsed: boolean }) {
           <Menu.Target>
             <Tooltip label={user.name} position="right" disabled={!collapsed}>
               <UnstyledButton className={classes.menuItem} aria-label={`Your account: ${user.name}`}>
-                <Avatar size={24} radius="xl" color="virsOrange" variant="filled" fz={11}>
+                {/* 24px, wider than the 18px icons: pulled in 3px each side so it lines up with them. */}
+                <Avatar size={24} mx={-3} radius="xl" color="virsOrange" variant="filled" fz={11}>
                   {getInitials(user.name)}
                 </Avatar>
                 <span className={classes.label}>{user.name}</span>
@@ -47,18 +48,15 @@ export function AccountMenu({ collapsed }: { collapsed: boolean }) {
             <Menu.Item leftSection={<IconLogout size={16} />} onClick={() => signOut.mutate()}>Log out</Menu.Item>
           </Menu.Dropdown>
         </Menu>
-      ) : collapsed ? (
-        <Tooltip label="Log in" position="right">
-          <ActionIcon variant="white" size={36} mx="auto" mt={4} display="flex" className={classes.loginButton} onClick={() => setView("login")} aria-label="Log in">
-            <IconLogin size={18} />
-          </ActionIcon>
-        </Tooltip>
       ) : (
         // Signed out: one plain "Log in" button, not a profile menu for a profile that doesn't
-        // exist yet. Registering is one click further, inside the log-in pop-up.
-        <Button variant="white" fullWidth leftSection={<IconLogin size={16} />} className={classes.loginButton} onClick={() => setView("login")}>
-          Log in
-        </Button>
+        // exist yet. Registering is one click further, inside the log-in pop-up. The same button
+        // when collapsed (its label fades), so the menu doesn't swap components mid-animation.
+        <Tooltip label="Log in" position="right" disabled={!collapsed}>
+          <Button variant="white" fullWidth justify="flex-start" px={10} leftSection={<IconLogin size={18} />} className={classes.loginButton} onClick={() => setView("login")} aria-label="Log in">
+            <span className={classes.label}>Log in</span>
+          </Button>
+        </Tooltip>
       )}
 
       <Modal opened={view !== null} onClose={() => setView(null)} title={view && ACCOUNT_FORM_TITLES[view]}>

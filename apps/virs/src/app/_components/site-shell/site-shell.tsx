@@ -11,8 +11,9 @@ import { useMenuCollapsed } from "./use-menu-collapsed";
 
 const PHONE_BAR_HEIGHT = 56;
 const FOOTER_HEIGHT = 48;
-const MENU_WIDTH = 240;
-const COLLAPSED_MENU_WIDTH = 68;
+const MENU_WIDTH = 256;
+// 10px menu padding + 10px item padding either side of an 18px icon: the icons stay put when it collapses.
+const COLLAPSED_MENU_WIDTH = 58;
 
 /** The side menu and footer around every Mantine screen; on phones, a bar with the menu button too. */
 export function SiteShell({ children }: { children: ReactNode }) {

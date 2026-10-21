@@ -66,7 +66,10 @@
   background-color: var(--virs-menu);
   color: var(--virs-on-menu);
   padding: 12px 10px;
-  transition: width 150ms ease;
+  /* Clips the labels as it narrows. The width rides Mantine's own AppShell transition (same
+     duration and easing as the page beside it), so the menu and the page move together. */
+  overflow: hidden;
+  transition-property: transform, top, height, width;
 
   /* On phones it opens below the bar, which holds the button that closes it. */
   @mixin smaller-than $mantine-breakpoint-sm {
@@ -75,34 +78,22 @@
   }
 }
 
-/* The collapse button sits in the top right corner, beside "VIRS", so the full name below gets
-   the menu's whole width. */
+/* The top section: the Burger that collapses the menu, then the site name. Tablets and up only;
+   on phones the menu opens from the bar above and never collapses. */
 .menuTop {
-  position: relative;
-  padding: 4px 0 12px 10px;
-}
-
-.menuButton {
-  position: absolute;
-  top: 2px;
-  right: 0;
-  color: var(--virs-menu-muted);
-
-  &:hover {
-    color: var(--virs-on-menu);
-    background: var(--virs-menu-hover);
-  }
-}
-
-.menuLinks {
-  margin-inline: -10px;
-  padding-inline: 10px;
+  display: flex;
+  align-items: flex-start;
+  /* Lines the Burger up with the menu items' icons, and "VIRS" with their labels. */
+  gap: 8px;
+  padding: 2px 0 12px 6px;
 }
 
 /* Section titles: small but not below the app's 13px minimum, and in sentence case, which is
    easier to read than spaced-out capitals. */
 .sectionLabel {
+  position: relative;
   color: var(--virs-menu-muted);
+  transition: color var(--app-shell-transition-duration) var(--app-shell-transition-timing-function);
   font-size: var(--mantine-font-size-xs);
   font-weight: 600;
   padding: 18px 10px 6px;
@@ -137,20 +128,30 @@
   color: var(--virs-menu-muted);
 }
 
+/* Becoming the current page is instant (no fade through a washed-out in-between color). */
 .navLink[data-active],
 .navLink[data-active]:hover {
   background-color: var(--virs-on-menu);
   color: var(--virs-menu);
   font-weight: 600;
+  transition: none;
 
   & .navIcon {
     color: var(--virs-menu);
   }
 }
 
-.label {
+/* Labels stay in place when the menu collapses: the menu clips them and they fade, so nothing
+   reflows or jumps. Hidden once faded, so keyboards and screen readers skip them (each item has its
+   own aria-label). */
+.label,
+.menuChevron {
   overflow: hidden;
+  white-space: nowrap;
   text-overflow: ellipsis;
+  transition:
+    opacity var(--app-shell-transition-duration) var(--app-shell-transition-timing-function),
+    visibility 0s;
 }
 
 /* Mantine's focus ring is indigo, invisible on the indigo menu: white there instead. */
@@ -216,36 +217,30 @@
   color: var(--virs-menu);
 }
 
-/* Collapsed (tablets up): icons only, centered; labels show as tooltips instead. */
+/* Collapsed (tablets up): icons only; labels show as tooltips instead. The icons don't move: the
+   collapsed width is set so they're centered where they already are. */
 @media (min-width: $mantine-breakpoint-sm) {
   .navbar[data-collapsed] {
     & .label,
     & .menuChevron {
-      display: none;
+      opacity: 0;
+      visibility: hidden;
+      transition:
+        opacity var(--app-shell-transition-duration) var(--app-shell-transition-timing-function),
+        visibility 0s linear var(--app-shell-transition-duration);
     }
 
-    & .menuTop {
-      display: flex;
-      justify-content: center;
-      padding-left: 0;
-    }
-
-    & .menuButton {
-      position: static;
-    }
-
-    & .navLink,
-    & .menuItem {
-      justify-content: center;
-      padding-inline: 0;
-    }
-
-    /* Section titles become a thin rule between the groups. */
+    /* Section titles keep their height (so nothing below moves) and become a thin rule. */
     & .sectionLabel {
-      font-size: 0;
-      padding: 0;
-      margin: 12px 8px;
-      border-top: 1px solid var(--virs-menu-hover);
+      color: transparent;
+
+      &::after {
+        content: "";
+        position: absolute;
+        inset-inline: 10px;
+        top: 50%;
+        border-top: 1px solid var(--virs-menu-hover);
+      }
     }
   }
 }

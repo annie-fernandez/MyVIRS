@@ -1,8 +1,8 @@
 "use client";
 
-import { ActionIcon, AppShell, NavLink, ScrollArea, Tooltip } from "@mantine/core";
-import { IconLayoutSidebarLeftCollapse, IconLayoutSidebarLeftExpand } from "@tabler/icons-react";
+import { AppShell, Burger, NavLink, ScrollArea, Tooltip } from "@mantine/core";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 import { ShellLink } from "@/components/shell-link/shell-link";
 import { AccountMenu } from "./account-menu/account-menu";
 import { CitationButton } from "./citation-button";
@@ -26,21 +26,28 @@ const NAV_PARENT: Record<string, string> = {
  */
 export function SideMenu({ collapsed, onToggle, onNavigate }: { collapsed: boolean; onToggle: () => void; onNavigate: () => void }) {
   const pathname = usePathname();
-  const currentPath = NAV_PARENT[pathname] ?? pathname;
+  // The item clicked last is highlighted at once, as in Mantine's navbar examples, instead of
+  // after the new page has loaded. It hands back to the address once the page changes.
+  const [clickedHref, setClickedHref] = useState<string | null>(null);
+  const [lastPathname, setLastPathname] = useState(pathname);
+  if (pathname !== lastPathname) {
+    setLastPathname(pathname);
+    setClickedHref(null);
+  }
+  const currentPath = clickedHref ?? NAV_PARENT[pathname] ?? pathname;
+  const toggleLabel = collapsed ? "Show the menu" : "Collapse the menu";
 
   return (
     <AppShell.Navbar className={classes.navbar} data-collapsed={collapsed || undefined}>
       {/* Phones show the site name in the bar above, and the menu never collapses there. */}
       <AppShell.Section className={classes.menuTop} visibleFrom="sm">
-<ShellLink href="/dashboard" className={`${classes.brand} ${classes.label}`} aria-label="VIRS, Vocabulary in Reading Study: home">
+        {/* Mantine's collapsible-navbar pattern: a Burger before the site name, as on the phone bar.
+            Collapsed, only the Burger shows (the site name is a label, hidden then). */}
+        <Burger opened={!collapsed} onClick={onToggle} size="sm" className={classes.burger} aria-label={toggleLabel} aria-expanded={!collapsed} />
+        <ShellLink href="/dashboard" className={`${classes.brand} ${classes.label}`} aria-label="VIRS, Vocabulary in Reading Study: home">
           <span className={classes.brandMark}>VIRS</span>
           <span className={classes.brandName}>Vocabulary in Reading Study</span>
         </ShellLink>
-        <Tooltip label={collapsed ? "Show the menu" : "Collapse the menu"} position="right">
-          <ActionIcon variant="transparent" className={classes.menuButton} onClick={onToggle} aria-label={collapsed ? "Show the menu" : "Collapse the menu"} aria-expanded={!collapsed}>
-            {collapsed ? <IconLayoutSidebarLeftExpand size={20} stroke={1.8} /> : <IconLayoutSidebarLeftCollapse size={20} stroke={1.8} />}
-          </ActionIcon>
-        </Tooltip>
       </AppShell.Section>
 
       <AppShell.Section grow component={ScrollArea} className={classes.menuLinks}>
@@ -58,7 +65,11 @@ export function SideMenu({ collapsed, onToggle, onNavigate }: { collapsed: boole
                     leftSection={<item.icon size={18} stroke={1.8} />}
                     active={currentPath === item.href}
                     classNames={{ root: classes.navLink, body: classes.label, section: classes.navIcon }}
-                    onClick={onNavigate}
+                    onClick={() => {
+                      // Unchanged page (clicking the current item): nothing to wait for.
+                      if (item.href !== (NAV_PARENT[pathname] ?? pathname)) setClickedHref(item.href);
+                      onNavigate();
+                    }}
                   />
                 </Tooltip>
               ))}
