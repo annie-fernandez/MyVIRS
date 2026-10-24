@@ -1,16 +1,23 @@
 "use client";
 
-import { Stack, Title } from "@mantine/core";
+import { Button, Group, Stack } from "@mantine/core";
+import { IconLock, IconLogin, IconUserPlus } from "@tabler/icons-react";
 import type { Route } from "next";
 import { useState } from "react";
-import { ACCOUNT_FORM_TITLES, type AccountFormView } from "@/app/_components/account-forms/account-form-view";
-import { AccountForms } from "@/app/_components/account-forms/account-forms";
+import type { AccountFormView } from "@/app/_components/account-forms/account-form-view";
+import { AccountModal } from "@/app/_components/account-forms/account-modal";
+import { EmptyState } from "@/components/ui/empty-state";
+import { Marker } from "@/components/ui/marker";
 import { PageHeader } from "@/components/ui/page-header";
-import { Surface } from "@/components/ui/surface";
 
-/** Says what needs an account, with the log-in form right here; afterwards the visitor goes back to `next`. */
-export function SignInScreen({ title, next, startWith }: { title: string; next: Route | null; startWith: AccountFormView }) {
-  const [view, setView] = useState<AccountFormView>(startWith);
+/**
+ * Says what needs an account, with Create an account and Log in buttons that open the same pop-up as
+ * the side menu's Log in (so there's never a form on the page and another in a pop-up). Afterwards
+ * the visitor goes back to `next`.
+ */
+export function SignInScreen({ title, next, startWith }: { title: string; next: Route | null; startWith: AccountFormView | null }) {
+  // Old /register links arrive with the sign-up form already open.
+  const [view, setView] = useState<AccountFormView | null>(startWith);
 
   function signedIn() {
     // A full page load, not a client-side navigation: logging in changed the session cookie, and
@@ -20,16 +27,31 @@ export function SignInScreen({ title, next, startWith }: { title: string; next: 
 
   return (
     <Stack gap="xl">
-      <PageHeader title={title} description="You need a free VIRS account for this. Log in, or create one, and you'll go straight back." />
-      <Surface maw={460}>
-        {/* The page title already says "Log in"; only the other two forms need a heading of their own. */}
-        {view !== "login" && (
-          <Title order={2} fz="lg" mb="md">
-            {ACCOUNT_FORM_TITLES[view]}
-          </Title>
-        )}
-        <AccountForms view={view} onViewChange={setView} onSignedIn={signedIn} />
-      </Surface>
+      <PageHeader
+        title={
+          <>
+            Log <Marker>in</Marker>
+          </>
+        }
+        description="This page needs a free VIRS account."
+        descriptionLines={1}
+      />
+      <EmptyState
+        icon={IconLock}
+        title={title}
+        description="Analyzing works without an account, but nothing is saved. Log in, or create a free account, and you'll go straight back to where you were."
+        action={
+          <Group justify="center" gap="sm">
+            <Button variant="default" leftSection={<IconUserPlus size={16} />} onClick={() => setView("register")}>
+              Create an account
+            </Button>
+            <Button leftSection={<IconLogin size={16} />} onClick={() => setView("login")}>
+              Log in
+            </Button>
+          </Group>
+        }
+      />
+      <AccountModal view={view} onViewChange={setView} onSignedIn={signedIn} />
     </Stack>
   );
 }

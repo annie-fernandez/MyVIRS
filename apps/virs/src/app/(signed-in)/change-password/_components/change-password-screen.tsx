@@ -1,6 +1,6 @@
 "use client";
 
-import { Stack } from "@mantine/core";
+import { Box, Stack } from "@mantine/core";
 import { Marker } from "@/components/ui/marker";
 import { PageHeader } from "@/components/ui/page-header";
 import { Surface } from "@/components/ui/surface";
@@ -18,7 +18,9 @@ export function ChangePasswordScreen() {
         description="Enter your current password, then choose a new one."
       />
       <Surface maw={640}>
-        <PasswordForm />
+        <Box maw={420}>
+          <PasswordForm />
+        </Box>
       </Surface>
     </Stack>
   );

@@ -114,10 +114,12 @@
   font-size: 0.9375rem;
   font-weight: 500;
   white-space: nowrap;
-  transition: background-color 120ms ease, color 120ms ease;
 
+  /* Only hovering fades. Moving to another page doesn't: a fade there leaves the old item half
+     white, its icon gone, beside the new one, which reads as a flicker. */
   &:hover {
     background-color: var(--virs-menu-hover);
+    transition: background-color 120ms ease, color 120ms ease;
   }
 }
 

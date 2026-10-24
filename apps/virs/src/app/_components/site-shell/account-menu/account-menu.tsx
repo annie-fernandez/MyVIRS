@@ -1,16 +1,17 @@
 "use client";
 
-import { Avatar, Button, Menu, Modal, Tooltip, UnstyledButton } from "@mantine/core";
-import { IconChevronRight, IconId, IconKey, IconLogin, IconLogout } from "@tabler/icons-react";
+import { Avatar, Box, Button, Group, Menu, Text, Tooltip, UnstyledButton } from "@mantine/core";
+import { IconChevronRight, IconLock, IconLogin, IconLogout, IconUserCircle } from "@tabler/icons-react";
 import { useState } from "react";
+import { ShellLink } from "@/components/shell-link/shell-link";
 import { useSession } from "@/lib/auth/use-session";
 import { useSessionChanged } from "@/lib/auth/use-session-changed";
 import { useSignOut } from "@/lib/auth/use-sign-out";
-import { ACCOUNT_FORM_TITLES, type AccountFormView } from "../../account-forms/account-form-view";
-import { AccountForms } from "../../account-forms/account-forms";
+import { getInitials } from "@/lib/get-initials";
+import type { AccountFormView } from "../../account-forms/account-form-view";
+import { AccountModal } from "../../account-forms/account-modal";
 import classes from "../site-shell.module.css";
 import { ACCOUNT_LINKS } from "./account-links";
-import { getInitials } from "./get-initials";
 
 /**
  * The account control at the bottom of the side menu: a Log in button that opens the account
@@ -27,7 +28,7 @@ export function AccountMenu({ collapsed }: { collapsed: boolean }) {
       {user ? (
         // Signed in: the menu holds the account itself (profile, password, log out). What the user
         // has made (their history) is a destination in the menu above, not in here.
-        <Menu position="right-end" width={220} shadow="md" radius="md" withinPortal>
+        <Menu position="right-end" width={264} offset={12}>
           <Menu.Target>
             <Tooltip label={user.name} position="right" disabled={!collapsed}>
               <UnstyledButton className={classes.menuItem} aria-label={`Your account: ${user.name}`}>
@@ -41,11 +42,31 @@ export function AccountMenu({ collapsed }: { collapsed: boolean }) {
             </Tooltip>
           </Menu.Target>
           <Menu.Dropdown>
-            <Menu.Label>Signed in as {user.name}</Menu.Label>
-            <Menu.Item component="a" href={ACCOUNT_LINKS.profile} leftSection={<IconId size={16} />}>My profile</Menu.Item>
-            <Menu.Item component="a" href={ACCOUNT_LINKS.changePassword} leftSection={<IconKey size={16} />}>Change password</Menu.Item>
+            {/* Who's signed in, as a card at the top (Mantine's user-menu pattern): name, then email. */}
+            <Group gap="sm" wrap="nowrap" px="sm" py="xs">
+              <Avatar size={40} radius="xl" color="virsOrange" variant="filled">
+                {getInitials(user.name)}
+              </Avatar>
+              <Box miw={0}>
+                <Text fw={600} truncate>
+                  {user.name}
+                </Text>
+                <Text size="sm" c="dimmed" truncate>
+                  {user.email}
+                </Text>
+              </Box>
+            </Group>
             <Menu.Divider />
-            <Menu.Item leftSection={<IconLogout size={16} />} onClick={() => signOut.mutate()}>Log out</Menu.Item>
+            <Menu.Item component={ShellLink} href={ACCOUNT_LINKS.profile} leftSection={<IconUserCircle size={18} />}>
+              My profile
+            </Menu.Item>
+            <Menu.Item component={ShellLink} href={ACCOUNT_LINKS.changePassword} leftSection={<IconLock size={18} />}>
+              Change password
+            </Menu.Item>
+            <Menu.Divider />
+            <Menu.Item leftSection={<IconLogout size={18} />} onClick={() => signOut.mutate()}>
+              Log out
+            </Menu.Item>
           </Menu.Dropdown>
         </Menu>
       ) : (
@@ -59,18 +80,14 @@ export function AccountMenu({ collapsed }: { collapsed: boolean }) {
         </Tooltip>
       )}
 
-      <Modal opened={view !== null} onClose={() => setView(null)} title={view && ACCOUNT_FORM_TITLES[view]}>
-        {view && (
-          <AccountForms
-            view={view}
-            onViewChange={setView}
-            onSignedIn={() => {
-              setView(null);
-              sessionChanged();
-            }}
-          />
-        )}
-      </Modal>
+      <AccountModal
+        view={view}
+        onViewChange={setView}
+        onSignedIn={() => {
+          setView(null);
+          sessionChanged();
+        }}
+      />
     </>
   );
 }

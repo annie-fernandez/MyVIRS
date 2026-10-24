@@ -1,4 +1,4 @@
-/** Angular screens reached from the account menu. */
+/** Screens reached from the account menu. */
 export const ACCOUNT_LINKS = {
   register: "/register",
   profile: "/account",

@@ -142,7 +142,7 @@ Which component for what:
 
 - **Forms read top to bottom**, one field per row. Don't put fields side by side.
 - **One place for each thing.** Signed out, the bottom of the side menu is a single "Log in" button; signed in, it's the account menu (My profile, Change password, Log out) and nothing else. Things the user has made, like History, are destinations in the menu above it. Don't link the same destination from both.
-- Log in, registration and password recovery are one set of forms (`app/_components/account-forms`), each linking to the others. The menu's Log in button shows them in a pop-up; the sign-in page shows them on the page. Keep them short enough to fit a laptop screen without scrolling; ask only for what's needed (no "confirm password" on sign-up, since the field can show what was typed).
+- Log in, registration and password recovery are one set of forms (`app/_components/account-forms`), each linking to the others, and always in the one account pop-up (`AccountModal`): the menu's Log in button and the sign-in page's buttons both open it, so there's never a form on the page and another in a pop-up. Keep them short enough to fit a laptop screen without scrolling; ask only for what's needed (no "confirm password" on sign-up, since the field can show what was typed).
 - Every field has a visible `label`; placeholders are examples, not labels.
 - Help text goes in `description`, under the field. Errors go in `error`, in a full sentence that says how to fix it: "Enter a full email address, like ana@example.com."
 - Show limits before people hit them (the character count, the 25 MB file limit), and warn as they approach (the count turns orange at 90 %).
@@ -151,12 +151,12 @@ Which component for what:
 
 Every screen handles four states. Never leave a blank or frozen area.
 
-- **Loading:** `Loader` with a sentence saying what's happening ("Reading your photo…"), or `Skeleton` where content will appear. Buttons that started the work show `loading`.
+- **Loading:** `Loader` with a sentence saying what's happening ("Reading your photo…"), or `Skeleton` where content will appear. Buttons that started the work show `loading`. Moving between screens, `app/loading.tsx` shows a skeleton of the page header and panel until the screen is ready; don't add per-route `loading.tsx` files.
 - **Empty:** `EmptyState` with what will appear here and the action that fills it.
 - **Error:** `Alert color="red"` that says what went wrong and what to do next, in plain words. Never show raw error codes or stack traces.
 - **Screen fails to render:** `app/error.tsx` shows inside the shell (title, a red `Alert`, *Go to Home* and *Try again*). Don't add per-route `error.tsx` files; handle expected failures inline, as above.
 - **Success:** `Alert color="virsGreen"` only when the result isn't already visible; otherwise the visible result is the confirmation.
-- **Needs an account:** screens that need an account live in `app/(signed-in)`. Signed-out visitors are redirected to the sign-in page, `/sign-in?title=<what needs an account>&next=<page>`, which says what they were trying to do and shows the log-in form; afterwards they go back to `next`. Give each new page its title in `src/lib/auth/sign-in-url.ts`. Anything else that needs an account (rating a word) links there too, with `signInUrl(page, title)`, rather than opening a pop-up. Screens don't check the session themselves; when a shared component's UI differs for a signed-in user (rating a word, the side menu), it reads `useSession()`.
+- **Needs an account:** screens that need an account live in `app/(signed-in)`. Signed-out visitors are redirected to the sign-in page, `/sign-in?title=<what needs an account>&next=<page>`, which says what they were trying to do, with Create an account and Log in buttons that open the account pop-up; afterwards they go back to `next`. Give each new page its title in `src/lib/auth/sign-in-url.ts`. Anything else that needs an account (rating a word) links there too, with `signInUrl(page, title)`, rather than opening a pop-up. Screens don't check the session themselves; when a shared component's UI differs for a signed-in user (rating a word, the side menu), it reads `useSession()`.
 
 Info is `virsBlue`, warnings `virsOrange`. Give each `Alert` an icon.
 

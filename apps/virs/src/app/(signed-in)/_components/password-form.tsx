@@ -31,7 +31,7 @@ export function PasswordForm() {
 
   return (
     <form onSubmit={form.onSubmit((values) => changePassword.mutate(values))}>
-      <Stack gap="md" maw={420}>
+      <Stack gap="md">
         {changePassword.isSuccess && (
           <Alert color="virsGreen" icon={<IconCheck size={18} />}>
             Your password is changed. Any other devices you were signed in on have been signed out.

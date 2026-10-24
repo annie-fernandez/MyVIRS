@@ -19,5 +19,5 @@ export default async function Page({ searchParams }: PageProps<"/sign-in">) {
   const nextPath = safeNextPath(typeof next === "string" ? next : null);
   if (await getServerSession()) redirect(nextPath ?? "/dashboard");
   const heading = typeof title === "string" && title.trim() ? title.trim().slice(0, MAX_TITLE_LENGTH) : "Log in to continue";
-  return <SignInScreen title={heading} next={nextPath} startWith={view === "register" ? "register" : "login"} />;
+  return <SignInScreen title={heading} next={nextPath} startWith={view === "register" ? "register" : null} />;
 }

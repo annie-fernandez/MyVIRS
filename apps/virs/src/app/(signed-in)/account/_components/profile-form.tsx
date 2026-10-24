@@ -1,6 +1,6 @@
 "use client";
 
-import { Alert, Button, Group, Select, SimpleGrid, Stack, TextInput } from "@mantine/core";
+import { Alert, Button, Group, Select, Stack, TextInput } from "@mantine/core";
 import { schemaResolver, useForm } from "@mantine/form";
 import { IconCheck, IconX } from "@tabler/icons-react";
 import { useMutation } from "@tanstack/react-query";
@@ -46,13 +46,12 @@ export function ProfileForm() {
 
   return (
     <form onSubmit={form.onSubmit((values) => save.mutate(values))}>
+      {/* One field per row. */}
       <Stack gap="md">
-        <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="md">
-          <TextInput label="Full name" autoComplete="name" key={form.key("name")} {...form.getInputProps("name")} />
-          <TextInput label="User name" autoComplete="username" key={form.key("username")} {...form.getInputProps("username")} />
-          <TextInput label="Email" type="email" autoComplete="email" key={form.key("email")} {...form.getInputProps("email")} />
-          <Select label="I am a…" placeholder="Not specified" data={USER_LEVEL_SELECT_DATA} clearable allowDeselect key={form.key("userLevel")} {...form.getInputProps("userLevel")} />
-        </SimpleGrid>
+        <TextInput label="Full name" autoComplete="name" key={form.key("name")} {...form.getInputProps("name")} />
+        <TextInput label="User name" autoComplete="username" key={form.key("username")} {...form.getInputProps("username")} />
+        <TextInput label="Email" type="email" autoComplete="email" key={form.key("email")} {...form.getInputProps("email")} />
+        <Select label="I am a…" placeholder="Not specified" data={USER_LEVEL_SELECT_DATA} clearable allowDeselect key={form.key("userLevel")} {...form.getInputProps("userLevel")} />
         {save.isSuccess && (
           <Alert color="virsGreen" icon={<IconCheck size={18} />}>
             Your details are saved.

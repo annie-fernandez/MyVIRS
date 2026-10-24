@@ -50,7 +50,8 @@ export function SideMenu({ collapsed, onToggle, onNavigate }: { collapsed: boole
         </ShellLink>
       </AppShell.Section>
 
-      <AppShell.Section grow component={ScrollArea} className={classes.menuLinks}>
+      {/* Up and down only: collapsed, the hidden labels are wider than the menu and would add a sideways scrollbar. */}
+      <AppShell.Section grow component={ScrollArea} scrollbars="y" className={classes.menuLinks}>
         <nav aria-label="Main">
           {NAV_SECTIONS.map((section, index) => (
             <div key={section.label ?? index}>

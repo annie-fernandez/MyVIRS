@@ -1,12 +1,11 @@
 "use client";
 
-import { Alert, Button, Checkbox, Group, Modal, PasswordInput, Stack, Text } from "@mantine/core";
+import { Alert, Button, Checkbox, Group, Modal, PasswordInput, Stack } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconAlertTriangle, IconTrash } from "@tabler/icons-react";
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
-import { Surface } from "@/components/ui/surface";
 import { errorMessage } from "@/lib/api-client/error-message";
 import { authClient } from "@/lib/auth/auth-client";
 import { AuthError } from "@/lib/auth/auth-error";
@@ -34,11 +33,9 @@ export function DeleteAccount() {
   const error = deleteAccount.isError ? (wrongPassword ? "That password isn't right." : errorMessage(deleteAccount.error)) : null;
 
   return (
-    <Surface>
-      <Group justify="space-between" gap="md">
-        <Text size="sm" c="dimmed" maw={420}>
-          Permanently remove your account and profile. This can&apos;t be undone.
-        </Text>
+    <>
+      {/* What it removes is said above this, in the tab. */}
+      <Group>
         <Button color="red" variant="light" leftSection={<IconTrash size={16} />} onClick={open}>
           Delete my account
         </Button>
@@ -61,6 +58,6 @@ export function DeleteAccount() {
           </Group>
         </Stack>
       </Modal>
-    </Surface>
+    </>
   );
 }
