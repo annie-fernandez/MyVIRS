@@ -20,34 +20,35 @@ export interface CategoryInfo {
 }
 
 export const CATEGORY_INFO: Record<WordCategory, CategoryInfo> = {
-  k1: {
-    label: "K1",
-    description:
-      "Among the list of the 1000 most frequently used words in primary and secondary texts",
-    priority: 1,
-  },
-  k2: {
-    label: "K2",
-    description:
-      "Among the list of the 2nd 1000 most frequently used words in primary and secondary texts",
-    priority: 2,
-  },
-  k3: {
-    label: "K3",
-    description:
-      "Among the list of the 3rd 1000 most frequently used words in primary and secondary texts",
-    priority: 3,
-  },
+  // Academic and STEM beat the K lists when a word is on both.
   awl: {
     label: "Academic",
     description:
       "Commonly occurring among a wide variety of academic subjects but not within the 2000 most frequent words",
-    priority: 4,
+    priority: 1,
   },
   stem: {
     label: "STEM",
     description:
       "Words occurring in Math or Science texts but not within the 2000 most frequent words",
+    priority: 2,
+  },
+  k1: {
+    label: "K1",
+    description:
+      "Among the list of the 1000 most frequently used words in primary and secondary texts",
+    priority: 3,
+  },
+  k2: {
+    label: "K2",
+    description:
+      "Among the list of the 2nd 1000 most frequently used words in primary and secondary texts",
+    priority: 4,
+  },
+  k3: {
+    label: "K3",
+    description:
+      "Among the list of the 3rd 1000 most frequently used words in primary and secondary texts",
     priority: 5,
   },
   hi: {
