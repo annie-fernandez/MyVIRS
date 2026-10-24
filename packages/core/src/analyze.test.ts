@@ -112,6 +112,22 @@ describe("analyzeText", () => {
     expect(result.sentenceCount).toBe(1);
   });
 
+  it("prefers Academic and STEM over the K lists when a word is on both", async () => {
+    const lookup = lookupFrom([
+      { value: "analysis", category: "k1" },
+      { value: "analysis", category: "awl" },
+      { value: "oxygen", category: "k3" },
+      { value: "oxygen", category: "stem" },
+    ]);
+
+    const result = await analyzeText("analysis oxygen", lookup);
+
+    expect(result.words).toEqual([
+      { initialValue: "analysis", value: "analysis", category: "awl" },
+      { initialValue: "oxygen", value: "oxygen", category: "stem" },
+    ]);
+  });
+
   it("prefers the word as written over its singular form", async () => {
     const lookup = lookupFrom([
       { value: "glasses", category: "k2" },
