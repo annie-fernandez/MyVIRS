@@ -98,7 +98,7 @@
     {
       "initialValue": "selects",
       "value": "select",
-      "category": "k1"
+      "category": "awl"
     },
     {
       "initialValue": "a",
@@ -223,7 +223,7 @@
     {
       "initialValue": "respond",
       "value": "respond",
-      "category": "k1"
+      "category": "awl"
     },
     {
       "initialValue": "to",
@@ -728,7 +728,7 @@
     {
       "initialValue": "data",
       "value": "data",
-      "category": "k1"
+      "category": "awl"
     },
     {
       "initialValue": "presented",
@@ -953,7 +953,7 @@
     {
       "initialValue": "process",
       "value": "process",
-      "category": "k1"
+      "category": "awl"
     },
     {
       "initialValue": "of",
@@ -1158,7 +1158,7 @@
     {
       "initialValue": "intervals.",
       "value": "interval",
-      "category": "k1"
+      "category": "awl"
     }
   ],
   "sentenceCount": 12,
@@ -1166,10 +1166,10 @@
   "statistics": {
     "wordCount": {
       "offList": 68,
-      "k1": 138,
+      "k1": 133,
       "k2": 18,
       "k3": 0,
-      "awl": 5,
+      "awl": 10,
       "baw": 0,
       "stem": 0,
       "hi": 0,
@@ -1179,10 +1179,10 @@
     },
     "wordPercentage": {
       "offList": 0.29694323144104806,
-      "k1": 0.6026200873362445,
+      "k1": 0.5807860262008734,
       "k2": 0.07860262008733625,
       "k3": 0,
-      "awl": 0.021834061135371178,
+      "awl": 0.043668122270742356,
       "baw": 0,
       "stem": 0,
       "hi": 0,

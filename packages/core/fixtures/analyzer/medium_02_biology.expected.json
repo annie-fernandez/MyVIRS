@@ -8,7 +8,7 @@
     {
       "initialValue": "function",
       "value": "function",
-      "category": "k1"
+      "category": "awl"
     },
     {
       "initialValue": "of",
@@ -113,7 +113,7 @@
     {
       "initialValue": "function",
       "value": "function",
-      "category": "k1"
+      "category": "awl"
     },
     {
       "initialValue": "is",
@@ -133,7 +133,7 @@
     {
       "initialValue": "Chapter",
       "value": "chapter",
-      "category": "k1"
+      "category": "awl"
     },
     {
       "initialValue": "VII;",
@@ -818,7 +818,7 @@
     {
       "initialValue": "respond",
       "value": "respond",
-      "category": "k1"
+      "category": "awl"
     },
     {
       "initialValue": "very",
@@ -1323,7 +1323,7 @@
     {
       "initialValue": "compounds",
       "value": "compound",
-      "category": "k1"
+      "category": "awl"
     },
     {
       "initialValue": "of",
@@ -1376,10 +1376,10 @@
   "statistics": {
     "wordCount": {
       "offList": 57,
-      "k1": 205,
+      "k1": 200,
       "k2": 8,
       "k3": 0,
-      "awl": 0,
+      "awl": 5,
       "baw": 0,
       "stem": 0,
       "hi": 0,
@@ -1389,10 +1389,10 @@
     },
     "wordPercentage": {
       "offList": 0.2111111111111111,
-      "k1": 0.7592592592592593,
+      "k1": 0.7407407407407407,
       "k2": 0.02962962962962963,
       "k3": 0,
-      "awl": 0,
+      "awl": 0.018518518518518517,
       "baw": 0,
       "stem": 0,
       "hi": 0,

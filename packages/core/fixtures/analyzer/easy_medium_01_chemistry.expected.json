@@ -328,7 +328,7 @@
     {
       "initialValue": "distinct",
       "value": "distinct",
-      "category": "k2"
+      "category": "awl"
     },
     {
       "initialValue": "color.",
@@ -368,7 +368,7 @@
     {
       "initialValue": "indicate",
       "value": "indicate",
-      "category": "k1"
+      "category": "awl"
     },
     {
       "initialValue": "that",
@@ -698,7 +698,7 @@
     {
       "initialValue": "portion",
       "value": "portion",
-      "category": "k2"
+      "category": "awl"
     },
     {
       "initialValue": "of",
@@ -971,10 +971,10 @@
   "statistics": {
     "wordCount": {
       "offList": 52,
-      "k1": 128,
-      "k2": 8,
+      "k1": 127,
+      "k2": 6,
       "k3": 0,
-      "awl": 0,
+      "awl": 3,
       "baw": 0,
       "stem": 0,
       "hi": 0,
@@ -984,10 +984,10 @@
     },
     "wordPercentage": {
       "offList": 0.2765957446808511,
-      "k1": 0.6808510638297872,
-      "k2": 0.0425531914893617,
+      "k1": 0.675531914893617,
+      "k2": 0.031914893617021274,
       "k3": 0,
-      "awl": 0,
+      "awl": 0.015957446808510637,
       "baw": 0,
       "stem": 0,
       "hi": 0,

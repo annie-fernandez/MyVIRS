@@ -58,7 +58,7 @@
     {
       "initialValue": "chapter,",
       "value": "chapter",
-      "category": "k1"
+      "category": "awl"
     },
     {
       "initialValue": "is",
@@ -623,7 +623,7 @@
     {
       "initialValue": "chapter.",
       "value": "chapter",
-      "category": "k1"
+      "category": "awl"
     },
     {
       "initialValue": "",
@@ -1251,10 +1251,10 @@
   "statistics": {
     "wordCount": {
       "offList": 67,
-      "k1": 169,
+      "k1": 167,
       "k2": 10,
       "k3": 0,
-      "awl": 0,
+      "awl": 2,
       "baw": 0,
       "stem": 0,
       "hi": 0,
@@ -1264,10 +1264,10 @@
     },
     "wordPercentage": {
       "offList": 0.27235772357723576,
-      "k1": 0.6869918699186992,
+      "k1": 0.6788617886178862,
       "k2": 0.04065040650406504,
       "k3": 0,
-      "awl": 0,
+      "awl": 0.008130081300813009,
       "baw": 0,
       "stem": 0,
       "hi": 0,

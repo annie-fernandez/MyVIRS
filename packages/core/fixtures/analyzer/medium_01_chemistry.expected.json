@@ -98,7 +98,7 @@
     {
       "initialValue": "precise",
       "value": "precise",
-      "category": "k2"
+      "category": "awl"
     },
     {
       "initialValue": "distinction",
@@ -283,7 +283,7 @@
     {
       "initialValue": "undergo.",
       "value": "undergo",
-      "category": "k2"
+      "category": "awl"
     },
     {
       "initialValue": "These",
@@ -333,7 +333,7 @@
     {
       "initialValue": "definition",
       "value": "definition",
-      "category": "k1"
+      "category": "awl"
     },
     {
       "initialValue": "of",
@@ -1068,7 +1068,7 @@
     {
       "initialValue": "physical",
       "value": "physical",
-      "category": "k1"
+      "category": "awl"
     },
     {
       "initialValue": "changes.",
@@ -1083,7 +1083,7 @@
     {
       "initialValue": "Physical",
       "value": "physical",
-      "category": "k1"
+      "category": "awl"
     },
     {
       "initialValue": "changes",
@@ -1118,7 +1118,7 @@
     {
       "initialValue": "involve",
       "value": "involve",
-      "category": "k1"
+      "category": "awl"
     },
     {
       "initialValue": "a",
@@ -1166,10 +1166,10 @@
   "statistics": {
     "wordCount": {
       "offList": 80,
-      "k1": 142,
-      "k2": 7,
+      "k1": 138,
+      "k2": 5,
       "k3": 0,
-      "awl": 0,
+      "awl": 6,
       "baw": 0,
       "stem": 0,
       "hi": 0,
@@ -1179,10 +1179,10 @@
     },
     "wordPercentage": {
       "offList": 0.34934497816593885,
-      "k1": 0.6200873362445415,
-      "k2": 0.03056768558951965,
+      "k1": 0.6026200873362445,
+      "k2": 0.021834061135371178,
       "k3": 0,
-      "awl": 0,
+      "awl": 0.026200873362445413,
       "baw": 0,
       "stem": 0,
       "hi": 0,

@@ -49,6 +49,7 @@ const baseline = {
     "Lookup order: the token as written is tried before its singular form.",
     "Punctuation is stripped before lookup, so hyphenated entries such as co-worker match.",
     "Basic Academic Words (baw) are counted in the statistics; the legacy app dropped them from totals.",
+    "Academic (awl) and STEM win over K1-K3 when a word is on both lists; the legacy app preferred the K lists.",
     "13 hyphenated duplicates were merged during the migration (non-essential -> nonessential).",
     "The Oxford dictionary is not available (its v1 API is shut down); Wiktionary only.",
   ],

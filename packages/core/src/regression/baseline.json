@@ -6,9 +6,10 @@
     "Punctuation is stripped before lookup, so hyphenated entries such as co-worker match.",
     "Basic Academic Words (baw) are counted in the statistics; the legacy app dropped them from totals.",
     "13 hyphenated duplicates were merged during the migration (non-essential -> nonessential).",
-    "The Oxford dictionary is not available (its v1 API is shut down); Wiktionary only."
+    "The Oxford dictionary is not available (its v1 API is shut down); Wiktionary only.",
+    "Academic (awl) and STEM win over K1-K3 when a word is on both lists; the legacy app preferred the K lists."
   ],
-  "recordedAt": "2026-09-26",
+  "recordedAt": "2026-10-24",
   "wordListSize": 346,
   "passages": [
     {
@@ -191,7 +192,7 @@
           {
             "initialValue": "data",
             "value": "data",
-            "category": "k1"
+            "category": "awl"
           },
           {
             "initialValue": "carefully.",
@@ -244,10 +245,10 @@
         "statistics": {
           "wordCount": {
             "offList": 0,
-            "k1": 12,
+            "k1": 11,
             "k2": 1,
             "k3": 0,
-            "awl": 0,
+            "awl": 1,
             "baw": 0,
             "stem": 0,
             "hi": 0,
@@ -257,10 +258,10 @@
           },
           "wordPercentage": {
             "offList": 0,
-            "k1": 0.8571428571428571,
+            "k1": 0.7857142857142857,
             "k2": 0.07142857142857142,
             "k3": 0,
-            "awl": 0,
+            "awl": 0.07142857142857142,
             "baw": 0,
             "stem": 0,
             "hi": 0,
@@ -380,7 +381,7 @@
           {
             "initialValue": "Research",
             "value": "research",
-            "category": "k1"
+            "category": "awl"
           },
           {
             "initialValue": "indicates",
@@ -400,7 +401,7 @@
           {
             "initialValue": "analysis",
             "value": "analysis",
-            "category": "k1"
+            "category": "awl"
           },
           {
             "initialValue": "requires",
@@ -415,7 +416,7 @@
           {
             "initialValue": "data.",
             "value": "data",
-            "category": "k1"
+            "category": "awl"
           },
           {
             "initialValue": "The",
@@ -425,7 +426,7 @@
           {
             "initialValue": "method",
             "value": "method",
-            "category": "k1"
+            "category": "awl"
           },
           {
             "initialValue": "must",
@@ -453,10 +454,10 @@
         "statistics": {
           "wordCount": {
             "offList": 0,
-            "k1": 12,
+            "k1": 8,
             "k2": 1,
             "k3": 1,
-            "awl": 0,
+            "awl": 4,
             "baw": 0,
             "stem": 0,
             "hi": 0,
@@ -466,10 +467,10 @@
           },
           "wordPercentage": {
             "offList": 0,
-            "k1": 0.8571428571428571,
+            "k1": 0.5714285714285714,
             "k2": 0.07142857142857142,
             "k3": 0.07142857142857142,
-            "awl": 0,
+            "awl": 0.2857142857142857,
             "baw": 0,
             "stem": 0,
             "hi": 0,
@@ -507,12 +508,12 @@
           {
             "initialValue": "chemical",
             "value": "chemical",
-            "category": "k1"
+            "category": "stem"
           },
           {
             "initialValue": "energy.",
             "value": "energy",
-            "category": "k1"
+            "category": "awl"
           },
           {
             "initialValue": "Plants",
@@ -537,7 +538,7 @@
           {
             "initialValue": "sufficient",
             "value": "sufficient",
-            "category": "k3"
+            "category": "awl"
           },
           {
             "initialValue": "sunlight,",
@@ -580,12 +581,12 @@
         "statistics": {
           "wordCount": {
             "offList": 1,
-            "k1": 14,
+            "k1": 12,
             "k2": 2,
-            "k3": 1,
-            "awl": 0,
+            "k3": 0,
+            "awl": 2,
             "baw": 0,
-            "stem": 0,
+            "stem": 1,
             "hi": 0,
             "med": 0,
             "low": 0,
@@ -593,12 +594,12 @@
           },
           "wordPercentage": {
             "offList": 0.05555555555555555,
-            "k1": 0.7777777777777778,
+            "k1": 0.6666666666666666,
             "k2": 0.1111111111111111,
-            "k3": 0.05555555555555555,
-            "awl": 0,
+            "k3": 0,
+            "awl": 0.1111111111111111,
             "baw": 0,
-            "stem": 0,
+            "stem": 0.05555555555555555,
             "hi": 0,
             "med": 0,
             "low": 0
@@ -901,7 +902,7 @@
           {
             "initialValue": "definition",
             "value": "definition",
-            "category": "k1"
+            "category": "awl"
           },
           {
             "initialValue": "copied",
@@ -1086,7 +1087,7 @@
           {
             "initialValue": "retain",
             "value": "retain",
-            "category": "k3"
+            "category": "awl"
           },
           {
             "initialValue": "them.",
@@ -1121,7 +1122,7 @@
           {
             "initialValue": "matter.",
             "value": "matter",
-            "category": "k1"
+            "category": "stem"
           },
           {
             "initialValue": "A",
@@ -1281,7 +1282,7 @@
           {
             "initialValue": "occur,",
             "value": "occur",
-            "category": "k1"
+            "category": "awl"
           },
           {
             "initialValue": "from",
@@ -1346,7 +1347,7 @@
           {
             "initialValue": "assume",
             "value": "assume",
-            "category": "k1"
+            "category": "awl"
           },
           {
             "initialValue": "every",
@@ -1374,12 +1375,12 @@
         "statistics": {
           "wordCount": {
             "offList": 1,
-            "k1": 114,
+            "k1": 110,
             "k2": 13,
-            "k3": 3,
-            "awl": 0,
+            "k3": 2,
+            "awl": 4,
             "baw": 0,
-            "stem": 0,
+            "stem": 1,
             "hi": 0,
             "med": 1,
             "low": 0,
@@ -1387,12 +1388,12 @@
           },
           "wordPercentage": {
             "offList": 0.007575757575757576,
-            "k1": 0.8636363636363636,
+            "k1": 0.8333333333333334,
             "k2": 0.09848484848484848,
-            "k3": 0.022727272727272728,
-            "awl": 0,
+            "k3": 0.015151515151515152,
+            "awl": 0.030303030303030304,
             "baw": 0,
-            "stem": 0,
+            "stem": 0.007575757575757576,
             "hi": 0,
             "med": 0.007575757575757576,
             "low": 0
