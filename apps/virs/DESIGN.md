@@ -1,6 +1,6 @@
 # VIRS design rules
 
-These rules keep every Mantine screen consistent while the app moves over from Angular. They apply to people and to AI agents writing UI code here.
+These rules keep every screen consistent. They apply to people and to AI agents writing UI code here.
 
 - **Values** (colors, type, spacing, component defaults): `src/theme/`
 - **Shared components**: `src/components/ui`, one file per component (`PageHeader`, `Marker`, `Section`, `OptionCard`, `Surface`, `WordTag`, `CategoryLegend`, `RatingButtons`, `EmptyState`, `Pager`)

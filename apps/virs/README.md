@@ -1,23 +1,19 @@
 # virs
 
-Next.js rewrite of the Vocabulary in Reading Study backend. It replaces the Spring Boot API (`apps/api`) with REST route handlers under `src/app/api`, Neon Postgres through Drizzle (`@repo/db`), and the text analyzer ported to `@repo/core`. It serves the original Angular screens, so the hosted site looks exactly like the old app.
+Next.js rewrite of the Vocabulary in Reading Study app. It replaces the Spring Boot API (`apps/api`) with REST route handlers under `src/app/api`, Neon Postgres through Drizzle (`@repo/db`), and the text analyzer ported to `@repo/core`. The screens are React (Mantine) pages under `src/app`.
 
 ## Frontend
 
-- **Original Angular UI (fallback).** `public/` holds the production build of `apps/web`. `next.config.ts` rewrites every URL that has no Next.js page to `public/index.html`, so the Angular routes that haven't moved to Mantine (now only `/tests/*`) and their deep-link reloads still work. Vercel can't build Angular CLI 1.7 (it needs Node 8), so rebuild locally after changing `apps/web` and commit the output:
-  ```sh
-  pnpm --filter virs build:legacy-ui   # needs Node 8 via nvm
-  ```
-- **Compatibility layer.** The Angular screens still call the old endpoints (`/api/analyzeText`, `/api/words?…&sortDirection=`, `/api/user/*`, `/api/download/*`, …). Those routes, plus `src/app/api/_lib/legacy/*`, return the old response shapes on top of the new services. The only Angular changes: login now checks the password on the server (`POST /api/user/login`), logout ends the server session, and the minimum password length is 8.
-- **Mantine screens.** Every screen is a Next.js page under `src/app`, at the same URL the Angular screen used (`/dashboard`, `/text`, `/doc`, `/pdf`, `/image`, `/enhanced-text-result`, `/text-statistics`, `/search-words`, `/download-words`, `/itranslate`, `/contact-us`, `/credits`, `/register`, `/account`, `/change-password`, `/restore`, `/admin`), plus `/sign-in`. Each route keeps its own components and code beside it (see "Where files go" in `DESIGN.md`). Only the hidden vocabulary tests (`/tests/*`) still fall through to Angular.
+- **Compatibility layer.** The old endpoint shapes (`/api/analyzeText`, `/api/words?…&sortDirection=`, `/api/user/*`, `/api/download/*`, …) still exist as Next.js routes, plus `src/app/api/_lib/legacy/*`. Password recovery still uses `GET /api/user/recovery…`.
+- **Screens.** Every screen is a Next.js page under `src/app` (`/dashboard`, `/text`, `/doc`, `/pdf`, `/image`, `/enhanced-text-result`, `/text-statistics`, `/search-words`, `/download-words`, `/itranslate`, `/contact-us`, `/credits`, `/register`, `/account`, `/change-password`, `/restore`, `/admin`, `/sign-in`). Each route keeps its own components and code beside it (see "Where files go" in `DESIGN.md`). Unknown URLs use `src/app/not-found.tsx`.
   - **Design rules:** `DESIGN.md` covers colors, type, layout, which component to use for what, and writing. Values live in `src/theme/`, shared components in `src/components/ui`, and `/style-guide` (not linked anywhere) renders all of it.
-  - **Shell:** `src/app/_components/site-shell` holds the indigo side menu (site name; Analyze, Word lists, Tools; the citation button and the account menu at the bottom, collapsible to icons), the bar that opens it on phones, and the footer, with their links beside them (`nav-sections.ts`, `footer-links.ts`, …). `src/components/shell-link/mantine-paths.ts` lists the URLs that are Mantine pages, so links to them navigate client-side.
+  - **Shell:** `src/app/_components/site-shell` holds the indigo side menu (site name; Analyze, Word lists, Tools; the citation button and the account menu at the bottom, collapsible to icons), the bar that opens it on phones, and the footer, with their links beside them (`nav-sections.ts`, `footer-links.ts`, …). In-app links use `src/components/shell-link/shell-link.tsx`.
   - **Sessions:** the root layout reads the session once on the server (`src/lib/auth/get-server-session.ts`, cached per request, with Better Auth's 5-minute cookie cache) and hands the user to every component through `SessionProvider` (`useSession()`). Components never fetch the session themselves.
   - **Pages that need an account** (`/history`, `/account`, `/change-password`, `/admin`) live in `src/app/(signed-in)`. `src/proxy.ts` redirects visitors without a session cookie to `/sign-in?title=…&next=<page>`, and the group's layout does the same for an expired session; the sign-in page says what needs an account and opens the account pop-up (Log in or Create an account); once they're in, it sends them back to `next` (only paths on this site are accepted). Old `/register` links open it with the sign-up pop-up already showing. `/admin` answers 404 to non-admins. The API routes check the session again (`src/app/api/_lib/auth`).
   - **Results** (`/enhanced-text-result`, `/text-statistics`) read the latest analysis from `sessionStorage` (`src/lib/analysis-store/`), so they survive a reload in the same tab.
   - **Photos** are read in the browser with tesseract.js; only the extracted text is sent to `/api/analyze/text`.
-  - **Translation** calls Google from the browser (`src/app/itranslate/_lib/translate-in-browser.ts`). Google answers browsers but rejects requests from servers with HTTP 429, so `/api/translate` fails on Vercel; it is kept only for the Angular screen.
-  - **Sign-in across both UIs:** both use the same Better Auth session cookie. Angular decides what to show from `localStorage` (`currentUser`, `userName`, `level`, `email`), so `SessionProvider` rewrites those keys to match the real session on every page load and window focus (`src/lib/auth/sync-legacy-session.ts`).
+  - **Translation** calls Google from the browser (`src/app/itranslate/_lib/translate-in-browser.ts`). Google answers browsers but rejects requests from servers with HTTP 429, so `/api/translate` fails on Vercel.
+
 
 ## Setup
 
@@ -49,7 +45,7 @@ After changing `packages/db/src/schema`, run `pnpm --filter @repo/db db:generate
 
 ## API
 
-Errors always come back as `{ "error": { "code", "message", "details"? } }`. While the Angular UI is live, the legacy endpoints in the right-hand column also still work, returning the old response shapes (see Frontend).
+Errors always come back as `{ "error": { "code", "message", "details"? } }`. The legacy endpoints in the right-hand column still work, returning the old response shapes (see Frontend).
 
 | Method | Path | Auth | Replaces (legacy) |
 | --- | --- | --- | --- |

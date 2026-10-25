@@ -3,7 +3,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { authClient } from "./auth-client";
-import { syncLegacySession } from "./sync-legacy-session";
 
 /** Logs out on this browser, and forgets everything loaded for that user. */
 export function useSignOut() {
@@ -16,7 +15,6 @@ export function useSignOut() {
     onSettled: () => {
       // So the next person on this browser never sees the last user's progress or history.
       queryClient.clear();
-      syncLegacySession(null);
       router.refresh();
     },
   });

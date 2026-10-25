@@ -8,7 +8,7 @@ export function useSessionChanged() {
   const queryClient = useQueryClient();
   const router = useRouter();
   return () => {
-    // Refetches the session (which updates Angular's keys) and everything loaded for the old one.
+    // Refetches the session and everything loaded for the old one.
     void queryClient.invalidateQueries();
     // Re-renders the root layout, which hands SessionProvider the new user.
     router.refresh();

@@ -10,8 +10,8 @@ import { apiFetch } from "@/lib/api-client/api-fetch";
 export function RecoveryForm({ onLogin }: { onLogin: () => void }) {
   const [identifier, setIdentifier] = useState("");
   const sendLink = useMutation({
-    // The same endpoints the Angular recovery form uses. They answer identically whether or not
-    // the account exists, so the message below never confirms that it does.
+    // These endpoints answer identically whether or not the account exists, so the message
+    // below never confirms that it does.
     mutationFn: (value: string) => apiFetch<void>(`/api/user/${value.includes("@") ? "recovery_email" : "recovery"}/${encodeURIComponent(value)}`),
   });
 

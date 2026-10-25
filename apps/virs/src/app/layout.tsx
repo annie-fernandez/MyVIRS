@@ -21,8 +21,6 @@ export const metadata: Metadata = {
     "Measure readability and see which words in a text are high-frequency, academic, STEM or rare.",
 };
 
-// Only Mantine pages use this layout. Every other URL falls through to the Angular build in
-// public/ (see the fallback rewrite in next.config.ts).
 export default async function RootLayout({ children }: LayoutProps<"/">) {
   // Read once here so every screen knows who's signed in from the first paint. A failure must not
   // take down public pages, so it reads as signed out; app/(signed-in)/layout.tsx checks again and

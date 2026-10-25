@@ -1,6 +1,5 @@
 // Languages offered on the iTranslate screen. /api/translate sends these codes to Google Translate,
-// so every code must be one Google accepts; each was checked against it on 2026-10-04. The Angular
-// screen used the same list (apps/web/src/app/shared/translation-languages.ts).
+// so every code must be one Google accepts; each was checked against it on 2026-10-04.
 export const TRANSLATION_LANGUAGES: { value: string; label: string }[] = [
   { value: "af", label: "Afrikaans" },
   { value: "sq", label: "Albanian" },

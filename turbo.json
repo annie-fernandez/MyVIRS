@@ -1,7 +1,7 @@
 {
   "$schema": "https://turborepo.dev/schema.json",
   "ui": "tui",
-  "globalPassThroughEnv": ["JAVA8_HOME", "NVM_DIR"],
+  "globalPassThroughEnv": ["JAVA8_HOME"],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],

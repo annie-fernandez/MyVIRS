@@ -1,7 +1,6 @@
 import { IconArrowDown, IconHighlight, IconHistory, IconHome, IconLanguage, IconSearch, type Icon } from "@tabler/icons-react";
 
-// The links in this folder are one map of URL → label for the whole site, so the Mantine shell and
-// the Angular screens send people to the same places while both are live. The URLs are the Angular ones.
+// The links in this folder are one map of URL → label for the whole site.
 
 export interface NavItem {
   label: string;
