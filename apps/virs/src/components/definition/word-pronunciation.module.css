@@ -1,0 +1,23 @@
+/* Bare controls, as in Google's dictionary: no circle or fill behind them. They darken to indigo on
+   hover and while playing; the theme's focus ring still shows for keyboards. */
+.listen,
+.slower {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px;
+  border-radius: var(--mantine-radius-sm);
+  color: var(--mantine-color-charcoal-5);
+  font-weight: 500;
+  transition: color 120ms ease;
+
+  &:hover,
+  &[data-playing] {
+    color: var(--mantine-color-virsIndigo-6);
+  }
+}
+
+/* A word, not an icon, so it's clear what it does. Highlighted exactly like the speaker. */
+.slower {
+  font-size: var(--mantine-font-size-sm);
+}

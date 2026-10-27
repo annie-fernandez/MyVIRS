@@ -1,28 +1,35 @@
-/* Enhanced text with room for two columns: the passage on the left (60%), the clicked word on the
-   right (40%). minmax(0, …) keeps a long unbroken token (a URL, a file path) from widening a column
+/* Enhanced text with room for two columns: the title and passage on the left (60%), the clicked
+   word on the right (40%). minmax(0, …) keeps a long unbroken token (a URL, a file path) from widening a column
    past the page. Without the room, the word opens in a drawer instead (see ResultsScreen). */
 .split {
   display: grid;
   grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
   gap: var(--mantine-spacing-md);
   align-items: start;
+  /* Reaches 32px into the page's 48px bottom padding, so the panel (16px above the footer) still has
+     room at the end of the page and doesn't slide up there. */
+  margin-bottom: -32px;
 }
 
-/* The word panel floats beside the passage: stuck near the top of the window and about as tall as
-   it (90% of what's visible above the footer), whatever the word. A long definition scrolls inside
-   the card, never the page. */
+/* The word panel is the right-hand column from the top of the page, level with the title, and
+   stays exactly there while the passage scrolls: the whole card is on screen from the first moment.
+   Its top is the page's own top padding (40px, .content in site-shell.module.css), so it doesn't move
+   when sticking begins, and it reaches to 16px above the footer (see .split for the end of the page).
+   A long definition scrolls inside the card, never the page. */
 .panel {
   display: flex;
   flex-direction: column;
   position: sticky;
-  top: var(--mantine-spacing-lg);
-  height: calc(100dvh - var(--app-shell-footer-offset, 0px) - 2 * var(--mantine-spacing-lg));
+  top: 40px;
+  height: calc(100dvh - var(--app-shell-footer-offset, 0px) - 40px - 16px);
 }
 
 .panelCard {
   flex: 1;
   min-height: 0;
   overflow-y: auto;
+  /* Scrolling to the end of a definition stops there, instead of carrying on and moving the passage. */
+  overscroll-behavior: contain;
 }
 
 /* Before a word is chosen, the empty state fills the panel with its message in the middle. */

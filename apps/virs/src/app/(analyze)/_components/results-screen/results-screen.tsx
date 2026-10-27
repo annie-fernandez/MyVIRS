@@ -62,8 +62,8 @@ export function ResultsScreen({ view }: { view: ResultView }) {
   const { result, source, analyzedAt, historyId } = analysis;
   const total = result.statistics.wordCount.total;
 
-  return (
-    <Stack gap="xl">
+  const header = (
+    <>
       <PageHeader
         title={
           view === "enhanced" ? (
@@ -101,15 +101,38 @@ export function ResultsScreen({ view }: { view: ResultView }) {
       />
 
       <HistoryNote saved={Boolean(historyId)} />
+    </>
+  );
 
-      {view === "enhanced" ? (
-        <div ref={content.ref} className={split ? classes.split : undefined}>
-          <EnhancedText result={result} onWord={(target) => setDefinition({ ...target, analysisId: historyId ?? null })} />
-          {split ? <DefinitionPanel target={definition} /> : <DefinitionDrawer target={definition} onClose={() => setDefinition(null)} />}
-        </div>
+  const onWord = (target: DefinitionTarget) => setDefinition({ ...target, analysisId: historyId ?? null });
+  const sideBySide = view === "enhanced" && split;
+
+  // One measured wrapper whatever the layout, so the width keeps being watched when it changes.
+  return (
+    <div ref={content.ref} className={sideBySide ? classes.split : undefined}>
+      {sideBySide ? (
+        // The word panel is its own column from the top of the page, level with the title: all of it
+        // is on screen from the start, so it never has to be scrolled into place.
+        <>
+          <Stack gap="xl">
+            {header}
+            <EnhancedText result={result} onWord={onWord} />
+          </Stack>
+          <DefinitionPanel target={definition} />
+        </>
       ) : (
-        <Statistics result={result} />
+        <Stack gap="xl">
+          {header}
+          {view === "enhanced" ? (
+            <>
+              <EnhancedText result={result} onWord={onWord} />
+              <DefinitionDrawer target={definition} onClose={() => setDefinition(null)} />
+            </>
+          ) : (
+            <Statistics result={result} />
+          )}
+        </Stack>
       )}
-    </Stack>
+    </div>
   );
 }

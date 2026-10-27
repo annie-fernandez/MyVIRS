@@ -1,6 +1,7 @@
 export * from "./analyze";
 export * from "./api-types";
 export * from "./categories";
+export * from "./context-ranking";
 export * from "./progress";
 export * from "./readability";
 export * from "./regression/passages";

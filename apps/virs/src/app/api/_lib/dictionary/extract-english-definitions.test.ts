@@ -20,13 +20,13 @@ const EXTRACT = `
 describe("extractEnglishDefinitions", () => {
   const html = extractEnglishDefinitions(EXTRACT)!;
 
-  it("keeps English pronunciation and part-of-speech sections", () => {
-    expect(html).toContain("/bʊk/");
+  it("keeps the English part-of-speech sections", () => {
     expect(html).toContain("A collection of sheets of paper.");
     expect(html).toContain("To reserve.");
   });
 
-  it("drops etymology, derived terms and other languages", () => {
+  it("drops pronunciation, etymology, derived terms and other languages", () => {
+    expect(html).not.toContain("/bʊk/");
     expect(html).not.toContain("Middle English");
     expect(html).not.toContain("bookworm");
     expect(html).not.toContain("beech");

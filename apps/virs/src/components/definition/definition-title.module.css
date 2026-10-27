@@ -1,0 +1,18 @@
+/* "‹ running": no fill behind it, like the Listen and Slower controls; it darkens on hover instead.
+   Pulled left so the chevron lines up with the word below it. */
+.back {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 2px;
+  margin-left: -5px;
+  border-radius: var(--mantine-radius-sm);
+  color: var(--mantine-color-virsIndigo-6);
+  font-size: var(--mantine-font-size-sm);
+  font-weight: 500;
+  transition: color 120ms ease;
+
+  &:hover {
+    color: var(--mantine-color-virsIndigo-8);
+  }
+}

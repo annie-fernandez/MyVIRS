@@ -24,4 +24,5 @@ export const MANTINE_PATHS = new Set<string>([
   "/sign-in",
   "/admin",
   "/style-guide",
+  "/context-analysis",
 ]);

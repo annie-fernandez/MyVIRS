@@ -1,4 +1,4 @@
-import { IconArrowDown, IconHighlight, IconHistory, IconHome, IconLanguage, IconSearch, type Icon } from "@tabler/icons-react";
+import { IconAffiliate, IconArrowDown, IconHighlight, IconHistory, IconHome, IconLanguage, IconSearch, type Icon } from "@tabler/icons-react";
 
 // The links in this folder are one map of URL → label for the whole site, so the Mantine shell and
 // the Angular screens send people to the same places while both are live. The URLs are the Angular ones.
@@ -30,5 +30,12 @@ export const NAV_SECTIONS: NavSection[] = [
       { label: "Download lists", href: "/download-words", icon: IconArrowDown },
     ],
   },
-  { label: "Tools", items: [{ label: "iTranslate", href: "/itranslate", icon: IconLanguage }] },
+  {
+    label: "Tools",
+    items: [
+      { label: "iTranslate", href: "/itranslate", icon: IconLanguage },
+      // A preview of Team A's word ranking; there's no Angular screen for it.
+      { label: "Analysis by context", href: "/context-analysis", icon: IconAffiliate },
+    ],
+  },
 ];

@@ -16,6 +16,9 @@ export const queryKeys = {
   words: ["words"] as const,
   wordList: (params: string) => ["words", "list", params] as const,
   wordLookup: (value: string) => ["words", "lookup", value.toLowerCase()] as const,
+  /** GET /api/context-lists and one page of a list (Team A's ranked words). */
+  contextLists: ["context-lists"] as const,
+  contextList: (id: string, params: string) => ["context-lists", id, params] as const,
   /** GET /api/admin/words?value= */
   adminWords: ["admin-words"] as const,
   adminWord: (value: string) => ["admin-words", value.toLowerCase()] as const,

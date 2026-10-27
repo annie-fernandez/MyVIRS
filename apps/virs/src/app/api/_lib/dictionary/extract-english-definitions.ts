@@ -8,7 +8,6 @@ const ALLOWED_SECTIONS = new Set([
   "noun",
   "pronoun",
   "adjective",
-  "pronunciation",
   "particle",
   "preposition",
   "conjunction",
@@ -24,7 +23,10 @@ const SANITIZE_OPTIONS: sanitizeHtml.IOptions = {
   exclusiveFilter: (frame) => frame.tag !== "br" && !frame.text.trim() && !frame.mediaChildren.length,
 };
 
-/** Keeps only the English part-of-speech and pronunciation sections of a Wiktionary extract. */
+/**
+ * Keeps only the English part-of-speech sections of a Wiktionary extract. Pronunciation is left out:
+ * its IPA and regional variants confused readers, and the word panel's Hear it buttons say the word.
+ */
 export function extractEnglishDefinitions(extractHtml: string): string | null {
   const elements = parse(extractHtml).childNodes.filter(
     (node): node is HTMLElement => node instanceof HTMLElement,
