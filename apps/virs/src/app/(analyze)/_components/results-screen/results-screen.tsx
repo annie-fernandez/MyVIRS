@@ -1,10 +1,10 @@
 "use client";
 
-import { Button, Center, Group, Loader, SegmentedControl, Stack } from "@mantine/core";
+import { Box, Button, Center, Group, Loader, Stack, Tabs } from "@mantine/core";
 import { useElementSize } from "@mantine/hooks";
-import { IconChartBar, IconHighlight, IconPlus, IconTextScan2 } from "@tabler/icons-react";
+import { IconAffiliate, IconChartBar, IconHighlight, IconPlus, IconTextScan2 } from "@tabler/icons-react";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import type { DefinitionTarget } from "@/components/definition/definition-target";
 import { ShellLink } from "@/components/shell-link/shell-link";
 import { EmptyState } from "@/components/ui/empty-state";
@@ -22,7 +22,13 @@ import { Statistics } from "./statistics";
 /** Narrowest page (in px) that still fits the passage and the word panel side by side, 60/40. */
 const SPLIT_MIN_WIDTH = 720;
 
-/** The Enhanced text and Statistics screens. Both read the latest analysis from this tab. */
+const VIEWS: Record<ResultView, { text: string; title: ReactNode; tab: string; icon: typeof IconHighlight }> = {
+  enhanced: { text: "Enhanced text", title: <>Enhanced <Marker>text</Marker></>, tab: "Enhanced text", icon: IconHighlight },
+  statistics: { text: "Text statistics", title: <>Text <Marker>statistics</Marker></>, tab: "Statistics", icon: IconChartBar },
+  context: { text: "Words by context", title: <>Words by <Marker>context</Marker></>, tab: "By context", icon: IconAffiliate },
+};
+
+/** The Enhanced text, Statistics and Context screens. All read the latest analysis from this tab. */
 export function ResultsScreen({ view }: { view: ResultView }) {
   const router = useRouter();
   const analysis = useAnalysis();
@@ -44,7 +50,7 @@ export function ResultsScreen({ view }: { view: ResultView }) {
   if (!analysis) {
     return (
       <Stack gap="xl">
-        <PageHeader title={view === "enhanced" ? "Enhanced text" : "Text statistics"} />
+        <PageHeader title={VIEWS[view].text} />
         <EmptyState
           icon={IconTextScan2}
           title="Nothing analyzed yet"
@@ -65,40 +71,36 @@ export function ResultsScreen({ view }: { view: ResultView }) {
   const header = (
     <>
       <PageHeader
-        title={
-          view === "enhanced" ? (
-            <>
-              Enhanced <Marker>text</Marker>
-            </>
-          ) : (
-            <>
-              Text <Marker>statistics</Marker>
-            </>
-          )
-        }
+        title={VIEWS[view].title}
         description={`${source} · ${total.toLocaleString()} ${total === 1 ? "word" : "words"} · analyzed ${new Date(analyzedAt).toLocaleString([], { dateStyle: "medium", timeStyle: "short" })}`}
         // One line (source · words · date), so don't hold space for a second.
         descriptionLines={1}
         actions={
-          <>
-            {/* A fixed width split evenly, so both halves are the same size whatever their labels. */}
-            <SegmentedControl
-              w={320}
-              maw="100%"
-              fullWidth
-              value={view}
-              onChange={(next) => router.push(RESULT_PATH[next as ResultView])}
-              data={[
-                { value: "enhanced", label: <Group gap={6} wrap="nowrap" justify="center"><IconHighlight size={16} />Enhanced text</Group> },
-                { value: "statistics", label: <Group gap={6} wrap="nowrap" justify="center"><IconChartBar size={16} />Statistics</Group> },
-              ]}
-            />
-            <Button component={ShellLink} href="/text" variant="default" leftSection={<IconPlus size={16} />}>
-              Analyze another
-            </Button>
-          </>
+          <Button component={ShellLink} href="/text" variant="default" leftSection={<IconPlus size={16} />}>
+            Analyze another
+          </Button>
         }
       />
+
+      {/* Links between the three results, as tabs: each is its own page, so this only changes the address. */}
+      <Tabs value={view} onChange={(next) => next && router.push(RESULT_PATH[next as ResultView])}>
+        <Tabs.List aria-label="Results" className={classes.tabList}>
+          {(Object.keys(VIEWS) as ResultView[]).map((key) => {
+            const { tab, icon: TabIcon } = VIEWS[key];
+            return (
+              <Tabs.Tab key={key} value={key} px={{ base: 4, sm: "md" }} className={classes.tab}>
+                <Group gap={8} justify="center" wrap="nowrap">
+                  {/* No icons on phones, as on the Analyze tabs, so the three labels fit. */}
+                  <Box component="span" visibleFrom="sm" lh={0}>
+                    <TabIcon size={16} />
+                  </Box>
+                  {tab}
+                </Group>
+              </Tabs.Tab>
+            );
+          })}
+        </Tabs.List>
+      </Tabs>
 
       <HistoryNote saved={Boolean(historyId)} />
     </>
@@ -128,8 +130,11 @@ export function ResultsScreen({ view }: { view: ResultView }) {
               <EnhancedText result={result} onWord={onWord} />
               <DefinitionDrawer target={definition} onClose={() => setDefinition(null)} />
             </>
-          ) : (
+          ) : view === "statistics" ? (
             <Statistics result={result} />
+          ) : (
+            // The comparison by context is stashed while it's reworked (git stash list: "By context tab").
+            <EmptyState icon={IconAffiliate} title="To be implemented" description="Comparing your words by context and by frequency is coming soon." />
           )}
         </Stack>
       )}

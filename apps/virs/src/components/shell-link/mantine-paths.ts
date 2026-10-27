@@ -11,6 +11,7 @@ export const MANTINE_PATHS = new Set<string>([
   "/image",
   "/enhanced-text-result",
   "/text-statistics",
+  "/context-words",
   "/search-words",
   "/download-words",
   "/itranslate",

@@ -17,6 +17,7 @@ const NAV_PARENT: Record<string, string> = {
   "/image": "/text",
   "/enhanced-text-result": "/text",
   "/text-statistics": "/text",
+  "/context-words": "/text",
 };
 
 /**

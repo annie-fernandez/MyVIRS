@@ -45,3 +45,23 @@
     align-items: center;
   }
 }
+
+/* The results tabs: every tab as wide as the widest, and hovering underlines a tab instead of
+   filling it, as on the Analyze tabs. */
+.tabList {
+  display: inline-grid;
+  /* minmax(0, …) lets the equal columns shrink together on a phone instead of widening the page. */
+  grid-auto-columns: minmax(0, 1fr);
+  grid-auto-flow: column;
+  max-width: 100%;
+}
+
+.tab {
+  &:hover {
+    background-color: transparent;
+  }
+
+  &:hover:not([data-active]) {
+    border-bottom-color: var(--mantine-color-charcoal-3);
+  }
+}
