@@ -11,7 +11,7 @@ import { authClient } from "@/lib/auth/auth-client";
 import { useRequiredUser } from "@/lib/auth/use-required-user";
 import { useSessionChanged } from "@/lib/auth/use-session-changed";
 
-/** Name, user name, email and "I am a…". Saving updates the header and the Angular screens too. */
+/** Name, user name, email and "I am a…". Saving updates the header too. */
 export function ProfileForm() {
   const user = useRequiredUser();
   const sessionChanged = useSessionChanged();

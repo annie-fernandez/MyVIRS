@@ -1,6 +1,6 @@
 # VIRS app refactor: overview
 
-**Scope:** `apps/virs` only (the Next.js app). `apps/web`, `apps/api` and `packages/*` stay as they are, except where a plan says so and you agree.
+**Scope:** `apps/virs` only (the Next.js app). `apps/api` and `packages/*` stay as they are, except where a plan says so and you agree.
 **Status:** all five plans implemented on 2026-10-18 (uncommitted on `mantine-foundation-refactor`), with the recommended answers to D1–D10, except for these changes made during implementation:
 
 - **D1 changed:** signed-out visitors go to a `/sign-in?title=…&next=…` page (not the log-in pop-up). It shows the shared account forms (`app/_components/account-forms`) and redirects back to `next` (same-site paths only). The `?login=1` / `?register=1` URL pop-ups are gone; `/register` redirects to `/sign-in?view=register`.

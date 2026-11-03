@@ -7,7 +7,6 @@ import { queryKeys } from "../query-keys";
 import { authClient } from "./auth-client";
 import { SessionContext } from "./session-context";
 import type { SessionUser } from "./session-user";
-import { syncLegacySession } from "./sync-legacy-session";
 
 /**
  * Hands every component the user the server read (see useSession), and keeps the session alive:
@@ -22,9 +21,7 @@ export function SessionProvider({ user, children }: { user: SessionUser | null; 
       const { data, error } = await authClient.getSession();
       if (error) throw error;
       const current = data?.user ?? null;
-      // The Angular screens decide who's signed in from localStorage (see sync-legacy-session.ts).
-      syncLegacySession(current);
-      // Signed in or out somewhere else (another tab, an Angular screen): show the right user here too.
+      // Signed in or out in another tab: show the right user here too.
       if ((current?.id ?? null) !== (user?.id ?? null)) router.refresh();
       return current?.id ?? null;
     },

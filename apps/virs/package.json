@@ -9,8 +9,7 @@
     "start": "next start",
     "lint": "eslint .",
     "check-types": "next typegen && tsc --noEmit",
-    "test": "vitest run",
-    "build:legacy-ui": "./scripts/build-legacy-ui.sh"
+    "test": "vitest run"
   },
   "dependencies": {
     "@mantine/charts": "9.6.1",

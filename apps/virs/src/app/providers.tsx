@@ -10,8 +10,7 @@ import { cssVariablesResolver } from "@/theme/css-variables-resolver";
 import { theme } from "@/theme/theme";
 
 export function Providers({ user, children }: { user: SessionUser | null; children: ReactNode }) {
-  // Light only: the Angular screens still live alongside these, and a dark Mantine screen next to
-  // them would read as a different site.
+  // Light only: the site is built for daytime classroom use, not a dark theme.
   return (
     <MantineProvider theme={theme} cssVariablesResolver={cssVariablesResolver} forceColorScheme="light">
       <QueryClientProvider client={getQueryClient()}>

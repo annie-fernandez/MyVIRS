@@ -43,7 +43,7 @@ Turborepo caches per-package, so CI stays fast as the repo grows.
 ## Nice to have, if it's quick
 
 - **Run the checks against Vercel preview deployments** so each PR gets a URL the PO can click, rather than everyone testing on production.
-- Note that `apps/web` (Angular) and `apps/api` (Java) are **intentionally excluded** — Angular CLI 1.7 needs Node 8 and won't build in CI. The Angular production build is committed into `apps/virs/public` on purpose; see `apps/virs/README.md`.
+- Note that `apps/api` (Java) is **intentionally excluded** from this CI. The live site is `apps/virs`.
 
 ## Blocked on / needs from Annie
 

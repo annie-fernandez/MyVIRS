@@ -52,7 +52,6 @@ See [GitHub's required status check documentation](https://docs.github.com/en/pu
 ## Existing lint behavior
 
 This foundation uses the existing lint scripts unchanged. The shared ESLint
-configuration currently downgrades rule violations to warnings, and the app also
-lints the generated legacy JavaScript in `public/`. These warnings do not fail
-CI. Tightening the lint configuration and excluding generated bundles is a
-follow-up task; CI does not yet guarantee warning-free source code.
+configuration currently downgrades rule violations to warnings. These warnings
+do not fail CI. Tightening the lint configuration is a follow-up task; CI does
+not yet guarantee warning-free source code.

@@ -16,7 +16,7 @@ export function proxy(request: NextRequest) {
   return NextResponse.next({ request: { headers } });
 }
 
-// The pages in app/(signed-in). Only these: every other URL without a Next page is the Angular app.
+// The pages in app/(signed-in).
 // Prefetches are skipped: Next caches a prefetch, so a redirect answered while signed out would be
 // replayed after logging in (bouncing between the page and /sign-in). The (signed-in) layout still
 // checks the real navigation. Matchers must be literals (Next reads them at build time).

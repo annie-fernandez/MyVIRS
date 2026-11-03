@@ -15,15 +15,13 @@ const nextConfig: NextConfig = {
   typedRoutes: true,
   async rewrites() {
     return {
-      // The original Angular UI calls these with Spring-style paging params; route them to the
-      // compatibility handler instead of the new /api/words endpoints.
+      // Old paging query params still hit the compatibility handler instead of GET /api/words.
       beforeFiles: [
         { source: "/api/words", has: [{ type: "query", key: "sortDirection" }], destination: "/api/legacy/words" },
         { source: "/api/words/valueandcat", destination: "/api/legacy/words" },
       ],
       afterFiles: [],
-      // The Angular UI (built into /public) is a single-page app: every non-API URL loads it.
-      fallback: [{ source: "/:path((?!api/|_next/).*)", destination: "/index.html" }],
+      fallback: [],
     };
   },
 };
