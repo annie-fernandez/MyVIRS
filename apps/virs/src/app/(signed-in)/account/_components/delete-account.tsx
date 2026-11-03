@@ -1,8 +1,8 @@
 "use client";
 
-import { Alert, Button, Checkbox, Group, Modal, PasswordInput, Stack } from "@mantine/core";
+import { Button, Checkbox, Flex, Group, Modal, PasswordInput, Stack, Text } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { IconAlertTriangle, IconTrash } from "@tabler/icons-react";
+import { IconTrash } from "@tabler/icons-react";
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
@@ -41,21 +41,20 @@ export function DeleteAccount() {
         </Button>
       </Group>
 
-      <Modal opened={opened} onClose={close} title="Delete your account?">
-        <Stack gap="md">
-          <Alert color="red" icon={<IconAlertTriangle size={18} />}>
-            Your account and profile will be deleted right away, and you&apos;ll be signed out.
-          </Alert>
-          <PasswordInput label="Your password" description="To confirm it's you." autoComplete="current-password" value={password} onChange={(event) => setPassword(event.currentTarget.value)} error={error} />
+      <Modal opened={opened} onClose={close} title="Delete your account?" size="md" centered>
+        <Stack gap="lg">
+          {/* The same list as the tab, so the pop-up names everything that goes (DESIGN.md). */}
+          <Text>
+            Your account, your history and your word ratings will be deleted right away, and you&apos;ll be signed out. This can&apos;t be undone.
+          </Text>
+          <PasswordInput label="Enter your password to confirm" autoComplete="current-password" value={password} onChange={(event) => setPassword(event.currentTarget.value)} error={error} data-autofocus />
           <Checkbox label="I understand this can't be undone" checked={confirmed} onChange={(event) => setConfirmed(event.currentTarget.checked)} />
-          <Group justify="flex-end">
-            <Button variant="default" onClick={close}>
-              Keep my account
-            </Button>
+          {/* No "Keep my account": closing the pop-up keeps it. On the right, or full width on a phone. */}
+          <Flex direction={{ base: "column", xs: "row" }} justify="flex-end">
             <Button color="red" disabled={!password || !confirmed} loading={deleteAccount.isPending} onClick={() => deleteAccount.mutate(password)}>
               Delete my account
             </Button>
-          </Group>
+          </Flex>
         </Stack>
       </Modal>
     </>

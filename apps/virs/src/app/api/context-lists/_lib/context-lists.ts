@@ -7,9 +7,8 @@ export const CONTEXT_LISTS: Record<string, { title: string; note: string; load: 
   "ck12-biology": {
     title: "CK-12 Biology",
     note:
-      "Team A's ranking of the whole CK-12 Biology textbook (capstone2myvirs, commit 86d2a3e, October 18, 2026). " +
-      "Its frequency bands come from a temporary 2,300-word list, so some science words show as High; " +
-      "Team A will send a new file made with the full word lists.",
+      "Team A's ranking of the whole CK-12 Biology textbook (capstone2myvirs, commit e2771c5, October 28, 2026), " +
+      "made with the full VIRS word list. Numbers count as vocabulary.",
     load: () => import("./files/ck12-biology.json").then((file) => file.default),
   },
 };

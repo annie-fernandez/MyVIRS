@@ -11,6 +11,7 @@ const word = (headword: string, band: RankedWord["band"], count: number, rank: n
   frequencyCount: null,
   subject: "general",
   gradeLevel: null,
+  kLevel: null,
   relevance: 0.5,
   priority: 0.5,
   rank,

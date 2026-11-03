@@ -12,6 +12,7 @@ import { Marker } from "@/components/ui/marker";
 import { PageHeader } from "@/components/ui/page-header";
 import { useAnalysis } from "@/lib/analysis-store/use-analysis";
 import { RESULT_PATH, type ResultView } from "../../_lib/result-path";
+import { ContextWords } from "./context-words/context-words";
 import { DefinitionDrawer } from "./definition-drawer";
 import { DefinitionPanel } from "./definition-panel";
 import { EnhancedText } from "./enhanced-text";
@@ -133,8 +134,7 @@ export function ResultsScreen({ view }: { view: ResultView }) {
           ) : view === "statistics" ? (
             <Statistics result={result} />
           ) : (
-            // The comparison by context is stashed while it's reworked (git stash list: "By context tab").
-            <EmptyState icon={IconAffiliate} title="To be implemented" description="Comparing your words by context and by frequency is coming soon." />
+            <ContextWords result={result} analyzedAt={analyzedAt} />
           )}
         </Stack>
       )}

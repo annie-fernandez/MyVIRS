@@ -3,18 +3,20 @@ import type { WordCategory } from "@repo/core";
 export type CategoryKey = WordCategory | "offList";
 
 /**
- * How each vocabulary category is marked in results: the old site's hue for each, darkened until it
- * reads at 4.5:1 or better on its tint (the originals were as low as 1.5:1 on white).
+ * How each vocabulary category is marked in results, from the sprint card: K1 blue, K2 green,
+ * Academic yellow, Low red, the other lists in reds, maroons and pinks, and off-list words black.
+ * Each text color reads at 4.5:1 or better on white and on its tint, so Academic is a dark yellow:
+ * a brighter one can't be read on white.
  */
 export const CATEGORY_STYLES: Record<CategoryKey, { text: string; tint: string }> = {
-  k1: { text: "#4747d1", tint: "#ededfc" },
+  k1: { text: "#1f5fbf", tint: "#e8f0fc" },
   k2: { text: "#257925", tint: "#e7f3e7" },
-  k3: { text: "#c81e1e", tint: "#fdeaea" },
-  awl: { text: "#856402", tint: "#f8f0d6" },
-  baw: { text: "#a64c0c", tint: "#fdeee2" },
-  stem: { text: "#03784a", tint: "#e0f5ea" },
-  hi: { text: "#6e6e00", tint: "#f3f3d4" },
-  med: { text: "#9c00ad", tint: "#f8e3fb" },
-  low: { text: "#b8336a", tint: "#fde8f0" },
-  offList: { text: "#5f5c58", tint: "#f1efec" },
+  k3: { text: "#a3203f", tint: "#fbe7ec" },
+  awl: { text: "#7a6500", tint: "#fbf1bf" },
+  baw: { text: "#9a2c5e", tint: "#f8e5ee" },
+  stem: { text: "#a1197f", tint: "#f9e3f3" },
+  hi: { text: "#7b1f35", tint: "#f5e4e8" },
+  med: { text: "#c0246a", tint: "#fde6f0" },
+  low: { text: "#c81e1e", tint: "#fdeaea" },
+  offList: { text: "#1f1f1f", tint: "#ececec" },
 };

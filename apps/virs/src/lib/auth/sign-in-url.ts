@@ -2,7 +2,6 @@
 const TITLES: Record<string, string> = {
   "/history": "Log in to see your history",
   "/account": "Log in to see your profile",
-  "/change-password": "Log in to change your password",
   "/admin": "Log in to manage the word lists",
 };
 

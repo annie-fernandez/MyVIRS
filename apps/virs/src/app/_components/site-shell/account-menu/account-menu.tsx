@@ -1,7 +1,7 @@
 "use client";
 
 import { Avatar, Box, Button, Group, Menu, Text, Tooltip, UnstyledButton } from "@mantine/core";
-import { IconChevronRight, IconLock, IconLogin, IconLogout, IconUserCircle } from "@tabler/icons-react";
+import { IconChevronRight, IconLogin, IconLogout, IconUserCircle } from "@tabler/icons-react";
 import { useState } from "react";
 import { ShellLink } from "@/components/shell-link/shell-link";
 import { useSession } from "@/lib/auth/use-session";
@@ -26,7 +26,7 @@ export function AccountMenu({ collapsed }: { collapsed: boolean }) {
   return (
     <>
       {user ? (
-        // Signed in: the menu holds the account itself (profile, password, log out). What the user
+        // Signed in: the menu holds the account itself (profile, where the password is too, and log out). What the user
         // has made (their history) is a destination in the menu above, not in here.
         <Menu position="right-end" width={264} offset={12}>
           <Menu.Target>
@@ -59,9 +59,6 @@ export function AccountMenu({ collapsed }: { collapsed: boolean }) {
             <Menu.Divider />
             <Menu.Item component={ShellLink} href={ACCOUNT_LINKS.profile} leftSection={<IconUserCircle size={18} />}>
               My profile
-            </Menu.Item>
-            <Menu.Item component={ShellLink} href={ACCOUNT_LINKS.changePassword} leftSection={<IconLock size={18} />}>
-              Change password
             </Menu.Item>
             <Menu.Divider />
             <Menu.Item leftSection={<IconLogout size={18} />} onClick={() => signOut.mutate()}>

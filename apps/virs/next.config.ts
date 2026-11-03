@@ -13,6 +13,10 @@ const nextConfig: NextConfig = {
   // Node-only parsers that should not be bundled into server chunks.
   serverExternalPackages: ["word-extractor"],
   typedRoutes: true,
+  // The password moved into My profile (its Password tab); old links and bookmarks still land there.
+  async redirects() {
+    return [{ source: "/change-password", destination: "/account", permanent: true }];
+  },
   async rewrites() {
     return {
       // Old paging query params still hit the compatibility handler instead of GET /api/words.

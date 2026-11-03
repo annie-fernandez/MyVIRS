@@ -141,7 +141,7 @@ Which component for what:
 ## Forms
 
 - **Forms read top to bottom**, one field per row. Don't put fields side by side.
-- **One place for each thing.** Signed out, the bottom of the side menu is a single "Log in" button; signed in, it's the account menu (My profile, Change password, Log out) and nothing else. Things the user has made, like History, are destinations in the menu above it. Don't link the same destination from both.
+- **One place for each thing.** Signed out, the bottom of the side menu is a single "Log in" button; signed in, it's the account menu (My profile, Log out) and nothing else; the password is changed in My profile. Things the user has made, like History, are destinations in the menu above it. Don't link the same destination from both.
 - Log in, registration and password recovery are one set of forms (`app/_components/account-forms`), each linking to the others, and always in the one account pop-up (`AccountModal`): the menu's Log in button and the sign-in page's buttons both open it, so there's never a form on the page and another in a pop-up. Keep them short enough to fit a laptop screen without scrolling; ask only for what's needed (no "confirm password" on sign-up, since the field can show what was typed).
 - Every field has a visible `label`; placeholders are examples, not labels.
 - Help text goes in `description`, under the field. Errors go in `error`, in a full sentence that says how to fix it: "Enter a full email address, like ana@example.com."

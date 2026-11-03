@@ -21,8 +21,11 @@ const rankedWordFileSchema = z
     pos: z.string(),
     band: z.enum(RANKING_BANDS),
     frequency_count: z.number().int().nullable(),
-    subject: z.enum(["general", "academic", "math", "science", "math_science"]),
+    /** "stem": on the VIRS STEM list, math and science not told apart. */
+    subject: z.enum(["general", "academic", "math", "science", "math_science", "stem"]),
     grade_level: z.string().regex(/^(K|G([1-9]|1[0-2]))$/).nullable(),
+    /** The K1–K3 school frequency tier, when the word has one. Optional in the contract. */
+    k_level: z.enum(["K1", "K2", "K3"]).nullable().optional(),
     /** TextRank percentile in the text, 0 to 1. 0 = not a keyword, null = not computed. */
     relevance: z.number().min(0).max(1).nullable(),
     /** 0.5 × frequency band + 0.5 × relevance, 0 to 1. */
@@ -41,6 +44,7 @@ const rankedWordFileSchema = z
     frequencyCount: word.frequency_count,
     subject: word.subject,
     gradeLevel: word.grade_level,
+    kLevel: word.k_level ?? null,
     relevance: word.relevance,
     priority: word.priority,
     rank: word.rank,
@@ -98,4 +102,36 @@ export interface ContextListSummary {
 export interface ContextListPage {
   list: ContextListSummary;
   words: Paginated<RankedWord>;
+}
+
+const MAX_PASSAGE_WORDS = 20_000;
+
+/** POST /api/context-lists/:id/passage — how many times a passage uses each word, lowercase and without punctuation. */
+export const contextPassageInput = z.object({
+  counts: z
+    .record(z.string().min(1).max(256), z.number().int().min(1))
+    .refine((counts) => Object.keys(counts).length <= MAX_PASSAGE_WORDS, `A passage can have at most ${MAX_PASSAGE_WORDS.toLocaleString("en-US")} different words.`),
+});
+export type ContextPassageInput = z.infer<typeof contextPassageInput>;
+
+/** A word family from a ranked list that the passage uses, with its place in the whole list both ways. */
+export interface PassageRankedWord {
+  headword: string;
+  /** The family's forms the passage uses, e.g. ["cells"]. */
+  forms: string[];
+  /** Times the passage uses them. */
+  count: number;
+  band: RankingBand;
+  /** Rank in the list by context (Team A's) and by frequency alone (their baseline). 1 = teach first. */
+  contextRank: number;
+  frequencyRank: number;
+}
+
+/** POST /api/context-lists/:id/passage — the passage's words looked up in one ranked list. */
+export interface ContextPassageMatch {
+  list: ContextListSummary;
+  /** In the list's context order. */
+  words: PassageRankedWord[];
+  /** Different words in the passage that the list doesn't have (names, numbers, words the book never uses). */
+  unmatched: number;
 }

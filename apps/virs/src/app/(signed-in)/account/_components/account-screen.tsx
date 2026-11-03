@@ -5,9 +5,9 @@ import { IconLock, IconTrash, IconUserCircle } from "@tabler/icons-react";
 import { Marker } from "@/components/ui/marker";
 import { PageHeader } from "@/components/ui/page-header";
 import { Surface } from "@/components/ui/surface";
-import { PasswordForm } from "../../_components/password-form";
 import classes from "./account-screen.module.css";
 import { DeleteAccount } from "./delete-account";
+import { PasswordForm } from "./password-form";
 import { ProfileForm } from "./profile-form";
 import { ProfileSummary } from "./profile-summary";
 

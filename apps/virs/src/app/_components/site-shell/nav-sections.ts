@@ -1,4 +1,4 @@
-import { IconAffiliate, IconArrowDown, IconHighlight, IconHistory, IconHome, IconLanguage, IconSearch, type Icon } from "@tabler/icons-react";
+import { IconArrowDown, IconHighlight, IconHistory, IconHome, IconLanguage, IconSearch, type Icon } from "@tabler/icons-react";
 
 // The links in this folder are one map of URL → label for the whole site.
 
@@ -33,8 +33,6 @@ export const NAV_SECTIONS: NavSection[] = [
     label: "Tools",
     items: [
       { label: "iTranslate", href: "/itranslate", icon: IconLanguage },
-      // A preview of Team A's word ranking; there's no Angular screen for it.
-      { label: "Analysis by context", href: "/context-analysis", icon: IconAffiliate },
     ],
   },
 ];

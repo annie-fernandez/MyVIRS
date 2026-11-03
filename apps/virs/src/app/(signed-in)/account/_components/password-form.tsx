@@ -8,6 +8,7 @@ import { errorMessage } from "@/lib/api-client/error-message";
 import { authClient } from "@/lib/auth/auth-client";
 import { AuthError } from "@/lib/auth/auth-error";
 import { changePasswordSchema, type ChangePasswordValues } from "../_lib/change-password-schema";
+import { ForgotPasswordLink } from "./forgot-password-link";
 
 /** Change password for the signed-in user. Signs out their other devices. */
 export function PasswordForm() {
@@ -37,7 +38,10 @@ export function PasswordForm() {
             Your password is changed. Any other devices you were signed in on have been signed out.
           </Alert>
         )}
-        <PasswordInput label="Current password" autoComplete="current-password" key={form.key("currentPassword")} {...form.getInputProps("currentPassword")} />
+        <Stack gap={6}>
+          <PasswordInput label="Current password" autoComplete="current-password" key={form.key("currentPassword")} {...form.getInputProps("currentPassword")} />
+          <ForgotPasswordLink />
+        </Stack>
         <PasswordInput label="New password" description="At least 8 characters." autoComplete="new-password" key={form.key("password")} {...form.getInputProps("password")} />
         <PasswordInput label="Confirm new password" autoComplete="new-password" key={form.key("confirmPassword")} {...form.getInputProps("confirmPassword")} />
         <Group justify="flex-end">

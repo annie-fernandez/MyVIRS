@@ -19,6 +19,8 @@ export const queryKeys = {
   /** GET /api/context-lists and one page of a list (Team A's ranked words). */
   contextLists: ["context-lists"] as const,
   contextList: (id: string, params: string) => ["context-lists", id, params] as const,
+  /** POST /api/context-lists/:id/passage for one analysis (its analyzedAt). */
+  contextPassage: (id: string, analyzedAt: string) => ["context-lists", id, "passage", analyzedAt] as const,
   /** GET /api/admin/words?value= */
   adminWords: ["admin-words"] as const,
   adminWord: (value: string) => ["admin-words", value.toLowerCase()] as const,
