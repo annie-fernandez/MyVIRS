@@ -1,5 +1,5 @@
 import { CATEGORY_INFO, WORD_CATEGORIES, type WordCategory } from "./categories";
-import { countSyllables, lookupCandidates } from "./word";
+import { countSyllables, isSpelledOutNumber, lookupCandidates } from "./word";
 
 export interface WordMatch {
   /** The token exactly as it appeared in the text. An empty string marks a paragraph break. */
@@ -126,6 +126,10 @@ export async function analyzeText(text: string, lookup: WordLookup): Promise<Ana
 
   const words: WordMatch[] = tokens.map((token, i) => {
     const match = candidatesByToken[i]!.map((value) => index.get(value)).find(Boolean);
+    // Number words are always high frequency, retaining a more specific K1/K2/K3 match.
+    if (isSpelledOutNumber(token) && (!match || !["k1", "k2", "k3"].includes(match.category))) {
+      return { initialValue: token, value: candidatesByToken[i]![0]!, category: "hi" };
+    }
     return {
       initialValue: token,
       value: match?.value ?? null,

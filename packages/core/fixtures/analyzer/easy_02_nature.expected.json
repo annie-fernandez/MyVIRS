@@ -617,8 +617,8 @@
     },
     {
       "initialValue": "seventeenth",
-      "value": null,
-      "category": null
+      "value": "seventeenth",
+      "category": "hi"
     },
     {
       "initialValue": "chapter.",
@@ -1250,27 +1250,27 @@
   "fleschReadingScore": 84.95485365853662,
   "statistics": {
     "wordCount": {
-      "offList": 67,
+      "offList": 66,
       "k1": 167,
       "k2": 10,
       "k3": 0,
       "awl": 2,
       "baw": 0,
       "stem": 0,
-      "hi": 0,
+      "hi": 1,
       "med": 0,
       "low": 0,
       "total": 246
     },
     "wordPercentage": {
-      "offList": 0.27235772357723576,
+      "offList": 0.2682926829268293,
       "k1": 0.6788617886178862,
       "k2": 0.04065040650406504,
       "k3": 0,
       "awl": 0.008130081300813009,
       "baw": 0,
       "stem": 0,
-      "hi": 0,
+      "hi": 0.0040650406504065045,
       "med": 0,
       "low": 0
     }

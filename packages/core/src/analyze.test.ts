@@ -7,7 +7,7 @@ import {
   type WordListEntry,
 } from "./analyze";
 import { readingLevel } from "./readability";
-import { countSyllables, lookupCandidates } from "./word";
+import { countSyllables, isSpelledOutNumber, lookupCandidates } from "./word";
 
 function lookupFrom(entries: WordListEntry[]) {
   return vi.fn(async (values: string[]) => entries.filter((entry) => values.includes(entry.value)));
@@ -53,6 +53,16 @@ describe("countSyllables", () => {
   });
 });
 
+describe("isSpelledOutNumber", () => {
+  it.each(["Zero", "(twelve),", "forty", "hundred", "trillion", "twelfth", "ninetieth", "twenty-one", "Thirty-first.", "ninety\u2011nine"])(
+    "recognizes %s", (word) => expect(isSpelledOutNumber(word)).toBe(true),
+  );
+
+  it.each(["someone", "stone", "twentyone", "one-time", "twenty-foo", "two-three", "12", "", "---"])(
+    "does not treat %s as a spelled-out number", (word) => expect(isSpelledOutNumber(word)).toBe(false),
+  );
+});
+
 describe("countSentences", () => {
   it("splits on terminal punctuation followed by whitespace", () => {
     expect(countSentences("I like cats. Do you? Yes!")).toBe(3);
@@ -92,6 +102,30 @@ describe("readingLevel", () => {
 });
 
 describe("analyzeText", () => {
+  it("classifies off-list and lower-frequency number words as high frequency", async () => {
+    const result = await analyzeText("Twelve thirty-first forty hundred million unknown", lookupFrom([
+      { value: "twelve", category: "stem" },
+      { value: "forty", category: "low" },
+      { value: "hundred", category: "med" },
+      { value: "million", category: "awl" },
+    ]));
+
+    expect(result.words.map((word) => word.category)).toEqual(["hi", "hi", "hi", "hi", "hi", null]);
+    expect(result.words[1]).toEqual({ initialValue: "thirty-first", value: "thirtyfirst", category: "hi" });
+    expect(result.statistics.wordCount).toMatchObject({ hi: 5, offList: 1, total: 6 });
+    expect(result.statistics.wordPercentage.hi).toBe(5 / 6);
+  });
+
+  it("keeps number words already in K1/K2/K3 in their existing category", async () => {
+    const result = await analyzeText("one two three", lookupFrom([
+      { value: "one", category: "k1" },
+      { value: "two", category: "k2" },
+      { value: "three", category: "k3" },
+    ]));
+
+    expect(result.words.map((word) => word.category)).toEqual(["k1", "k2", "k3"]);
+  });
+
   it("matches words to the highest-priority category and counts off-list words", async () => {
     const lookup = lookupFrom([
       { value: "house", category: "k2" },

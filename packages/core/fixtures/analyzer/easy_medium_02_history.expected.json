@@ -42,8 +42,8 @@
     },
     {
       "initialValue": "fifteenth",
-      "value": null,
-      "category": null
+      "value": "fifteenth",
+      "category": "hi"
     },
     {
       "initialValue": "century",
@@ -1200,27 +1200,27 @@
   "fleschReadingScore": 55.90250000000002,
   "statistics": {
     "wordCount": {
-      "offList": 89,
+      "offList": 88,
       "k1": 128,
       "k2": 13,
       "k3": 0,
       "awl": 5,
       "baw": 0,
       "stem": 0,
-      "hi": 0,
+      "hi": 1,
       "med": 0,
       "low": 0,
       "total": 235
     },
     "wordPercentage": {
-      "offList": 0.37872340425531914,
+      "offList": 0.37446808510638296,
       "k1": 0.5446808510638298,
       "k2": 0.05531914893617021,
       "k3": 0,
       "awl": 0.02127659574468085,
       "baw": 0,
       "stem": 0,
-      "hi": 0,
+      "hi": 0.00425531914893617,
       "med": 0,
       "low": 0
     }

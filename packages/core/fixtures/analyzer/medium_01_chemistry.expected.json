@@ -22,8 +22,8 @@
     },
     {
       "initialValue": "two",
-      "value": null,
-      "category": null
+      "value": "two",
+      "category": "hi"
     },
     {
       "initialValue": "sciences",
@@ -347,8 +347,8 @@
     },
     {
       "initialValue": "two",
-      "value": null,
-      "category": null
+      "value": "two",
+      "category": "hi"
     },
     {
       "initialValue": "sciences",
@@ -1165,27 +1165,27 @@
   "fleschReadingScore": 54.10035116448327,
   "statistics": {
     "wordCount": {
-      "offList": 80,
+      "offList": 78,
       "k1": 138,
       "k2": 5,
       "k3": 0,
       "awl": 6,
       "baw": 0,
       "stem": 0,
-      "hi": 0,
+      "hi": 2,
       "med": 0,
       "low": 0,
       "total": 229
     },
     "wordPercentage": {
-      "offList": 0.34934497816593885,
+      "offList": 0.3406113537117904,
       "k1": 0.6026200873362445,
       "k2": 0.021834061135371178,
       "k3": 0,
       "awl": 0.026200873362445413,
       "baw": 0,
       "stem": 0,
-      "hi": 0,
+      "hi": 0.008733624454148471,
       "med": 0,
       "low": 0
     }
