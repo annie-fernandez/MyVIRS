@@ -6,6 +6,7 @@ import { IconAffiliate, IconChartBar, IconHighlight, IconPlus, IconTextScan2 } f
 import { useRouter } from "next/navigation";
 import { useState, type ReactNode } from "react";
 import type { DefinitionTarget } from "@/components/definition/definition-target";
+import { useWordTranslationSettings } from "@/components/definition/use-word-translation-settings";
 import { ShellLink } from "@/components/shell-link/shell-link";
 import { EmptyState } from "@/components/ui/empty-state";
 import { Marker } from "@/components/ui/marker";
@@ -34,6 +35,7 @@ export function ResultsScreen({ view }: { view: ResultView }) {
   const router = useRouter();
   const analysis = useAnalysis();
   const [definition, setDefinition] = useState<DefinitionTarget | null>(null);
+  const translation = useWordTranslationSettings();
   // Side by side when the page itself has room (its width, not the window's: the menu takes some of
   // it); otherwise the word opens in a drawer. 0 means not measured yet: start side by side.
   const content = useElementSize();
@@ -121,7 +123,7 @@ export function ResultsScreen({ view }: { view: ResultView }) {
             {header}
             <EnhancedText result={result} onWord={onWord} />
           </Stack>
-          <DefinitionPanel target={definition} />
+          <DefinitionPanel target={definition} translation={translation} />
         </>
       ) : (
         <Stack gap="xl">
@@ -129,7 +131,7 @@ export function ResultsScreen({ view }: { view: ResultView }) {
           {view === "enhanced" ? (
             <>
               <EnhancedText result={result} onWord={onWord} />
-              <DefinitionDrawer target={definition} onClose={() => setDefinition(null)} />
+              <DefinitionDrawer target={definition} onClose={() => setDefinition(null)} translation={translation} />
             </>
           ) : view === "statistics" ? (
             <Statistics result={result} />

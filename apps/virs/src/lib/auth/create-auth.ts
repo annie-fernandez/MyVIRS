@@ -9,6 +9,7 @@ import { after } from "next/server";
 import { escapeHtml } from "../email/escape-html";
 import { sendEmail } from "../email/send-email";
 import { env } from "../env/env";
+import { assertValidPreferredLanguage } from "./assert-valid-preferred-language";
 import { assertValidUserLevel } from "./assert-valid-user-level";
 
 const USERNAME_PATTERN = /^[a-zA-Z0-9_.-]+$/;
@@ -50,14 +51,25 @@ export function createAuth() {
     user: {
       additionalFields: {
         userLevel: { type: "string", required: false, input: true },
+        preferredLanguage: { type: "string", required: false, input: true },
       },
       changeEmail: { enabled: true, updateEmailWithoutVerification: true },
       deleteUser: { enabled: true },
     },
     databaseHooks: {
       user: {
-        create: { before: async (data) => assertValidUserLevel(data.userLevel) },
-        update: { before: async (data) => assertValidUserLevel(data.userLevel) },
+        create: {
+          before: async (data) => {
+            assertValidUserLevel(data.userLevel);
+            assertValidPreferredLanguage(data.preferredLanguage);
+          },
+        },
+        update: {
+          before: async (data) => {
+            assertValidUserLevel(data.userLevel);
+            assertValidPreferredLanguage(data.preferredLanguage);
+          },
+        },
       },
     },
     session: {

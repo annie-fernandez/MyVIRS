@@ -5,6 +5,7 @@ import { IconClick } from "@tabler/icons-react";
 import { DefinitionDetails } from "@/components/definition/definition-details";
 import type { DefinitionTarget } from "@/components/definition/definition-target";
 import { DefinitionTitle } from "@/components/definition/definition-title";
+import type { WordTranslationSettings } from "@/components/definition/use-word-translation-settings";
 import { useWordTrail } from "@/components/definition/use-word-trail";
 import { EmptyState } from "@/components/ui/empty-state";
 import { Surface } from "@/components/ui/surface";
@@ -14,7 +15,7 @@ import classes from "./results-screen.module.css";
  * Beside the enhanced text: the clicked word's rating and definition, so the passage stays in view.
  * It floats at the top of the window while the passage scrolls, and scrolls on its own.
  */
-export function DefinitionPanel({ target }: { target: DefinitionTarget | null }) {
+export function DefinitionPanel({ target, translation }: { target: DefinitionTarget | null; translation: WordTranslationSettings }) {
   const { shown, previous, open, back } = useWordTrail(target);
   return (
     <Box className={classes.panel}>
@@ -26,7 +27,7 @@ export function DefinitionPanel({ target }: { target: DefinitionTarget | null })
           <Box mb="md">
             <DefinitionTitle target={shown} backTo={previous && { word: previous.word, onBack: back }} />
           </Box>
-          <DefinitionDetails target={shown} onOpenWord={open} />
+          <DefinitionDetails target={shown} onOpenWord={open} translation={translation} />
         </Surface>
       ) : (
         <Box className={classes.panelEmpty}>

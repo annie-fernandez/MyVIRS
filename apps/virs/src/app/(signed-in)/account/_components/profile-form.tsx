@@ -10,14 +10,15 @@ import { errorMessage } from "@/lib/api-client/error-message";
 import { authClient } from "@/lib/auth/auth-client";
 import { useRequiredUser } from "@/lib/auth/use-required-user";
 import { useSessionChanged } from "@/lib/auth/use-session-changed";
+import { PREFERRED_LANGUAGES } from "@/lib/translation/preferred-languages";
 
-/** Name, user name, email and "I am a…". Saving updates the header too. */
+/** Name, user name, email, "I am a…" and preferred language. Saving updates the header too. */
 export function ProfileForm() {
   const user = useRequiredUser();
   const sessionChanged = useSessionChanged();
   const form = useForm<ProfileValues>({
     mode: "uncontrolled",
-    initialValues: { name: user.name, username: user.username, email: user.email, userLevel: user.userLevel },
+    initialValues: { name: user.name, username: user.username, email: user.email, userLevel: user.userLevel, preferredLanguage: user.preferredLanguage },
     validate: schemaResolver(profileSchema, { sync: true }),
     // A saved message only describes what's on screen until the next change.
     onValuesChange: () => save.reset(),
@@ -33,6 +34,7 @@ export function ProfileForm() {
         name: values.name.trim(),
         username: values.username.trim(),
         userLevel: values.userLevel ?? "",
+        preferredLanguage: values.preferredLanguage ?? "",
       });
       if (error) {
         throw new Error(error.code?.startsWith("USERNAME_IS_ALREADY_TAKEN") ? "That user name is taken. Try another one." : (error.message ?? "We couldn't save your details."));
@@ -52,6 +54,18 @@ export function ProfileForm() {
         <TextInput label="User name" autoComplete="username" key={form.key("username")} {...form.getInputProps("username")} />
         <TextInput label="Email" type="email" autoComplete="email" key={form.key("email")} {...form.getInputProps("email")} />
         <Select label="I am a…" placeholder="Not specified" data={USER_LEVEL_SELECT_DATA} clearable allowDeselect key={form.key("userLevel")} {...form.getInputProps("userLevel")} />
+        <Select
+          label="Preferred language"
+          description="The language you know best. We'll use it when you translate a word."
+          placeholder="Not specified"
+          data={PREFERRED_LANGUAGES}
+          searchable
+          nothingFoundMessage="No language with that name"
+          clearable
+          allowDeselect
+          key={form.key("preferredLanguage")}
+          {...form.getInputProps("preferredLanguage")}
+        />
         {save.isSuccess && (
           <Alert color="virsGreen" icon={<IconCheck size={18} />}>
             Your details are saved.

@@ -10,6 +10,8 @@ export const queryKeys = {
   savedAnalysis: (id: string) => ["history", "item", id] as const,
   /** GET /api/dictionary/:word */
   dictionary: (word: string) => ["dictionary", word.toLowerCase()] as const,
+  /** A word or sentence translated in the browser. */
+  translation: (text: string, target: string) => ["translation", target, text] as const,
   /** GET /api/ratings/:word */
   wordRatings: (word: string) => ["ratings", word.toLowerCase()] as const,
   /** Every word list query: the search table and the "is in" lookup. */

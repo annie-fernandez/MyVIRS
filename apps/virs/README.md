@@ -13,7 +13,7 @@ Next.js rewrite of the Vocabulary in Reading Study app. It replaces the Spring B
   - **Results** (`/enhanced-text-result`, `/text-statistics`, `/context-words`) read the latest analysis from `sessionStorage` (`src/lib/analysis-store/`), so they survive a reload in the same tab.
   - **Photos** are read in the browser with tesseract.js; only the extracted text is sent to `/api/analyze/text`.
   - **By context** (the results' third tab, `/context-words`) ranks the analyzed passage's words by Team A's ranking of a whole textbook (github.com/AlePerez09/capstone2myvirs), next to ranking by frequency alone; `POST /api/context-lists/:id/passage` looks the words up. Their Python pipeline runs on their side and writes a "contract v1" JSON file; the file goes unchanged into `src/app/api/context-lists/_lib/files/` with an entry in `context-lists.ts`, and `@repo/core` (`context-ranking.ts`) checks it against their contract when it's read. VIRS only re-sorts it for By frequency, following their rule. The ranks are the whole book's, not the passage's.
-  - **Translation** calls Google from the browser (`src/app/itranslate/_lib/translate-in-browser.ts`). Google answers browsers but rejects requests from servers with HTTP 429, so `/api/translate` fails on Vercel.
+  - **Translation** calls Google from the browser (`src/lib/translation/translate-in-browser.ts`), on the iTranslate screen and in the panel for a word clicked in Enhanced text. A student's preferred language (My profile) is selected first in both. Google answers browsers but rejects requests from servers with HTTP 429, so `/api/translate` fails on Vercel.
 
 ## Setup
 

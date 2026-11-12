@@ -1,0 +1,33 @@
+/* The translation, set apart from the pronunciation above and the rating below so the eye lands on it:
+   a soft inset, lighter than the page's gray and without a border, inside the white panel. */
+.box {
+  padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm) var(--mantine-spacing-sm);
+  border-radius: var(--mantine-radius-md);
+  background: color-mix(in srgb, var(--virs-page) 60%, var(--virs-surface));
+}
+
+/* "Spanish ⌄" at the top of the box, which opens the language list. Plain text with no fill on hover:
+   it only darkens. The theme's focus ring still shows for keyboards. */
+.language {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: var(--mantine-radius-sm);
+  color: var(--virs-text-muted);
+  font-size: var(--mantine-font-size-sm);
+  font-weight: 600;
+  transition: color 120ms ease;
+
+  &:hover {
+    color: var(--virs-text);
+  }
+}
+
+/* While a new language loads, the old translation stays and fades, instead of flashing a placeholder. */
+.translation {
+  transition: opacity 150ms ease;
+
+  &[data-stale] {
+    opacity: 0.45;
+  }
+}

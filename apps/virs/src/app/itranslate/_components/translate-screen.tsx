@@ -1,26 +1,25 @@
 "use client";
 
-import { Alert, Button, CopyButton, Group, Select, SimpleGrid, Stack, Text, Textarea } from "@mantine/core";
-import { useLocalStorage } from "@mantine/hooks";
+import { Alert, Button, CopyButton, Group, SimpleGrid, Stack, Text, Textarea } from "@mantine/core";
 import { IconCheck, IconCopy, IconLanguage, IconX } from "@tabler/icons-react";
 import { MAX_TRANSLATE_LENGTH } from "@repo/core";
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
 import { Marker } from "@/components/ui/marker";
 import { PageHeader } from "@/components/ui/page-header";
+import { LanguageSelect } from "@/components/translation/language-select";
 import { Surface } from "@/components/ui/surface";
 import { errorMessage } from "@/lib/api-client/error-message";
-import { translateInBrowser } from "../_lib/translate-in-browser";
-import { TRANSLATION_LANGUAGES } from "../_lib/translation-languages";
-import { languageName } from "./language-name";
+import { languageName } from "@/lib/translation/language-name";
+import { translateInBrowser } from "@/lib/translation/translate-in-browser";
+import { useTranslateTarget } from "@/lib/translation/use-translate-target";
 
 /** Height of the text and translation boxes, in lines. */
 const BOX_ROWS = 10;
 
 export function TranslateScreen() {
   const [text, setText] = useState("");
-  // Remembered per browser, so a student doesn't pick their language every visit.
-  const [target, setTarget] = useLocalStorage<string>({ key: "virs:translate-target", defaultValue: "es" });
+  const { target, setTarget } = useTranslateTarget();
   const translate = useMutation({ mutationFn: ({ text, target }: { text: string; target: string }) => translateInBrowser(text, target) });
   const result = translate.data;
 
@@ -40,15 +39,7 @@ export function TranslateScreen() {
       <Surface p={{ base: "md", sm: "lg" }}>
         <Stack gap="sm">
           <Group align="flex-end" gap="sm">
-            <Select
-              label="Translate to"
-              data={TRANSLATION_LANGUAGES}
-              value={target}
-              onChange={(value) => value && setTarget(value)}
-              searchable
-              nothingFoundMessage="No language with that name"
-              w={260}
-            />
+            <LanguageSelect value={target} onChange={setTarget} w={260} />
           </Group>
           {/* Two identical boxes: fixed height, so they stay the same size whatever is in them. */}
           <SimpleGrid cols={{ base: 1, md: 2 }} spacing="sm">

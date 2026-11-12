@@ -21,6 +21,7 @@ export const user = pgTable("user", {
   banReason: text("ban_reason"),
   banExpires: timestamp("ban_expires", { withTimezone: true }),
   userLevel: text("user_level"),
+  preferredLanguage: text("preferred_language"),
 });
 
 export const session = pgTable(

@@ -1,5 +1,6 @@
 import "server-only";
 import { USER_LEVELS, type UserLevel } from "@repo/core";
+import { PREFERRED_LANGUAGES } from "../translation/preferred-languages";
 import type { getServerSession } from "./get-server-session";
 import type { SessionUser } from "./session-user";
 
@@ -14,6 +15,8 @@ export function toSessionUser(user: ServerUser): SessionUser {
     username: user.displayUsername ?? user.username ?? "",
     // Stored as free text by older sign-ups; anything outside USER_LEVELS reads as "not set".
     userLevel: (USER_LEVELS as readonly string[]).includes(user.userLevel ?? "") ? (user.userLevel as UserLevel) : null,
+    // Empty means cleared in My profile. A language no longer offered also reads as "not set".
+    preferredLanguage: PREFERRED_LANGUAGES.some((language) => language.value === user.preferredLanguage) ? (user.preferredLanguage as string) : null,
     role: user.role ?? null,
     createdAt: user.createdAt.toISOString(),
   };

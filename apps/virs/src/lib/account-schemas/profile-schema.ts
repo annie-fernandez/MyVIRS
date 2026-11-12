@@ -7,6 +7,7 @@ export const profileSchema = z.object({
   name: z.string().trim().min(1, "Enter your name.").max(256),
   email: z.email("Enter a full email address, like ana@example.com."),
   userLevel: z.enum(USER_LEVELS).nullable(),
+  preferredLanguage: z.string().nullable(),
 });
 
 export type ProfileValues = z.infer<typeof profileSchema>;

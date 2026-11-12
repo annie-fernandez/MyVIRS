@@ -5,10 +5,11 @@ import { useWindowEvent } from "@mantine/hooks";
 import { DefinitionDetails } from "@/components/definition/definition-details";
 import type { DefinitionTarget } from "@/components/definition/definition-target";
 import { DefinitionTitle } from "@/components/definition/definition-title";
+import type { WordTranslationSettings } from "@/components/definition/use-word-translation-settings";
 import { useWordTrail } from "@/components/definition/use-word-trail";
 
 /** The clicked word's rating and definition, sliding in from the right where there's no room beside the passage. */
-export function DefinitionDrawer({ target, onClose }: { target: DefinitionTarget | null; onClose: () => void }) {
+export function DefinitionDrawer({ target, onClose, translation }: { target: DefinitionTarget | null; onClose: () => void; translation: WordTranslationSettings }) {
   const { shown, previous, open, back } = useWordTrail(target);
   // Escape steps back one word, like Back; at the first word it closes, as the X always does.
   useWindowEvent("keydown", (event) => {
@@ -17,7 +18,7 @@ export function DefinitionDrawer({ target, onClose }: { target: DefinitionTarget
   const backTo = previous && { word: previous.word, onBack: back };
   return (
     <Drawer opened={target !== null} onClose={onClose} closeOnEscape={!previous} position="right" size="min(480px, 100vw)" title={shown && <DefinitionTitle target={shown} backTo={backTo} />}>
-      {shown && <DefinitionDetails key={shown.word} target={shown} onLeave={onClose} onOpenWord={open} />}
+      {shown && <DefinitionDetails key={shown.word} target={shown} onLeave={onClose} onOpenWord={open} translation={translation} />}
     </Drawer>
   );
 }

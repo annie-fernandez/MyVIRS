@@ -8,18 +8,23 @@ import type { DefinitionTarget } from "./definition-target";
 import { DefinitionHtml } from "./definition-html";
 import { dictionaryQuery } from "./dictionary-query";
 import { FormOfNote } from "./form-of-note";
+import { PronunciationPlaceholder } from "./pronunciation-placeholder";
 import { WordPronunciation } from "./word-pronunciation";
+import type { WordTranslationSettings } from "./use-word-translation-settings";
 import { WordRating } from "./word-rating";
+import { WordTranslation } from "./word-translation";
 
 interface DefinitionDetailsProps {
   target: DefinitionTarget;
   onLeave?: () => void;
   /** Opens another word in the same place, e.g. "run" from "running" (see useWordTrail); Back is in DefinitionTitle. */
   onOpenWord?: (word: string) => void;
+  /** Shows the word's translation, under how it's said. Screens without it show no translation. */
+  translation?: WordTranslationSettings;
 }
 
 /** How the word is said (once the dictionary knows it), how well the student knows it (they can rate it here), then its definition. */
-export function DefinitionDetails({ target, onLeave, onOpenWord }: DefinitionDetailsProps) {
+export function DefinitionDetails({ target, onLeave, onOpenWord, translation }: DefinitionDetailsProps) {
   const word = target.word.trim();
   const definition = useQuery({ ...dictionaryQuery(word), enabled: word !== "" });
 
@@ -27,7 +32,14 @@ export function DefinitionDetails({ target, onLeave, onOpenWord }: DefinitionDet
     <>
       {/* Right under the word in the title (not in it: the pop-up and drawer titles are headings). Only for
           words the dictionary knows, so a typo, name or number is never read out as if it were a word. */}
-      {definition.data && <WordPronunciation key={`pronunciation:${definition.data.word}`} word={definition.data.word} respelling={definition.data.respelling} audioUrl={definition.data.audioUrl} />}
+      {definition.data ? (
+        <WordPronunciation key={`pronunciation:${definition.data.word}`} word={definition.data.word} respelling={definition.data.respelling} audioUrl={definition.data.audioUrl} />
+      ) : (
+        // Its place is kept while it loads, so what's below doesn't jump down when it arrives.
+        definition.isPending && word && <PronunciationPlaceholder />
+      )}
+      {/* Keyed by word and sentence, so a sentence opened for one word doesn't stay open for the next. */}
+      {translation && <WordTranslation key={`translation:${word}:${target.context ?? ""}`} word={word} context={target.context} settings={translation} />}
       {/* Rating next: definitions can run long, and the rating is the thing to do here. */}
       {word && <WordRating key={word} word={word} analysisId={target.analysisId ?? null} context={target.context ?? null} onLeave={onLeave} />}
       {definition.isPending ? (

@@ -1,4 +1,4 @@
-import { TRANSLATION_LANGUAGES } from "../_lib/translation-languages";
+import { TRANSLATION_LANGUAGES } from "./translation-languages";
 
 /** A language's name from its code, e.g. "es" → "Spanish". Falls back to the code itself. */
 export function languageName(code: string | null): string {
